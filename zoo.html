@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЗооМир - Главная</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7b1fa2;
+            --secondary: #e91e63;
+            --accent: #4caf50;
+            --light: #f8f6f0;
+            --dark: #4a4a4a;
+            --shadow: 0 8px 25px rgba(0,0,0,0.1);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Верхняя шапка с параллаксом */
+        .hero-section {
+            background: linear-gradient(135deg, rgba(123, 31, 162, 0.9), rgba(233, 30, 99, 0.8)),
+                        url('https://images.unsplash.com/photo-1596272875729-ed2ff7d6d9c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            animation: fadeIn 1s ease-out;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            box-shadow: 0 10px 25px rgba(233, 30, 99, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(233, 30, 99, 0.4);
+        }
+
+        /* Плавающие элементы */
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .floating-element {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+        .floating-element:nth-child(2) { top: 60%; right: 15%; animation-delay: 2s; }
+        .floating-element:nth-child(3) { bottom: 30%; left: 20%; animation-delay: 4s; }
+        .floating-element:nth-child(4) { top: 40%; right: 25%; animation-delay: 1s; }
+
+        /* Навигация */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            font-size: 2.2rem;
+            color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .logo:hover .logo-icon {
+            transform: rotate(15deg) scale(1.2);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 10px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Особенности */
+        .features-section {
+            padding: 80px 40px;
+            background: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: var(--light);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.2) rotate(10deg);
+            color: var(--secondary);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        /* Категории животных */
+        .categories-section {
+            padding: 80px 40px;
+            background: linear-gradient(135deg, #f1f8e9 0%, #e8f5e8 100%);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--dark);
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            transform: scaleX(0);
+            transition: var(--transition);
+            transform-origin: left;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .category-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .category-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .category-card:hover .category-icon {
+            transform: scale(1.2);
+        }
+
+        .category-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        /* Популярные бренды */
+        .brands-section {
+            padding: 80px 40px;
+            background: white;
+        }
+
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .brand-card {
+            background: var(--light);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .brand-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .brand-logo {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .brand-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .brand-card p {
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Футер */
+        footer {
+            background: linear-gradient(135deg, var(--primary) 0%, #4a148c 100%);
+            color: white;
+            padding: 60px 40px 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--secondary);
+            bottom: 0;
+            left: 0;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .contact-info i {
+            color: var(--secondary);
+            width: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-container {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .features-grid,
+            .categories-grid,
+            .brands-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .floating-elements {
+                display: none;
+            }
+        }
+
+        /* Кнопка наверх */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+            z-index: 1000;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background: var(--secondary);
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Герой секция с параллаксом -->
+    <section class="hero-section">
+        <div class="floating-elements">
+            <div class="floating-element">🐕</div>
+            <div class="floating-element">🐈</div>
+            <div class="floating-element">🐠</div>
+            <div class="floating-element">🐦</div>
+        </div>
+        <div class="hero-content">
+            <h1>ЗооМир - Забота о ваших питомцах</h1>
+            <p>Всё самое лучшее для ваших любимых животных с доставкой на дом</p>
+            <a href="#catalog" class="cta-button">В каталог <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- Навигация -->
+    <nav class="sticky-nav">
+        <div class="nav-container">
+            <a href="zoo.html" class="logo">
+                <i class="fas fa-paw logo-icon"></i>
+                ЗооМир
+            </a>
+            <ul class="nav-links">
+                <li><a href="zoo.html#about">О нас</a></li>
+                <li><a href="zoo.html#catalog">Каталог</a></li>
+                <li><a href="zoo.html#animals">Животные</a></li>
+                <li><a href="zoo.html#services">Услуги</a></li>
+                <li><a href="zoo.html#contacts">Контакты</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Особенности -->
+    <section class="features-section">
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-truck feature-icon"></i>
+                <h3>Бесплатная доставка</h3>
+                <p>Быстрая доставка по городу в день заказа при сумме от 2000₽</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-shield-alt feature-icon"></i>
+                <h3>Гарантия качества</h3>
+                <p>Все товары сертифицированы и имеют гарантию от производителя</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-headset feature-icon"></i>
+                <h3>Поддержка 24/7</h3>
+                <p>Круглосуточная поддержка по всем вопросам о ваших питомцах</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Категории животных -->
+    <section class="categories-section" id="catalog">
+        <h2 class="section-title">Наши категории</h2>
+        <div class="categories-grid">
+            <a href="dogs.html" class="category-card">
+                <i class="fas fa-dog category-icon dogs-icon"></i>
+                <h3>Собаки</h3>
+                <p>Корм, аксессуары, игрушки</p>
+            </a>
+            <a href="cats.html" class="category-card">
+                <i class="fas fa-cat category-icon cats-icon"></i>
+                <h3>Кошки</h3>
+                <p>Все для ваших мурлык</p>
+            </a>
+            <a href="birds.html" class="category-card">
+                <i class="fas fa-dove category-icon birds-icon"></i>
+                <h3>Птицы</h3>
+                <p>Корм и клетки для птиц</p>
+            </a>
+            <a href="rodents.html" class="category-card">
+                <i class="fas fa-otter category-icon rodents-icon"></i>
+                <h3>Грызуны</h3>
+                <p>Для хомяков, кроликов, шиншилл</p>
+            </a>
+            <a href="fish.html" class="category-card">
+                <i class="fas fa-fish category-icon fish-icon"></i>
+                <h3>Рыбы</h3>
+                <p>Аквариумы и корм</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Популярные бренды -->
+    <section class="brands-section">
+        <h2 class="section-title">Популярные бренды</h2>
+        <div class="brands-grid">
+            <div class="brand-card">
+                <div class="brand-logo">🥇</div>
+                <h3>Royal Canin</h3>
+                <p>Премиальные корма для собак и кошек с учетом породных особенностей</p>
+            </div>
+            <div class="brand-card">
+                <div class="brand-logo">🌟</div>
+                <h3>Pro Plan</h3>
+                <p>Сбалансированное питание для здоровья и активности ваших питомцев</p>
+            </div>
+            <div class="brand-card">
+                <div class="brand-logo">🌿</div>
+                <h3>Grandorf</h3>
+                <p>Натуральные корма без зерна с высоким содержанием мяса</p>
+            </div>
+            <div class="brand-card">
+                <div class="brand-logo">🏥</div>
+                <h3>Hills</h3>
+                <p>Лечебные и профилактические корма, разработанные ветеринарами</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer id="contacts">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> Мира, 27/2, Уфимский район</p>
+                    <p><i class="fas fa-phone"></i> +7–987–240–14–91</p>
+                    <p><i class="fas fa-envelope"></i> info@zoomir.ru</p>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Часы работы</h3>
+                <div class="working-hours">
+                    <p><strong>Ежедневно</strong> с 10:00 до 21:00</p>
+                    <p id="status">Закрыто. Откроется через 24 минуты</p>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Мы в соцсетях</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 ЗооМир - Зоомагазин. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+    <script>
+        // Параллакс эффект
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero-section');
+            parallax.style.backgroundPositionY = -(scrolled * 0.5) + 'px';
+        });
+
+        // Кнопка "Наверх"
+        window.addEventListener('scroll', function() {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        document.querySelector('.back-to-top').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Анимация при скролле
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeIn 1s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .category-card, .brand-card').forEach(card => {
+            card.style.opacity = '0';
+            observer.observe(card);
+        });
+
+        // Обновление статуса работы
+        function updateStatus() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            
+            const isOpen = hours >= 10 && hours < 21;
+            const statusElement = document.getElementById('status');
+            
+            if (isOpen) {
+                const closingIn = (20 - hours) * 60 + (60 - minutes);
+                statusElement.textContent = `Открыто. Закроется через ${closingIn} минут`;
+                statusElement.style.color = '#c8e6c9';
+            } else {
+                let openingIn;
+                if (hours < 10) {
+                    openingIn = (9 - hours) * 60 + (60 - minutes);
+                } else {
+                    openingIn = (24 - hours + 10) * 60 - minutes;
+                }
+                statusElement.textContent = `Закрыто. Откроется через ${openingIn} минут`;
+                statusElement.style.color = '#ffcdd2';
+            }
+        }
+        
+        updateStatus();
+        setInterval(updateStatus, 60000);
+    </script>
+</body>
+</html>
