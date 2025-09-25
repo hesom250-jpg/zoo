@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ЗооМир - Товары для кошек</title>
+    <title>ЗооМир - Корма для кошек</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -19,7 +19,6 @@
             line-height: 1.6;
         }
 
-        /* Верхняя розовая шапка */
         .top-header {
             background: linear-gradient(135deg, #f8bbd0 0%, #f48fb1 100%);
             padding: 15px 40px;
@@ -61,7 +60,6 @@
             background-color: #6a1b9a;
         }
 
-        /* Навигационное меню */
         nav {
             background-color: white;
             padding: 0 40px;
@@ -111,90 +109,273 @@
             width: 100%;
         }
 
-        /* Заголовок категории */
+        /* Заголовок категории с новым фоном */
         .category-header {
             text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(rgba(206, 147, 216, 0.7), rgba(171, 71, 188, 0.7));
+            padding: 60px 20px;
             margin-bottom: 40px;
             color: white;
+            position: relative;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('https://i.pinimg.com/736x/1f/80/30/1f8030e9ca396c4509455b6660ea15b2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         .category-header h2 {
             font-size: 2.8em;
             margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .category-header p {
+            font-size: 1.2em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .category-icon {
             font-size: 3em;
             margin-bottom: 20px;
-            color: #f8bbd0;
+            color: #fff3e0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
-        /* Сетка категорий */
-        .subcategories-grid {
+        .main-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: 300px 1fr;
             gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto 60px auto;
+            max-width: 1400px;
+            margin: 0 auto 60px;
             padding: 0 20px;
         }
 
-        .category-column {
+        .brands-sidebar {
             background: white;
             border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
         }
 
-        .category-column h3 {
-            font-size: 1.6em;
+        .brands-sidebar h3 {
+            font-size: 1.4em;
             color: #7b1fa2;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             padding-bottom: 10px;
-            border-bottom: 3px solid #f48fb1;
+            border-bottom: 2px solid #ff9800;
             text-align: center;
         }
 
-        .products-list {
+        .brands-list {
             list-style: none;
         }
 
-        .products-list li {
-            padding: 15px 10px;
-            border-bottom: 1px solid #eee;
-            transition: background-color 0.3s ease;
+        .brands-list li {
+            margin-bottom: 8px;
         }
 
-        .products-list li:last-child {
-            border-bottom: none;
-        }
-
-        .products-list li:hover {
-            background-color: #f9f9f9;
-        }
-
-        .products-list a {
+        .brands-list a {
+            display: block;
+            padding: 12px 15px;
+            background: #f8f6f0;
+            border-radius: 8px;
             text-decoration: none;
             color: #5d4037;
-            font-size: 1.1em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .brands-list a:hover {
+            background: #7b1fa2;
+            color: white;
+            border-left-color: #ff9800;
+            transform: translateX(5px);
+        }
+
+        /* Сетка кормов - 3 В РЯД */
+        .foods-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .food-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+            height: 540px;
+        }
+
+        .food-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .food-image {
+            width: 100%;
+            height: 300px;
+            background: #f8f6f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 10px;
+        }
+
+        .food-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .food-card:hover .food-image img {
+            transform: scale(1.05);
+        }
+
+        .food-content {
+            padding: 20px;
+            height: 240px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .food-title {
+            font-size: 0.95em;
+            color: #7b1fa2;
+            margin-bottom: 0;
+            font-weight: 600;
+            line-height: 1.3;
+            height: auto;
+            overflow: visible;
             display: block;
-            transition: color 0.3s ease, padding-left 0.3s ease;
+            min-height: 3em;
         }
 
-        .products-list a:hover {
-            color: #e91e63;
-            padding-left: 10px;
+        .food-brand {
+            color: #ff9800;
+            font-weight: 500;
+            margin-bottom: 0;
+            display: block;
+            font-size: 1em;
         }
 
-        .products-list a::before {
-            content: '🐾';
-            margin-right: 10px;
-            opacity: 0.7;
+        .food-weight {
+            color: #7b1fa2;
+            font-size: 1em;
+            font-weight: 600;
+            margin-bottom: 0;
+            background: #f8f6f0;
+            padding: 4px 8px;
+            border-radius: 6px;
+            display: inline-block;
+            width: fit-content;
         }
 
-        /* Футер с контактами */
+        .food-price {
+            font-size: 1.6em;
+            color: #7b1fa2;
+            font-weight: 700;
+            margin-top: auto;
+            margin-bottom: 0;
+        }
+
+        .food-stock {
+            font-size: 0.9em;
+            color: #4caf50;
+            margin-top: 2px;
+        }
+
+        /* ОВЕРЛЕЙ С СОСТАВОМ ПРИ НАВЕДЕНИИ */
+        .composition-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 15px;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            border: 2px solid #ff9800;
+            z-index: 2;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .food-card:hover .composition-overlay {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .composition-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #7b1fa2;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ff9800;
+        }
+
+        .composition-text {
+            font-size: 0.9em;
+            line-height: 1.5;
+            color: #555;
+            flex-grow: 1;
+        }
+
+        .composition-hint {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff9800;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 3;
+        }
+
+        .food-card:hover .composition-hint {
+            opacity: 1;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 1200px) {
+            .foods-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .foods-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .food-card {
+                height: auto;
+                min-height: 540px;
+            }
+        }
+
         footer {
             background: linear-gradient(135deg, #7b1fa2 0%, #4a148c 100%);
             color: white;
@@ -256,51 +437,6 @@
             font-size: 0.95em;
             color: #d1c4e9;
         }
-
-        /* Адаптивность */
-        @media (max-width: 768px) {
-            .top-header, nav {
-                padding: 15px 20px;
-            }
-            
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .nav-links li {
-                padding: 12px 15px;
-            }
-            
-            .subcategories-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .category-header h2 {
-                font-size: 2.2em;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo h1 {
-                font-size: 1.7em;
-            }
-            
-            .nav-links {
-                flex-direction: column;
-                align-items: center;
-                gap: 5px;
-            }
-            
-            .nav-links li {
-                padding: 10px;
-            }
-            
-            .category-column {
-                padding: 20px 15px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -310,48 +446,186 @@
             <i class="fas fa-paw logo-icon"></i>
             <h1>ЗооМир</h1>
         </div>
-        <a href="zoo.html" class="back-button"><i class="fas fa-arrow-left"></i> На главную</a>
+        <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i> На главную</a>
     </div>
 
     <!-- Навигационное меню -->
     <nav>
         <ul class="nav-links">
-            <li><a href="zoo.html#about">О Компании</a></li>
-            <li><a href="zoo.html#catalog">Каталог</a></li>
-            <li><a href="zoo.html#animals">Животные</a></li>
-            <li><a href="zoo.html#shops">Магазины</a></li>
-            <li><a href="zoo.html#contacts">Контакты</a></li>
+            <li><a href="index.html#about">О Компании</a></li>
+            <li><a href="index.html#catalog">Каталог</a></li>
+            <li><a href="index.html#animals">Животные</a></li>
+            <li><a href="index.html#shops">Магазины</a></li>
+            <li><a href="index.html#contacts">Контакты</a></li>
         </ul>
     </nav>
 
     <!-- Заголовок категории -->
     <section class="category-header">
         <i class="fas fa-cat category-icon"></i>
-        <h2>Товары для кошек</h2>
-        <p>Всё необходимое для вашего пушистого любимца</p>
+        <h2>Корма для кошек</h2>
+        <p>Питание для здоровья и грации вашего питомца</p>
     </section>
 
-    <!-- Сетка подкатегорий -->
-    <div class="subcategories-grid">
-        <!-- Левая колонка -->
-        <div class="category-column">
-            <h3>ДЛЯ КОШЕК</h3>
-            <ul class="products-list">
-                <li><a href="#">Корм для кошек</a></li>
-                <li><a href="#">Лакомства</a></li>
-                <li><a href="#">Наполнители</a></li>
-                <li><a href="#">Средства от паразитов</a></li>
+    <!-- Основной контент -->
+    <div class="main-content">
+        <!-- Боковая панель брендов -->
+        <aside class="brands-sidebar">
+            <h3>Бренды</h3>
+            <ul class="brands-list">
+                <li><a href="#ajo">Ajo</a></li>
+                <li><a href="#sirius">Sirius</a></li>
+                <li><a href="#best-dinner">Best dinner</a></li>
+                <li><a href="#proplan">Pro Plan</a></li>
             </ul>
-        </div>
+        </aside>
 
-        <!-- Правая колонка -->
-        <div class="category-column">
-            <h3>Вегаптека</h3>
-            <ul class="products-list">
-                <li><a href="#">Игрушки</a></li>
-                <li><a href="#">Кошачий туалет</a></li>
-                <li><a href="#">Уход и содержание</a></li>
-            </ul>
+        <!-- Сетка кормов - 3 В РЯД -->
+        <div class="foods-grid">
+            <!-- Корма AJO для кошек -->
+            <div class="food-card" id="ajo">
+                <div class="composition-hint">Состав при наведении</div>
+                <div class="food-image">
+                    <img src="https://online.sbis.ru/fs-public/ekt_files/cbe13ce8-576b-43ee-9575-75f464286a7c" alt="AJO Cat Kitten & Mom">
+                </div>
+                <div class="food-content">
+                    <h3 class="food-title">AJO "Cat Kitten & Mom" для котят, беременных и кормящих кошек с индейкой</h3>
+                    <span class="food-brand">AJO</span>
+                    <div class="food-weight">Вес: 400 г</div>
+                    <div class="food-price">506 ₽</div>
+                    <div class="food-stock">В наличии: 1 шт.</div>
+                </div>
+                <div class="composition-overlay">
+                    <div class="composition-title">Состав корма</div>
+                    <div class="composition-text">
+                        Состав: дегидрированное мясо (курица 24%, индейка15%), рис, жир животный, хлопья овсяные, гидролизованные мясные белки (вкусоароматическая добавка), рисовый протеин, дрожжи пивные сухие, яблочный жом, жир лососевый, брокколи, цикорий (источник инулина), морские водоросли, экстракт юкки Шидигера, розмарин, таурин, лютеин (экстракт бархатцев), экстракт зеленого чая (источник полифенолов), пробиотический комплекс Bacillus subtillis, Bacillus licheniformis, минеральные вещества, витамины.
+                    </div>
+                </div>
+            </div>
+
+            <div class="food-card">
+                <div class="composition-hint">Состав при наведении</div>
+                <div class="food-image">
+                    <img src="https://online.sbis.ru/fs-public/ekt_files/296660bf-2cb7-4bb2-9b14-fd41c82a367e" alt="AJO Grand Master">
+                </div>
+                <div class="food-content">
+                    <h3 class="food-title">AJO "Grand Master" для пожилых кошек с курицей</h3>
+                    <span class="food-brand">AJO</span>
+                    <div class="food-weight">Вес: 400 г</div>
+                    <div class="food-price">545 ₽</div>
+                    <div class="food-stock">В наличии: 3 шт.</div>
+                </div>
+                <div class="composition-overlay">
+                    <div class="composition-title">Состав корма</div>
+                    <div class="composition-text">
+                        Специальный корм для пожилых кошек с курицей. Сбалансированное питание для поддержания здоровья в старшем возрасте.
+                    </div>
+                </div>
+            </div>
+
+            <div class="food-card">
+                <div class="composition-hint">Состав при наведении</div>
+                <div class="food-image">
+                    <img src="https://online.sbis.ru/fs-public/ekt_files/1e8afcc0-40dc-4b8a-b838-20da08cbf199" alt="AJO Cat Sterile">
+                </div>
+                <div class="food-content">
+                    <h3 class="food-title">AJO "Cat Sterile" для активных стерилизованных кошек с индейкой и уткой</h3>
+                    <span class="food-brand">AJO</span>
+                    <div class="food-weight">Вес: 400 г</div>
+                    <div class="food-price">547 ₽</div>
+                    <div class="food-stock">В наличии: 3 шт.</div>
+                </div>
+                <div class="composition-overlay">
+                    <div class="composition-title">Состав корма</div>
+                    <div class="composition-text">
+                        Корм для стерилизованных кошек с высоким содержанием белка. Содержит индейку и утку для оптимального питания.
+                    </div>
+                </div>
+            </div>
+
+            <div class="food-card">
+                <div class="composition-hint">Состав при наведении</div>
+                <div class="food-image">
+                    <img src="https://cdn.kotmatros.ru/wa-data/public/shop/products/27/33/93327/images/180234/180234.750x0.jpg" alt="AJO Cat Delicate Taste">
+                </div>
+                <div class="food-content">
+                    <h3 class="food-title">AJO Cat Delicate Taste Сухой полнорационный корм для привередливых кошек и котят</h3>
+                    <span class="food-brand">AJO</span>
+                    <div class="food-weight">Вес: 0,4 кг</div>
+                    <div class="food-price">547 ₽</div>
+                    <div class="food-stock">В наличии: 2 шт.</div>
+                </div>
+                <div class="composition-overlay">
+                    <div class="composition-title">Состав корма</div>
+                    <div class="composition-text">
+                        Корм для привередливых кошек и котят. Особый вкус и состав для самых требовательных питомцев.
+                    </div>
+                </div>
+            </div>
+
+            <div class="food-card">
+                <div class="composition-hint">Состав при наведении</div>
+                <div class="food-image">
+                    <img src="https://www.dogcitypet.ru/content/product/13200/13168/13168f.webp?t=1753790407" alt="AJO Cat Sense">
+                </div>
+                <div class="food-content">
+                    <h3 class="food-title">AJO Cat Sense Сухой полнорационный корм для кошек с чувствительным пищеварением</h3>
+                    <span class="food-brand">AJO</span>
+                    <div class="food-weight">Вес: 0,4 кг</div>
+                    <div class="food-price">438 ₽</div>
+                    <div class="food-stock">В наличии: 2 шт.</div>
+                </div>
+                <div class="composition-overlay">
+                    <div class="composition-title">Состав корма</div>
+                    <div class="composition-text">
+                        Корм для кошек с чувствительным пищеварением. Легкоусвояемые ингредиенты для комфортного питания.
+                    </div>
+                </div>
+            </div>
+
+            <div class="food-card">
+                <div class="composition-hint">Состав при наведении</div>
+                <div class="food-image">
+                    <img src="https://ir.ozone.ru/s3/multimedia-1-p/c1000/7321952401.jpg" alt="AJO Cat Skin & Hair">
+                </div>
+                <div class="food-content">
+                    <h3 class="food-title">AJO Cat Skin & Hair Сухой полнорационный корм для кошек здоровая кожа и красивая шерсть</h3>
+                    <span class="food-brand">AJO</span>
+                    <div class="food-weight">Вес: 0,4 кг</div>
+                    <div class="food-price">438 ₽</div>
+                    <div class="food-stock">В наличии: 2 шт.</div>
+                </div>
+                <div class="composition-overlay">
+                    <div class="composition-title">Состав корма</div>
+                    <div class="composition-text">
+                        Корм для здоровья кожи и красивой шерсти. Содержит специальные компоненты для ухода за шерстью.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Корма SIRIUS для кошек -->
+            <div class="food-card" id="sirius">
+                <div class="composition-hint">Состав при наведении</div>
+                <div class="food-image">
+                    <img src="https://ir.ozone.ru/s3/multimedia-d/c1000/6700264321.jpg" alt="SIRIUS для котят">
+                </div>
+                <div class="food-content">
+                    <h3 class="food-title">SIRIUS Влажный корм для котят кусочки в соусе индейка/курица</h3>
+                    <span class="food-brand">SIRIUS</span>
+                    <div class="food-weight">Вес: 85 г</div>
+                    <div class="food-price">63 ₽</div>
+                    <div class="food-stock">В наличии: 20 шт.</div>
+                </div>
+                <div class="composition-overlay">
+                    <div class="composition-title">Состав корма</div>
+                    <div class="composition-text">
+                        Влажный корм для котят с кусочками индейки и курицы в соусе. Сбалансированное питание для роста и развития.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Добавлены остальные корма для кошек из Excel -->
+            
         </div>
     </div>
 
@@ -375,10 +649,10 @@
             </div>
             <div class="footer-section">
                 <h3>Быстрые ссылки</h3>
-                <p><a href="zoo.html#about" style="color: white;">О Компании</a></p>
-                <p><a href="zoo.html#catalog" style="color: white;">Каталог товаров</a></p>
-                <p><a href="zoo.html#reviews" style="color: white;">Отзывы</a></p>
-                <p><a href="zoo.html#prices" style="color: white;">Цены</a></p>
+                <p><a href="index.html#about" style="color: white;">О Компании</a></p>
+                <p><a href="index.html#catalog" style="color: white;">Каталог товаров</a></p>
+                <p><a href="index.html#reviews" style="color: white;">Отзывы</a></p>
+                <p><a href="index.html#prices" style="color: white;">Цены</a></p>
             </div>
         </div>
         <div class="copyright">
@@ -387,7 +661,6 @@
     </footer>
 
     <script>
-        // Скрипт для обновления статуса работы магазина
         function updateStatus() {
             const now = new Date();
             const hours = now.getHours();
@@ -414,6 +687,20 @@
         
         updateStatus();
         setInterval(updateStatus, 60000);
+
+        document.querySelectorAll('.brands-list a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
     </script>
 </body>
 </html>
