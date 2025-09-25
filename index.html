@@ -201,62 +201,71 @@
             width: 100%;
         }
 
-        /* Особенности */
+        /* Особенности - УМЕНЬШЕННЫЙ РАЗМЕР */
         .features-section {
-            padding: 80px 40px;
+            padding: 60px 40px;
             background: white;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .feature-card {
             background: var(--light);
-            padding: 40px 30px;
-            border-radius: 20px;
+            padding: 30px 20px;
+            border-radius: 15px;
             text-align: center;
             transition: var(--transition);
             box-shadow: var(--shadow);
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .feature-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
         }
 
         .feature-icon {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
             color: var(--primary);
             transition: var(--transition);
         }
 
         .feature-card:hover .feature-icon {
-            transform: scale(1.2) rotate(10deg);
+            transform: scale(1.1) rotate(5deg);
             color: var(--secondary);
         }
 
         .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
             color: var(--primary);
         }
 
-        /* Категории животных */
+        .feature-card p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Категории животных - 2 РЯДА ПО 4 СТОЛБЦА */
         .categories-section {
-            padding: 80px 40px;
+            padding: 60px 40px;
             background: linear-gradient(135deg, #f1f8e9 0%, #e8f5e8 100%);
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
             color: var(--primary);
             position: relative;
         }
@@ -264,10 +273,10 @@
         .section-title::after {
             content: '';
             position: absolute;
-            width: 80px;
-            height: 4px;
+            width: 60px;
+            height: 3px;
             background: linear-gradient(45deg, var(--secondary), var(--primary));
-            bottom: -15px;
+            bottom: -12px;
             left: 50%;
             transform: translateX(-50%);
             border-radius: 2px;
@@ -275,16 +284,16 @@
 
         .categories-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .category-card {
             background: white;
-            border-radius: 20px;
-            padding: 30px;
+            border-radius: 15px;
+            padding: 25px 15px;
             text-align: center;
             text-decoration: none;
             color: var(--dark);
@@ -292,6 +301,11 @@
             box-shadow: var(--shadow);
             position: relative;
             overflow: hidden;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .category-card::before {
@@ -300,7 +314,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 5px;
+            height: 4px;
             background: linear-gradient(45deg, var(--secondary), var(--primary));
             transform: scaleX(0);
             transition: var(--transition);
@@ -308,7 +322,7 @@
         }
 
         .category-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
         }
 
         .category-card:hover::before {
@@ -316,122 +330,138 @@
         }
 
         .category-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
             transition: var(--transition);
         }
 
         .category-card:hover .category-icon {
-            transform: scale(1.2);
+            transform: scale(1.1);
         }
 
         .category-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
             color: var(--primary);
+            font-weight: 600;
         }
 
-        /* Популярные бренды */
+        .category-card p {
+            display: none;
+        }
+
+        /* Популярные бренды - 2 РЯДА ПО 3 СТОЛБЦА */
         .brands-section {
-            padding: 80px 40px;
+            padding: 60px 40px;
             background: white;
         }
 
         .brands-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .brand-card {
             background: var(--light);
-            border-radius: 20px;
-            padding: 30px;
+            border-radius: 15px;
+            padding: 25px 20px;
             text-align: center;
             transition: var(--transition);
             box-shadow: var(--shadow);
+            text-decoration: none;
+            color: var(--dark);
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            cursor: pointer;
         }
 
         .brand-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+            background: linear-gradient(135deg, var(--light), #e8f5e8);
         }
 
         .brand-logo {
-            font-size: 3rem;
+            font-size: 2rem;
             color: var(--primary);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .brand-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
             color: var(--primary);
+            font-weight: 600;
         }
 
         .brand-card p {
+            font-size: 0.8rem;
+            line-height: 1.4;
             color: var(--dark);
-            line-height: 1.6;
         }
 
         /* Футер */
         footer {
             background: linear-gradient(135deg, var(--primary) 0%, #4a148c 100%);
             color: white;
-            padding: 60px 40px 30px;
+            padding: 50px 40px 25px;
         }
 
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
+            gap: 35px;
             max-width: 1200px;
-            margin: 0 auto 40px;
+            margin: 0 auto 35px;
         }
 
         .footer-section h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
+            font-size: 1.3rem;
+            margin-bottom: 18px;
             position: relative;
-            padding-bottom: 10px;
+            padding-bottom: 8px;
         }
 
         .footer-section h3::after {
             content: '';
             position: absolute;
-            width: 50px;
-            height: 3px;
+            width: 40px;
+            height: 2px;
             background: var(--secondary);
             bottom: 0;
             left: 0;
         }
 
         .contact-info p {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
+            font-size: 0.9rem;
         }
 
         .contact-info i {
             color: var(--secondary);
-            width: 20px;
+            width: 18px;
         }
 
         .social-links {
             display: flex;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 12px;
+            margin-top: 18px;
         }
 
         .social-links a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             background: rgba(255,255,255,0.1);
             border-radius: 50%;
             color: white;
@@ -441,20 +471,36 @@
 
         .social-links a:hover {
             background: var(--secondary);
-            transform: translateY(-3px);
+            transform: translateY(-2px);
         }
 
         .copyright {
             text-align: center;
-            padding-top: 30px;
+            padding-top: 25px;
             border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         /* Адаптивность */
+        @media (max-width: 1024px) {
+            .categories-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 15px;
+            }
+            
+            .brands-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
+            }
+        }
+
         @media (max-width: 768px) {
             .hero-content h1 {
                 font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
             }
             
             .nav-container {
@@ -469,24 +515,77 @@
                 gap: 15px;
             }
             
-            .features-grid,
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .brands-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .features-section,
+            .categories-section,
+            .brands-section {
+                padding: 40px 20px;
+            }
+            
+            .floating-elements {
+                display: none;
+            }
+            
+            .feature-card,
+            .category-card,
+            .brand-card {
+                padding: 20px 15px;
+                min-height: 100px;
+            }
+            
+            .category-icon,
+            .feature-icon,
+            .brand-logo {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
             .categories-grid,
             .brands-grid {
                 grid-template-columns: 1fr;
             }
             
-            .floating-elements {
-                display: none;
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .category-card,
+            .brand-card {
+                min-height: 80px;
+                padding: 15px 10px;
+            }
+            
+            .category-icon,
+            .brand-logo {
+                font-size: 1.5rem;
+                margin-bottom: 8px;
+            }
+            
+            .category-card h3,
+            .brand-card h3 {
+                font-size: 1rem;
             }
         }
 
         /* Кнопка наверх */
         .back-to-top {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
+            bottom: 25px;
+            right: 25px;
+            width: 45px;
+            height: 45px;
             background: var(--primary);
             color: white;
             border-radius: 50%;
@@ -494,7 +593,7 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             box-shadow: var(--shadow);
             transition: var(--transition);
             opacity: 0;
@@ -509,7 +608,7 @@
 
         .back-to-top:hover {
             background: var(--secondary);
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
     </style>
 </head>
@@ -532,16 +631,16 @@
     <!-- Навигация -->
     <nav class="sticky-nav">
         <div class="nav-container">
-            <a href="zoo.html" class="logo">
+            <a href="index.html" class="logo">
                 <i class="fas fa-paw logo-icon"></i>
                 ЗооМир
             </a>
             <ul class="nav-links">
-                <li><a href="zoo.html#about">О нас</a></li>
-                <li><a href="zoo.html#catalog">Каталог</a></li>
-                <li><a href="zoo.html#animals">Животные</a></li>
-                <li><a href="zoo.html#services">Услуги</a></li>
-                <li><a href="zoo.html#contacts">Контакты</a></li>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#catalog">Каталог</a></li>
+                <li><a href="#animals">Животные</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#contacts">Контакты</a></li>
             </ul>
         </div>
     </nav>
@@ -550,9 +649,9 @@
     <section class="features-section">
         <div class="features-grid">
             <div class="feature-card">
-                <i class="fas fa-truck feature-icon"></i>
-                <h3>Бесплатная доставка</h3>
-                <p>Быстрая доставка по городу в день заказа при сумме от 2000₽</p>
+                <i class="fas fa-comments feature-icon"></i>
+                <h3>Живая консультация</h3>
+                <p>Поможем выбрать именно то, что нужно вашему питомцу</p>
             </div>
             <div class="feature-card">
                 <i class="fas fa-shield-alt feature-icon"></i>
@@ -560,69 +659,86 @@
                 <p>Все товары сертифицированы и имеют гарантию от производителя</p>
             </div>
             <div class="feature-card">
-                <i class="fas fa-headset feature-icon"></i>
-                <h3>Поддержка 24/7</h3>
-                <p>Круглосуточная поддержка по всем вопросам о ваших питомцах</p>
+                <i class="fas fa-map-marker-alt feature-icon"></i>
+                <h3>Удобное расположение</h3>
+                <p>Мы находимся рядом с домом. К нам легко добраться и приятно заходить</p>
             </div>
         </div>
     </section>
 
-    <!-- Категории животных -->
+    <!-- Категории животных - 2 РЯДА ПО 4 СТОЛБЦА -->
     <section class="categories-section" id="catalog">
         <h2 class="section-title">Наши категории</h2>
         <div class="categories-grid">
             <a href="dogs.html" class="category-card">
-                <i class="fas fa-dog category-icon dogs-icon"></i>
+                <i class="fas fa-dog category-icon"></i>
                 <h3>Собаки</h3>
-                <p>Корм, аксессуары, игрушки</p>
             </a>
             <a href="cats.html" class="category-card">
-                <i class="fas fa-cat category-icon cats-icon"></i>
+                <i class="fas fa-cat category-icon"></i>
                 <h3>Кошки</h3>
-                <p>Все для ваших мурлык</p>
             </a>
             <a href="birds.html" class="category-card">
-                <i class="fas fa-dove category-icon birds-icon"></i>
+                <i class="fas fa-dove category-icon"></i>
                 <h3>Птицы</h3>
-                <p>Корм и клетки для птиц</p>
             </a>
             <a href="rodents.html" class="category-card">
-                <i class="fas fa-otter category-icon rodents-icon"></i>
+                <i class="fas fa-otter category-icon"></i>
                 <h3>Грызуны</h3>
-                <p>Для хомяков, кроликов, шиншилл</p>
             </a>
             <a href="fish.html" class="category-card">
-                <i class="fas fa-fish category-icon fish-icon"></i>
+                <i class="fas fa-fish category-icon"></i>
                 <h3>Рыбы</h3>
-                <p>Аквариумы и корм</p>
+            </a>
+            <a href="medicines.html" class="category-card">
+                <i class="fas fa-pills category-icon"></i>
+                <h3>Лекарства</h3>
+            </a>
+            <a href="toys.html" class="category-card">
+                <i class="fas fa-baseball-ball category-icon"></i>
+                <h3>Игрушки</h3>
+            </a>
+            <a href="carriers.html" class="category-card">
+                <i class="fas fa-suitcase category-icon"></i>
+                <h3>Переноски</h3>
             </a>
         </div>
     </section>
 
-    <!-- Популярные бренды -->
+    <!-- Популярные бренды - 2 РЯДА ПО 3 СТОЛБЦА -->
     <section class="brands-section">
         <h2 class="section-title">Популярные бренды</h2>
         <div class="brands-grid">
-            <div class="brand-card">
+            <a href="royal-canin.html" class="brand-card">
                 <div class="brand-logo">🥇</div>
                 <h3>Royal Canin</h3>
-                <p>Премиальные корма для собак и кошек с учетом породных особенностей</p>
-            </div>
-            <div class="brand-card">
+                <p>Премиальные корма для собак и кошек</p>
+            </a>
+            <a href="proplan.html" class="brand-card">
                 <div class="brand-logo">🌟</div>
                 <h3>Pro Plan</h3>
-                <p>Сбалансированное питание для здоровья и активности ваших питомцев</p>
-            </div>
-            <div class="brand-card">
+                <p>Сбалансированное питание для питомцев</p>
+            </a>
+            <a href="sirius.html" class="brand-card">
+                <div class="brand-logo">⭐</div>
+                <h3>Sirius</h3>
+                <p>Качественные корма по доступным ценам</p>
+            </a>
+            <a href="best-dinner.html" class="brand-card">
+                <div class="brand-logo">🍽️</div>
+                <h3>Best Dinner</h3>
+                <p>Натуральное питание для животных</p>
+            </a>
+            <a href="probalanse.html" class="brand-card">
+                <div class="brand-logo">⚖️</div>
+                <h3>Probalanse</h3>
+                <p>Сбалансированные рационы для здоровья</p>
+            </a>
+            <a href="holistic.html" class="brand-card">
                 <div class="brand-logo">🌿</div>
-                <h3>Grandorf</h3>
-                <p>Натуральные корма без зерна с высоким содержанием мяса</p>
-            </div>
-            <div class="brand-card">
-                <div class="brand-logo">🏥</div>
-                <h3>Hills</h3>
-                <p>Лечебные и профилактические корма, разработанные ветеринарами</p>
-            </div>
+                <h3>Холистик</h3>
+                <p>Премиум корма с натуральными компонентами</p>
+            </a>
         </div>
     </section>
 
