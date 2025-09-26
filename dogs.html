@@ -6,7 +6,6 @@
     <title>ЗооМир - Корма для собак</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Ваши текущие стили остаются без изменений */
         * {
             margin: 0;
             padding: 0;
@@ -111,37 +110,37 @@
         }
 
         .category-header {
-    text-align: center;
-    padding: 60px 20px;
-    margin-bottom: 40px;
-    color: white;
-    position: relative;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                url('https://i.pinimg.com/1200x/12/e2/3c/12e23cdbe87b3c57f3de5f1055b6f777.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
+            text-align: center;
+            padding: 60px 20px;
+            margin-bottom: 40px;
+            color: white;
+            position: relative;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('https://i.pinimg.com/1200x/12/e2/3c/12e23cdbe87b3c57f3de5f1055b6f777.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
 
-.category-header h2 {
-    font-size: 2.8em;
-    margin-bottom: 15px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
+        .category-header h2 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
 
-.category-header p {
-    font-size: 1.2em;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    max-width: 600px;
-    margin: 0 auto;
-}
+        .category-header p {
+            font-size: 1.2em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            max-width: 600px;
+            margin: 0 auto;
+        }
 
-.category-icon {
-    font-size: 3em;
-    margin-bottom: 20px;
-    color: #fff3e0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
+        .category-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #fff3e0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
 
         .main-content {
             display: grid;
@@ -198,7 +197,13 @@
             transform: translateX(5px);
         }
 
-        /* НОВЫЕ СТИЛИ ДЛЯ СЕТКИ КОРМОВ - 3 В РЯД */
+        /* Убрал класс .active для главной страницы */
+        .brands-list a.active {
+            background: #f8f6f0;
+            color: #5d4037;
+            border-left-color: transparent;
+        }
+
         .foods-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -212,23 +217,23 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
             position: relative;
-            height: 500px;
+            height: 540px;
         }
 
         .food-card:hover {
             transform: translateY(-5px);
         }
 
- .food-image {
-    width: 100%;
-    height: 300px; /* Увеличил изображение */
-    background: #f8f6f0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    padding: 10px;
-}
+        .food-image {
+            width: 100%;
+            height: 300px;
+            background: #f8f6f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 10px;
+        }
 
         .food-image img {
             width: 100%;
@@ -237,67 +242,78 @@
             transition: transform 0.3s ease;
         }
 
- .food-card {
-    height: 540px; /* Увеличил общую высоту карточки */
-}
+        .food-content {
+            padding: 20px;
+            height: 240px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
 
-.food-content {
-    padding: 20px;
-    height: 240px; /* Увеличил высоту контента */
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
- .food-title {
-    font-size: 0.95em; /* Еще немного уменьшил */
-    color: #7b1fa2;
-    margin-bottom: 0;
-    font-weight: 600;
-    line-height: 1.3;
-    height: auto;
-    overflow: visible;
-    display: block;
-    min-height: 3em; /* Минимальная высота для 3 строк */
-}
+        .food-title {
+            font-size: 0.95em;
+            color: #7b1fa2;
+            margin-bottom: 0;
+            font-weight: 600;
+            line-height: 1.3;
+            height: auto;
+            overflow: visible;
+            display: block;
+            min-height: 3em;
+        }
 
-
-
-      .food-brand {
-    color: #ff9800;
-    font-weight: 500;
-    margin-bottom: 0; /* Убрал отступ */
-    display: block;
-    font-size: 1em;
-}
-
+        .food-brand {
+            color: #ff9800;
+            font-weight: 500;
+            margin-bottom: 0;
+            display: block;
+            font-size: 1em;
+        }
 
         .food-weight {
-    color: #7b1fa2; /* Изменил цвет на фиолетовый */
-    font-size: 1em; /* Увеличил размер */
-    font-weight: 600; /* Сделал жирным */
-    margin-bottom: 0; /* Убрал отступ */
-    background: #f8f6f0;
-    padding: 4px 8px;
-    border-radius: 6px;
-    display: inline-block;
-    width: fit-content;
-}
+            color: #7b1fa2;
+            font-size: 1em;
+            font-weight: 600;
+            margin-bottom: 0;
+            background: #f8f6f0;
+            padding: 4px 8px;
+            border-radius: 6px;
+            display: inline-block;
+            width: fit-content;
+        }
 
-.food-price {
-    font-size: 1.6em; /* Увеличил размер цены */
-    color: #7b1fa2;
-    font-weight: 700;
-    margin-top: auto; /* Прижимаем к низу */
-    margin-bottom: 0; /* Убрал отступ */
-}
+        .food-price {
+            font-size: 1.6em;
+            color: #7b1fa2;
+            font-weight: 700;
+            margin-top: auto;
+            margin-bottom: 0;
+        }
 
-.food-stock {
-    font-size: 0.9em;
-    color: #4caf50;
-    margin-top: 2px; /* Минимальный отступ */
-}
+        .food-stock {
+            font-size: 0.9em;
+            color: #4caf50;
+            margin-top: 2px;
+        }
 
-        /* ОВЕРЛЕЙ С СОСТАВОМ ПРИ НАВЕДЕНИИ */
+        .view-all-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: #ff9800;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .view-all-btn:hover {
+            background: #f57c00;
+        }
+
         .composition-overlay {
             position: absolute;
             top: 0;
@@ -356,7 +372,6 @@
             opacity: 1;
         }
 
-        /* Адаптивность */
         @media (max-width: 1200px) {
             .foods-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -378,7 +393,6 @@
             }
         }
 
-        /* Остальные ваши стили остаются без изменений */
         footer {
             background: linear-gradient(135deg, #7b1fa2 0%, #4a148c 100%);
             color: white;
@@ -443,7 +457,6 @@
     </style>
 </head>
 <body>
-    <!-- Верхняя розовая шапка -->
     <div class="top-header">
         <div class="logo">
             <i class="fas fa-paw logo-icon"></i>
@@ -452,7 +465,6 @@
         <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i> На главную</a>
     </div>
 
-    <!-- Навигационное меню -->
     <nav>
         <ul class="nav-links">
             <li><a href="index.html#about">О Компании</a></li>
@@ -463,35 +475,33 @@
         </ul>
     </nav>
 
-    <!-- Заголовок категории -->
     <section class="category-header">
         <i class="fas fa-dog category-icon"></i>
         <h2>Корма для собак</h2>
         <p>Питание для здоровья и активности вашего питомца</p>
     </section>
 
-    <!-- Основной контент -->
     <div class="main-content">
-        <!-- Боковая панель брендов -->
         <aside class="brands-sidebar">
             <h3>Бренды</h3>
             <ul class="brands-list">
-                <li><a href="#ajo">Ajo</a></li>
-                <li><a href="#sirius">Sirius</a></li>
-                <li><a href="#best-dinner">Best dinner</a></li>
-                <li><a href="#buffalo">Buffalo</a></li>
-                <li><a href="#probalance">Probalance</a></li>
-                <li><a href="#elato">Elato</a></li>
-                <li><a href="#miratorg">Мираторг</a></li>
-                <li><a href="#holistic">Холистик</a></li>
-                <li><a href="#proplan">Pro Plan</a></li>
+                <!-- Убрал класс active с AJO -->
+                <li><a href="dogs-ajo.html">Ajo</a></li>
+                <li><a href="dogs-sirius.html">Sirius</a></li>
+                <li><a href="dogs-lucky-bits.html">Lucky bits</a></li>
+                <li><a href="dogs-royal-canin.html">Royal Canin</a></li>
+                <li><a href="dogs-best-dinner.html">Best dinner</a></li>
+                <li><a href="dogs-buffalo.html">Buffalo</a></li>
+                <li><a href="dogs-probalance.html">Probalance</a></li>
+                <li><a href="dogs-miratorg.html">Мираторг</a></li>
+                <li><a href="dogs-purina.html">Purina</a></li>
+                <li><a href="dogs-pedigree.html">Pedigree</a></li>
             </ul>
         </aside>
 
-        <!-- Сетка кормов - 3 В РЯД -->
         <div class="foods-grid">
-            <!-- Корма AJO для собак -->
-            <div class="food-card" id="ajo">
+            <!-- Первые 3 товара AJO -->
+            <div class="food-card">
                 <div class="composition-hint">Состав при наведении</div>
                 <div class="food-image">
                     <img src="https://www.dinozavrik.ru/upload/iblock/7cc/7cc74a708bf58f0fcb1e3f3b61550251.png" alt="AJO Dog Maxi Adult">
@@ -551,258 +561,59 @@
                 </div>
             </div>
 
-            <div class="food-card">
-                <div class="composition-hint">Состав при наведении</div>
-                <div class="food-image">
-                    <img src="https://foodforpets.ru/image/cache/catalog/tovary-dlya-sobak/6/ge-catalog-AJO-sobaki-schenki-schenki_12-750x900.png" alt="AJO Dog PUPPY & JUNIOR">
-                </div>
-                <div class="food-content">
-                    <h3 class="food-title">AJO Dog PUPPY & JUNIOR Сухой полнорационный корм с гречкой для щенков и молодых собак</h3>
-                    <span class="food-brand">AJO</span>
-                    <div class="food-weight">Вес: 2 кг</div>
-                    <div class="food-price">1 581 ₽</div>
-                    <div class="food-stock">В наличии: 1 шт.</div>
-                </div>
-                <div class="composition-overlay">
-                    <div class="composition-title">Состав корма</div>
-                    <div class="composition-text">
-                        Специальный корм для щенков и молодых собак. Обогащен кальцием для развития костей и DHA для развития мозга.
-                    </div>
+            <!-- Кнопка "Смотреть все товары AJO" -->
+            <div class="food-card" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #f8f6f0 0%, #e1f5fe 100%);">
+                <div class="food-content" style="text-align: center; height: auto;">
+                    <h3 class="food-title" style="color: #7b1fa2; margin-bottom: 20px;">Все товары бренда AJO</h3>
+                    <p style="color: #5d4037; margin-bottom: 25px;">Полный ассортимент кормов и лакомств</p>
+                    <a href="dogs-ajo.html" class="view-all-btn">Смотреть все товары AJO →</a>
                 </div>
             </div>
-
-            <div class="food-card">
-                <div class="composition-hint">Состав при наведении</div>
-                <div class="food-image">
-                    <img src="https://main-cdn.sbermegamarket.ru/big1/hlr-system/-18/718/027/981/211/118/600009564499b0.jpeg" alt="AJO Dog Sense">
-                </div>
-                <div class="food-content">
-                    <h3 class="food-title">AJO Dog Sense Сухой полнорационный корм с гречкой для собак с чувствительным пищеварением</h3>
-                    <span class="food-brand">AJO</span>
-                    <div class="food-weight">Вес: 2 кг</div>
-                    <div class="food-price">2 107 ₽</div>
-                    <div class="food-stock">В наличии: 1 шт.</div>
-                </div>
-                <div class="composition-overlay">
-                    <div class="composition-title">Состав корма</div>
-                    <div class="composition-text">
-                        Корм для собак с чувствительным пищеварением. Содержит пребиотики и пробиотики для улучшения пищеварения.
-                    </div>
-                </div>
-            </div>
-
-            <div class="food-card">
-                <div class="composition-hint">Состав при наведении</div>
-                <div class="food-image">
-                    <img src="https://www.zootovar-spb.ru/images/33/31/333154.jpg" alt="AJO Dog Very Small Adult">
-                </div>
-                <div class="food-content">
-                    <h3 class="food-title">AJO Dog Very Small Adult Сухой полнорационный корм с гречкой для взрослых собак миниатюрных пород</h3>
-                    <span class="food-brand">AJO</span>
-                    <div class="food-weight">Вес: 1,5 кг</div>
-                    <div class="food-price">1 549 ₽</div>
-                    <div class="food-stock">В наличии: уточняйте</div>
-                </div>
-                <div class="composition-overlay">
-                    <div class="composition-title">Состав корма</div>
-                    <div class="composition-text">
-                        Корм для миниатюрных пород собак. Специально разработан для мелких пород с учетом их особенностей питания.
-                    </div>
-                </div>
-            </div>
-
-            <!-- Корма SIRIUS для собак -->
-            <div class="food-card" id="sirius">
-                <div class="composition-hint">Состав при наведении</div>
-                <div class="food-image">
-                    <img src="https://online.sbis.ru/fs-public/ekt_files/2d7c8aa3-007c-4df0-a9ec-33fc1eabbb1c" alt="SIRIUS для малых пород">
-                </div>
-                <div class="food-content">
-                    <h3 class="food-title">SIRIUS для собак малых пород с индейкой и рисом</h3>
-                    <span class="food-brand">SIRIUS</span>
-                    <div class="food-weight">Вес: 10 кг</div>
-                    <div class="food-price">4 062 ₽</div>
-                    <div class="food-stock">В наличии: 2 шт.</div>
-                </div>
-                <div class="composition-overlay">
-                    <div class="composition-title">Состав корма</div>
-                    <div class="composition-text">
-                        Корм для собак малых пород с индейкой и рисом. Сбалансированное питание для небольших собак.
-                    </div>
-                </div>
-            </div>
-
-            <div class="food-card">
-                <div class="composition-hint">Состав при наведении</div>
-                <div class="food-image">
-                    <div style="font-size: 4em;">🐕</div>
-                </div>
-                <div class="food-content">
-                    <h3 class="food-title">SIRIUS Сухой корм для собак Мясной рацион</h3>
-                    <span class="food-brand">SIRIUS</span>
-                    <div class="food-weight">Вес: 2 кг</div>
-                    <div class="food-price">852 ₽</div>
-                    <div class="food-stock">В наличии: 1 шт.</div>
-                </div>
-                <div class="composition-overlay">
-                    <div class="composition-title">Состав корма</div>
-                    <div class="composition-text">
-                        Мясной рацион для собак. Содержит говядину, злаки и овощную смесь.
-                    </div>
-                </div>
-            </div>
-
-            <div class="food-card">
-                <div class="composition-hint">Состав при наведении</div>
-                <div class="food-image">
-                    <div style="font-size: 4em;">🐕</div>
-                </div>
-                <div class="food-content">
-                    <h3 class="food-title">SIRIUS Сухой корм для собак активных 3 мяса/овощи</h3>
-                    <span class="food-brand">SIRIUS</span>
-                    <div class="food-weight">Вес: 2 кг</div>
-                    <div class="food-price">1 172 ₽</div>
-                    <div class="food-stock">В наличии: 2 шт.</div>
-                </div>
-                <div class="composition-overlay">
-                    <div class="composition-title">Состав корма</div>
-                    <div class="composition-text">
-                        Корм для активных собак. Содержит три вида мяса и свежие овощи для энергии.
-                    </div>
-                </div>
-            </div>
-
-            <div class="food-card">
-                <div class="composition-hint">Состав при наведении</div>
-                <div class="food-image">
-                    <div style="font-size: 4em;">🐕</div>
-                </div>
-                <div class="food-content">
-                    <h3 class="food-title">SIRIUS Сухой корм для собак говядина/овощи</h3>
-                    <span class="food-brand">SIRIUS</span>
-                    <div class="food-weight">Вес: 2 кг</div>
-                    <div class="food-price">1 064 ₽</div>
-                    <div class="food-stock">В наличии: 2 шт.</div>
-                </div>
-                <div class="composition-overlay">
-                    <div class="composition-title">Состав корма</div>
-                    <div class="composition-text">
-                        Корм с говядиной и овощами. Содержит злаковые культуры и витамины.
-                    </div>
-                </div>
-            </div>
-
-            <div class="food-card">
-                <div class="composition-hint">Состав при наведении</div>
-                <div class="food-image">
-                    <div style="font-size: 4em;">🐕</div>
-                </div>
-                <div class="food-content">
-                    <h3 class="food-title">SIRIUS Сухой корм для собак ягненок/рис</h3>
-                    <span class="food-brand">SIRIUS</span>
-                    <div class="food-weight">Вес: 2 кг</div>
-                    <div class="food-price">1 064 ₽</div>
-                    <div class="food-stock">В наличии: 2 шт.</div>
-                </div>
-                <div class="composition-overlay">
-                    <div class="composition-title">Состав корма</div>
-                    <div class="composition-text">
-                        Корм с ягненком и рисом. Натуральные компоненты для здорового питания.
-                    </div>
-                </div>
-            </div>
-
-            <div class="food-card">
-                <div class="composition-hint">Состав при наведении</div>
-                <div class="food-image">
-                    <div style="font-size: 4em;">🐕</div>
-                </div>
-                <div class="food-content">
-                    <h3 class="food-title">SIRIUS Сухой корм для щенков ягненок/рис</h3>
-                    <span class="food-brand">SIRIUS</span>
-                    <div class="food-weight">Вес: 2 кг</div>
-                    <div class="food-price">1 229 ₽</div>
-                    <div class="food-stock">В наличии: 1 шт.</div>
-                </div>
-                <div class="composition-overlay">
-                    <div class="composition-title">Состав корма</div>
-                    <div class="composition-text">
-                        Корм для щенков с ягненком и рисом. Содержит кальций для развития костей.
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 
-    <!-- Футер с контактами -->
-    <footer id="contacts">
+    <footer>
         <div class="footer-content">
-            <div class="footer-section">
+            <div class="footer-section contact-info">
                 <h3>Контакты</h3>
-                <div class="contact-info">
-                    <p><i class="fas fa-map-marker-alt"></i> Мира, 27/2, д. Мармылево, Уфимский район, Республика Башкортостан, 450014</p>
-                    <p><i class="fas fa-phone"></i> +7–987–240–14–91</p>
-                    <p><i class="fas fa-envelope"></i> info@zoomir.ru</p>
+                <p><i class="fas fa-map-marker-alt"></i> г. Москва, ул. Пушкинская, д. 15</p>
+                <p><i class="fas fa-phone"></i> +7 (495) 123-45-67</p>
+                <p><i class="fas fa-envelope"></i> info@zoomir.ru</p>
+                <div class="working-hours">
+                    <p><strong>Часы работы:</strong></p>
+                    <p>Пн-Пт: 9:00-21:00</p>
+                    <p>Сб-Вс: 10:00-20:00</p>
                 </div>
             </div>
             <div class="footer-section">
-                <h3>Часы работы</h3>
-                <div class="working-hours">
-                    <p><strong>Ежедневно</strong> с 10:00 до 21:00</p>
-                    <p id="status">Закрыто. Откроется через 24 минуты</p>
-                </div>
+                <h3>О нас</h3>
+                <p>ЗооМир - сеть зоомагазинов с 15-летней историей. Мы заботимся о здоровье и счастье ваших питомцев.</p>
             </div>
             <div class="footer-section">
                 <h3>Быстрые ссылки</h3>
-                <p><a href="index.html#about" style="color: white;">О Компании</a></p>
                 <p><a href="index.html#catalog" style="color: white;">Каталог товаров</a></p>
-                <p><a href="index.html#reviews" style="color: white;">Отзывы</a></p>
-                <p><a href="index.html#prices" style="color: white;">Цены</a></p>
+                <p><a href="index.html#shops" style="color: white;">Наши магазины</a></p>
+                <p><a href="index.html#contacts" style="color: white;">Консультация ветеринара</a></p>
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; 2023 ЗооМир - Зоомагазин. Все права защищены.</p>
+            <p>&copy; 2024 ЗооМир. Все права защищены.</p>
         </div>
     </footer>
 
     <script>
-        function updateStatus() {
-            const now = new Date();
-            const hours = now.getHours();
-            const minutes = now.getMinutes();
-            
-            const isOpen = hours >= 10 && hours < 21;
-            const statusElement = document.getElementById('status');
-            
-            if (isOpen) {
-                const closingIn = (20 - hours) * 60 + (60 - minutes);
-                statusElement.textContent = `Открыто. Закроется через ${closingIn} минут`;
-                statusElement.style.color = '#c8e6c9';
-            } else {
-                let openingIn;
-                if (hours < 10) {
-                    openingIn = (9 - hours) * 60 + (60 - minutes);
-                } else {
-                    openingIn = (24 - hours + 10) * 60 - minutes;
-                }
-                statusElement.textContent = `Закрыто. Откроется через ${openingIn} минут`;
-                statusElement.style.color = '#ffcdd2';
-            }
-        }
-        
-        updateStatus();
-        setInterval(updateStatus, 60000);
-
-        document.querySelectorAll('.brands-list a').forEach(link => {
-            link.addEventListener('click', function(e) {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
                     });
                 }
             });
