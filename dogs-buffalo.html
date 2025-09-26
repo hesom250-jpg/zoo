@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЗооМир - Корма BUFFALO для собак</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f6f0;
+            color: #4a4a4a;
+            line-height: 1.6;
+        }
+
+        .top-header {
+            background: linear-gradient(135deg, #f8bbd0 0%, #f48fb1 100%);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo h1 {
+            font-size: 1.5em;
+            color: #d81b60;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .logo-icon {
+            font-size: 1.8em;
+            color: #e91e63;
+        }
+
+        .back-button {
+            background-color: #7b1fa2;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #6a1b9a;
+        }
+
+        nav {
+            background-color: white;
+            padding: 0 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            overflow-x: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            min-width: max-content;
+        }
+
+        .nav-links li {
+            padding: 15px 12px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #7b1fa2;
+            font-weight: 600;
+            font-size: 0.95em;
+            white-space: nowrap;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #e91e63;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -5px;
+            left: 0;
+            background-color: #e91e63;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .brand-header {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 30px;
+            color: white;
+            position: relative;
+            background: linear-gradient(rgba(74, 20, 140, 0.9), rgba(123, 31, 162, 0.9)), 
+                        url('https://img.freepik.com/premium-photo/dry-pet-food-background-pile-granulated-animal-feeds_157837-2197.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .brand-header h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .brand-header p {
+            font-size: 1.1em;
+            max-width: 600px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .brand-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            max-width: 1400px;
+            margin: 0 auto 50px;
+            padding: 0 15px;
+        }
+
+        @media (min-width: 768px) {
+            .main-content {
+                grid-template-columns: 250px 1fr;
+            }
+            
+            .top-header {
+                padding: 15px 40px;
+            }
+            
+            .logo h1 {
+                font-size: 2em;
+            }
+            
+            .logo-icon {
+                font-size: 2.2em;
+            }
+            
+            .back-button {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+            
+            nav {
+                padding: 0 40px;
+            }
+            
+            .nav-links {
+                justify-content: space-between;
+                min-width: auto;
+            }
+            
+            .nav-links li {
+                padding: 18px 15px;
+                flex: 1;
+                text-align: center;
+            }
+            
+            .nav-links a {
+                font-size: 1.1em;
+            }
+            
+            .brand-header {
+                padding: 60px 20px;
+                margin-bottom: 40px;
+            }
+            
+            .brand-header h2 {
+                font-size: 2.8em;
+            }
+            
+            .brand-icon {
+                font-size: 3em;
+            }
+        }
+
+        .brands-sidebar {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: fit-content;
+            order: 2;
+        }
+
+        @media (min-width: 768px) {
+            .brands-sidebar {
+                order: 1;
+                position: sticky;
+                top: 20px;
+            }
+        }
+
+        .brands-sidebar h3 {
+            font-size: 1.3em;
+            color: #7b1fa2;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #ff9800;
+            text-align: center;
+        }
+
+        .brands-list {
+            list-style: none;
+        }
+
+        .brands-list li {
+            margin-bottom: 6px;
+        }
+
+        .brands-list a {
+            display: block;
+            padding: 10px 12px;
+            background: #f8f6f0;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #5d4037;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+            font-size: 0.9em;
+        }
+
+        .brands-list a:hover {
+            background: #7b1fa2;
+            color: white;
+            border-left-color: #ff9800;
+            transform: translateX(5px);
+        }
+
+        .brands-list a.active {
+            background: #7b1fa2;
+            color: white;
+            border-left-color: #ff9800;
+        }
+
+        .breadcrumb {
+            margin-bottom: 20px;
+            font-size: 0.9em;
+            color: #5d4037;
+            background: linear-gradient(135deg, #ff9800, #f57c00);
+            padding: 12px 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(255, 152, 0, 0.3);
+            order: 1;
+            grid-column: 1 / -1;
+        }
+
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .breadcrumb span {
+            color: white;
+            font-weight: 600;
+        }
+
+        .foods-container {
+            order: 3;
+            grid-column: 1 / -1;
+        }
+
+        @media (min-width: 768px) {
+            .foods-container {
+                order: 2;
+                grid-column: auto;
+            }
+        }
+
+        .foods-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .foods-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .foods-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .food-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+            height: auto;
+            min-height: 480px;
+        }
+
+        .food-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .food-image {
+            width: 100%;
+            height: 250px;
+            background: #f8f6f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 10px;
+        }
+
+        .food-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .food-content {
+            padding: 15px;
+            height: 230px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .food-title {
+            font-size: 0.9em;
+            color: #7b1fa2;
+            margin-bottom: 0;
+            font-weight: 600;
+            line-height: 1.3;
+            height: auto;
+            overflow: visible;
+            display: block;
+            min-height: 2.8em;
+        }
+
+        .food-brand {
+            color: #ff9800;
+            font-weight: 500;
+            margin-bottom: 0;
+            display: block;
+            font-size: 0.9em;
+        }
+
+        .food-weight {
+            color: #7b1fa2;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 0;
+            background: #f8f6f0;
+            padding: 3px 6px;
+            border-radius: 5px;
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .food-price {
+            font-size: 1.4em;
+            color: #7b1fa2;
+            font-weight: 700;
+            margin-top: auto;
+            margin-bottom: 0;
+        }
+
+        .composition-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 12px;
+            padding: 15px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            border: 2px solid #ff9800;
+            z-index: 2;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .food-card:hover .composition-overlay {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .composition-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #7b1fa2;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #ff9800;
+        }
+
+        .composition-text {
+            font-size: 0.85em;
+            line-height: 1.5;
+            color: #555;
+            flex-grow: 1;
+        }
+
+        .composition-hint {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: #ff9800;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 3;
+        }
+
+        .food-card:hover .composition-hint {
+            opacity: 1;
+        }
+
+        /* Модальное окно в правом нижнем углу */
+        .modal-overlay {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            max-width: 350px;
+            width: calc(100% - 40px);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(100px);
+            transition: all 0.5s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 2px solid #7b1fa2;
+            position: relative;
+        }
+
+        .modal-icon {
+            font-size: 2.5em;
+            color: #7b1fa2;
+            margin-bottom: 10px;
+        }
+
+        .modal-title {
+            font-size: 1.3em;
+            color: #7b1fa2;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .modal-text {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.4;
+            font-size: 0.95em;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .modal-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9em;
+            flex: 1;
+            min-width: 120px;
+            justify-content: center;
+        }
+
+        .modal-button.telegram {
+            background: #0088cc;
+            color: white;
+        }
+
+        .modal-button.whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .modal-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.3em;
+            color: #999;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .close-modal:hover {
+            background: #f8f6f0;
+            color: #7b1fa2;
+        }
+
+        /* Кнопка вызова модального окна */
+        .modal-trigger {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #7b1fa2, #4a148c);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8em;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(123, 31, 162, 0.4);
+            z-index: 999;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.8);
+        }
+
+        .modal-trigger.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
+
+        .modal-trigger:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(123, 31, 162, 0.6);
+        }
+
+        .modal-trigger i {
+            font-weight: bold;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #7b1fa2 0%, #4a148c 100%);
+            color: white;
+            padding: 30px 20px 15px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-bottom: 25px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 35px;
+            }
+        }
+
+        .footer-section h3 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: #f48fb1;
+            bottom: 0;
+            left: 0;
+        }
+
+        .contact-info p {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95em;
+        }
+
+        .contact-info i {
+            color: #f48fb1;
+            width: 20px;
+            font-size: 1em;
+        }
+
+        .working-hours {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            font-size: 0.9em;
+            color: #d1c4e9;
+        }
+
+        @media (max-width: 768px) {
+            .modal-overlay {
+                bottom: 80px;
+                right: 20px;
+            }
+            
+            .modal-trigger {
+                bottom: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Модальное окно в правом нижнем углу -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <div class="modal-icon">
+                <i class="fas fa-comment-dots"></i>
+            </div>
+            <h3 class="modal-title">Уточните наличие товара</h3>
+            <p class="modal-text">Свяжитесь с нами для подтверждения наличия и получения подробной консультации по кормам BUFFALO</p>
+            <div class="modal-buttons">
+                <a href="#" class="modal-button telegram" id="telegramLink">
+                    <i class="fab fa-telegram"></i>Telegram
+                </a>
+                <a href="#" class="modal-button whatsapp" id="whatsappLink">
+                    <i class="fab fa-whatsapp"></i>WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Кнопка вызова модального окна -->
+    <div class="modal-trigger" id="modalTrigger">
+        <i class="fas fa-comments"></i>
+    </div>
+
+    <div class="top-header">
+        <div class="logo">
+            <i class="fas fa-paw logo-icon"></i>
+            <h1>ЗооМир</h1>
+        </div>
+        <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i> На главную</a>
+    </div>
+
+    <nav>
+        <ul class="nav-links">
+            <li><a href="index.html#about">О Компании</a></li>
+            <li><a href="index.html#catalog">Каталог</a></li>
+            <li><a href="index.html#animals">Животные</a></li>
+            <li><a href="index.html#shops">Магазины</a></li>
+            <li><a href="index.html#contacts">Контакты</a></li>
+        </ul>
+    </nav>
+
+    <section class="brand-header">
+        <i class="fas fa-buffalo brand-icon">🐃</i>
+        <h2>Корма BUFFALO для собак</h2>
+        <p>Натуральное питание с мясом буйвола для здоровья и энергии вашего питомца</p>
+    </section>
+
+    <div class="main-content">
+        <div class="breadcrumb">
+            <a href="dogs.html">Корма для собак</a> > <span>BUFFALO</span>
+        </div>
+
+        <aside class="brands-sidebar">
+            <h3>Бренды</h3>
+            <ul class="brands-list">
+                <li><a href="dogs-ajo.html">Ajo</a></li>
+                <li><a href="dogs-sirius.html">Sirius</a></li>
+                <li><a href="dogs-lucky-bits.html">Lucky bits</a></li>
+                <li><a href="dogs-royal-canin.html">Royal Canin</a></li>
+                <li><a href="dogs-best-dinner.html">Best dinner</a></li>
+                <li><a href="dogs-buffalo.html" class="active">Buffalo</a></li>
+                <li><a href="dogs-probalance.html">Probalance</a></li>
+                <li><a href="dogs-miratorg.html">Мираторг</a></li>
+                <li><a href="dogs-purina.html">Purina</a></li>
+                <li><a href="dogs-pedigree.html">Pedigree</a></li>
+            </ul>
+        </aside>
+
+        <div class="foods-container">
+            <div class="foods-grid">
+                <!-- BUFFALO "Adult mini" для собак мелких пород с ягненком -->
+                <div class="food-card">
+                    <div class="composition-hint">Состав при наведении</div>
+                    <div class="food-image">
+                        <img src="https://online.sbis.ru/fs-public/ekt_files/9a871e43-7413-469d-9f0e-cd897c19875d" alt="BUFFALO Adult mini с ягненком">
+                    </div>
+                    <div class="food-content">
+                        <h3 class="food-title">BUFFALO "Adult mini" для собак мелких пород с ягненком 2 кг</h3>
+                        <span class="food-brand">BUFFALO</span>
+                        <div class="food-weight">Вес: 2 кг</div>
+                        <div class="food-price">1 533 ₽</div>
+                    </div>
+                    <div class="composition-overlay">
+                        <div class="composition-title">Состав корма</div>
+                        <div class="composition-text">Свежее мясо ягненка (20%), дегидратированное мясо ягненка (15%), батат, горох, нут, животный жир, льняное семя, яблоки, клюква, витамины, минералы.</div>
+                    </div>
+                </div>
+
+                <!-- MR.BUFFALO "Hair & Skin" для собак средних и крупных пород с лососем -->
+                <div class="food-card">
+                    <div class="composition-hint">Состав при наведении</div>
+                    <div class="food-image">
+                        <img src="https://online.sbis.ru/fs-public/ekt_files/35aad602-39ed-4ea8-82a5-1bf9fe81bf41" alt="MR.BUFFALO Hair & Skin">
+                    </div>
+                    <div class="food-content">
+                        <h3 class="food-title">MR.BUFFALO "Hair & Skin" для собак средних и крупных пород с лососем 2 кг</h3>
+                        <span class="food-brand">MR.BUFFALO</span>
+                        <div class="food-weight">Вес: 2 кг</div>
+                        <div class="food-price">1 505 ₽</div>
+                    </div>
+                    <div class="composition-overlay">
+                        <div class="composition-title">Состав корма</div>
+                        <div class="composition-text">Свежее мясо лосося (20%), дегидратированное мясо лосося (15%), батат, горох, нут, животный жир, льняное семя, водоросли, яблоки, витамины, минералы.</div>
+                    </div>
+                </div>
+
+                <!-- MR.BUFFALO "Adult Mini" для собак мелких пород с ягненком -->
+                <div class="food-card">
+                    <div class="composition-hint">Состав при наведении</div>
+                    <div class="food-image">
+                        <img src="https://online.sbis.ru/fs-public/ekt_files/7ce5637f-5662-475b-b205-170da03d4de1" alt="MR.BUFFALO Adult Mini с ягненком">
+                    </div>
+                    <div class="food-content">
+                        <h3 class="food-title">MR.BUFFALO "Adult Mini" для собак мелких пород с ягненком 800 г</h3>
+                        <span class="food-brand">MR.BUFFALO</span>
+                        <div class="food-weight">Вес: 800 г</div>
+                        <div class="food-price">691 ₽</div>
+                    </div>
+                    <div class="composition-overlay">
+                        <div class="composition-title">Состав корма</div>
+                        <div class="composition-text">Свежее мясо ягненка (25%), дегидратированное мясо ягненка (15%), батат, горох, нут, животный жир, льняное семя, яблоки, клюква, витамины, минералы.</div>
+                    </div>
+                </div>
+
+                <!-- MR.BUFFALO "Sensitive M/L" для собак средних и крупных пород с ягненком -->
+                <div class="food-card">
+                    <div class="composition-hint">Состав при наведении</div>
+                    <div class="food-image">
+                        <img src="https://online.sbis.ru/fs-public/ekt_files/abe23697-bbdc-4927-a749-b85e6f28c139" alt="MR.BUFFALO Sensitive M/L">
+                    </div>
+                    <div class="food-content">
+                        <h3 class="food-title">MR.BUFFALO "Sensitive M/L" для собак средних и крупных пород с ягненком 2 кг</h3>
+                        <span class="food-brand">MR.BUFFALO</span>
+                        <div class="food-weight">Вес: 2 кг</div>
+                        <div class="food-price">1 533 ₽</div>
+                    </div>
+                    <div class="composition-overlay">
+                        <div class="composition-title">Состав корма</div>
+                        <div class="composition-text">Свежее мясо ягненка (20%), дегидратированное мясо ягненка (15%), батат, горох, нут, животный жир, льняное семя, яблоки, витамины, минералы.</div>
+                    </div>
+                </div>
+
+                <!-- MR.BUFFALO "Adult" с ягненком -->
+                <div class="food-card">
+                    <div class="composition-hint">Состав при наведении</div>
+                    <div class="food-image">
+                        <img src="https://online.sbis.ru/fs-public/ekt_files/4dc2f92d-b5f0-402c-b813-5dcebe374629" alt="MR.BUFFALO Adult с ягненком">
+                    </div>
+                    <div class="food-content">
+                        <h3 class="food-title">MR.BUFFALO "Adult" с ягненком 400 г</h3>
+                        <span class="food-brand">MR.BUFFALO</span>
+                        <div class="food-weight">Вес: 400 г</div>
+                        <div class="food-price">255 ₽</div>
+                    </div>
+                    <div class="composition-overlay">
+                        <div class="composition-title">Состав корма</div>
+                        <div class="composition-text">Ягненок (60%), бульон, батат, горох, нут, льняное масло, витамины, минералы.</div>
+                    </div>
+                </div>
+
+                <!-- MR.BUFFALO "Puppy & Junior" с индейкой -->
+                <div class="food-card">
+                    <div class="composition-hint">Состав при наведении</div>
+                    <div class="food-image">
+                        <img src="https://online.sbis.ru/fs-public/ekt_files/92d81b76-3312-4fa7-b825-aaa9a9479620" alt="MR.BUFFALO Puppy & Junior">
+                    </div>
+                    <div class="food-content">
+                        <h3 class="food-title">MR.BUFFALO "Puppy & Junior" с индейкой 2 кг</h3>
+                        <span class="food-brand">MR.BUFFALO</span>
+                        <div class="food-weight">Вес: 2 кг</div>
+                        <div class="food-price">1 505 ₽</div>
+                    </div>
+                    <div class="composition-overlay">
+                        <div class="composition-title">Состав корма</div>
+                        <div class="composition-text">Свежее мясо индейки (25%), дегидратированное мясо индейки (15%), батат, горох, нут, животный жир, рыбий жир, льняное семя, яблоки, витамины, минералы.</div>
+                    </div>
+                </div>
+
+                <!-- MR.BUFFALO "Adult Dog" индейка -->
+                <div class="food-card">
+                    <div class="composition-hint">Состав при наведении</div>
+                    <div class="food-image">
+                        <img src="https://online.sbis.ru/fs-public/ekt_files/6671ecf8-13f8-41e6-9653-53e7e21809b2" alt="MR.BUFFALO Adult Dog индейка">
+                    </div>
+                    <div class="food-content">
+                        <h3 class="food-title">MR.BUFFALO "Adult Dog" индейка 400 г</h3>
+                        <span class="food-brand">MR.BUFFALO</span>
+                        <div class="food-weight">Вес: 400 г</div>
+                        <div class="food-price">255 ₽</div>
+                    </div>
+                    <div class="composition-overlay">
+                        <div class="composition-title">Состав корма</div>
+                        <div class="composition-text">Индейка (60%), бульон, батат, горох, нут, льняное масло, витамины, минералы.</div>
+                    </div>
+                </div>
+
+                <!-- MR.BUFFALO "Adult Mini" для собак мелких пород с курицей -->
+                <div class="food-card">
+                    <div class="composition-hint">Состав при наведении</div>
+                    <div class="food-image">
+                        <img src="https://online.sbis.ru/fs-public/ekt_files/b51ada32-1e3b-47c7-9251-15d6e008f3e8" alt="MR.BUFFALO Adult Mini с курицей">
+                    </div>
+                    <div class="food-content">
+                        <h3 class="food-title">MR.BUFFALO "Adult Mini" для собак мелких пород с курицей 2 кг</h3>
+                        <span class="food-brand">MR.BUFFALO</span>
+                        <div class="food-weight">Вес: 2 кг</div>
+                        <div class="food-price">1 393 ₽</div>
+                    </div>
+                    <div class="composition-overlay">
+                        <div class="composition-title">Состав корма</div>
+                        <div class="composition-text">Свежее мясо курицы (25%), дегидратированное мясо курицы (15%), батат, горох, нут, животный жир, льняное семя, яблоки, клюква, витамины, минералы.</div>
+                    </div>
+                </div>
+
+                <!-- MR.BUFFALO "Adult" с говядиной и печенью -->
+                <div class="food-card">
+                    <div class="composition-hint">Состав при наведении</div>
+                    <div class="food-image">
+                        <img src="https://online.sbis.ru/fs-public/ekt_files/e06c7396-d61f-46ae-9b0a-e3fd5480799b" alt="MR.BUFFALO Adult с говядиной и печенью">
+                    </div>
+                    <div class="food-content">
+                        <h3 class="food-title">MR.BUFFALO "Adult" с говядиной и печенью 400 г</h3>
+                        <span class="food-brand">MR.BUFFALO</span>
+                        <div class="food-weight">Вес: 400 г</div>
+                        <div class="food-price">255 ₽</div>
+                    </div>
+                    <div class="composition-overlay">
+                        <div class="composition-title">Состав корма</div>
+                        <div class="composition-text">Говядина и печень (60%), бульон, батат, горох, нут, льняное масло, витамины, минералы.</div>
+                    </div>
+                </div>
+
+                <!-- MR.BUFFALO "Adult M/L" для собак средних и крупных пород с курицей -->
+                <div class="food-card">
+                    <div class="composition-hint">Состав при наведении</div>
+                    <div class="food-image">
+                        <img src="https://online.sbis.ru/fs-public/ekt_files/6e3f6d7d-5f1c-4e2f-9e3f-6d0c7d2d7d8a" alt="MR.BUFFALO Adult M/L с курицей">
+                    </div>
+                    <div class="food-content">
+                        <h3 class="food-title">MR.BUFFALO "Adult M/L" для собак средних и крупных пород с курицей 2 кг</h3>
+                        <span class="food-brand">MR.BUFFALO</span>
+                        <div class="food-weight">Вес: 2 кг</div>
+                        <div class="food-price">1 393 ₽</div>
+                    </div>
+                    <div class="composition-overlay">
+                        <div class="composition-title">Состав корма</div>
+                        <div class="composition-text">Свежее мясо курицы (20%), дегидратированное мясо курицы (15%), батат, горох, нут, животный жир, льняное семя, яблоки, витамины, минералы.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Контактная информация</h3>
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> г. Москва, ул. Зоологическая, д. 12</p>
+                    <p><i class="fas fa-phone"></i> +7 (495) 123-45-67</p>
+                    <p><i class="fas fa-envelope"></i> info@zoomir.ru</p>
+                    <div class="working-hours">
+                        <p><strong>Режим работы:</strong></p>
+                        <p>Пн-Пт: 9:00 - 21:00</p>
+                        <p>Сб-Вс: 10:00 - 20:00</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Наши магазины</h3>
+                <p>Сеть зоомагазинов "ЗооМир" представлена в 15 городах России. У нас вы найдете качественные корма и аксессуары для ваших питомцев.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Полезная информация</h3>
+                <p>Правильное питание - залог здоровья вашего питомца. Мы поможем подобрать оптимальный рацион с учетом породы, возраста и особенностей вашей собаки.</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 ЗооМир. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Модальное окно
+        const modalTrigger = document.getElementById('modalTrigger');
+        const contactModal = document.getElementById('contactModal');
+        const closeModal = document.getElementById('closeModal');
+        
+        // Показать модальное окно
+        modalTrigger.addEventListener('click', () => {
+            contactModal.classList.add('active');
+            modalTrigger.classList.remove('active');
+        });
+        
+        // Скрыть модальное окно
+        closeModal.addEventListener('click', () => {
+            contactModal.classList.remove('active');
+            setTimeout(() => {
+                modalTrigger.classList.add('active');
+            }, 500);
+        });
+        
+        // Показать кнопку модального окна через 5 секунд
+        setTimeout(() => {
+            modalTrigger.classList.add('active');
+        }, 5000);
+        
+        // Обновление ссылок для мессенджеров
+        document.getElementById('telegramLink').href = "https://t.me/zoomir_buffalo";
+        document.getElementById('whatsappLink').href = "https://wa.me/79501234567?text=Здравствуйте!%20Интересует%20корм%20BUFFALO";
+    </script>
+</body>
+</html>

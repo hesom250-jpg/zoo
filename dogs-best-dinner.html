@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЗооМир - Корма BEST DINNER для собак</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f6f0;
+            color: #4a4a4a;
+            line-height: 1.6;
+        }
+
+        .top-header {
+            background: linear-gradient(135deg, #f8bbd0 0%, #f48fb1 100%);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo h1 {
+            font-size: 1.5em;
+            color: #d81b60;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .logo-icon {
+            font-size: 1.8em;
+            color: #e91e63;
+        }
+
+        .back-button {
+            background-color: #7b1fa2;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #6a1b9a;
+        }
+
+        nav {
+            background-color: white;
+            padding: 0 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            overflow-x: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            min-width: max-content;
+        }
+
+        .nav-links li {
+            padding: 15px 12px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #7b1fa2;
+            font-weight: 600;
+            font-size: 0.95em;
+            white-space: nowrap;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #e91e63;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -5px;
+            left: 0;
+            background-color: #e91e63;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .brand-header {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 30px;
+            color: white;
+            position: relative;
+            background: linear-gradient(rgba(123, 31, 162, 0.85), rgba(74, 20, 140, 0.85)), 
+                        url('https://img.freepik.com/premium-photo/dry-pet-food-background-pile-granulated-animal-feeds_157837-2197.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .brand-header h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .brand-header p {
+            font-size: 1.1em;
+            max-width: 600px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .brand-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            max-width: 1400px;
+            margin: 0 auto 50px;
+            padding: 0 15px;
+        }
+
+        @media (min-width: 768px) {
+            .main-content {
+                grid-template-columns: 250px 1fr;
+            }
+            
+            .top-header {
+                padding: 15px 40px;
+            }
+            
+            .logo h1 {
+                font-size: 2em;
+            }
+            
+            .logo-icon {
+                font-size: 2.2em;
+            }
+            
+            .back-button {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+            
+            nav {
+                padding: 0 40px;
+            }
+            
+            .nav-links {
+                justify-content: space-between;
+                min-width: auto;
+            }
+            
+            .nav-links li {
+                padding: 18px 15px;
+                flex: 1;
+                text-align: center;
+            }
+            
+            .nav-links a {
+                font-size: 1.1em;
+            }
+            
+            .brand-header {
+                padding: 60px 20px;
+                margin-bottom: 40px;
+            }
+            
+            .brand-header h2 {
+                font-size: 2.8em;
+            }
+            
+            .brand-icon {
+                font-size: 3em;
+            }
+        }
+
+        .brands-sidebar {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: fit-content;
+            order: 2;
+        }
+
+        @media (min-width: 768px) {
+            .brands-sidebar {
+                order: 1;
+                position: sticky;
+                top: 20px;
+            }
+        }
+
+        .brands-sidebar h3 {
+            font-size: 1.3em;
+            color: #7b1fa2;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #ff9800;
+            text-align: center;
+        }
+
+        .brands-list {
+            list-style: none;
+        }
+
+        .brands-list li {
+            margin-bottom: 6px;
+        }
+
+        .brands-list a {
+            display: block;
+            padding: 10px 12px;
+            background: #f8f6f0;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #5d4037;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+            font-size: 0.9em;
+        }
+
+        .brands-list a:hover {
+            background: #7b1fa2;
+            color: white;
+            border-left-color: #ff9800;
+            transform: translateX(5px);
+        }
+
+        .brands-list a.active {
+            background: #7b1fa2;
+            color: white;
+            border-left-color: #ff9800;
+        }
+
+        .breadcrumb {
+            margin-bottom: 20px;
+            font-size: 0.9em;
+            color: #5d4037;
+            background: linear-gradient(135deg, #ff9800, #f57c00);
+            padding: 12px 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(255, 152, 0, 0.3);
+            order: 1;
+            grid-column: 1 / -1;
+        }
+
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .breadcrumb span {
+            color: white;
+            font-weight: 600;
+        }
+
+        .foods-container {
+            order: 3;
+            grid-column: 1 / -1;
+        }
+
+        @media (min-width: 768px) {
+            .foods-container {
+                order: 2;
+                grid-column: auto;
+            }
+        }
+
+        .foods-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .foods-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .foods-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .food-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+            height: auto;
+            min-height: 480px;
+        }
+
+        .food-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .food-image {
+            width: 100%;
+            height: 250px;
+            background: #f8f6f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 10px;
+        }
+
+        .food-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .food-content {
+            padding: 15px;
+            height: 230px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .food-title {
+            font-size: 0.9em;
+            color: #7b1fa2;
+            margin-bottom: 0;
+            font-weight: 600;
+            line-height: 1.3;
+            height: auto;
+            overflow: visible;
+            display: block;
+            min-height: 2.8em;
+        }
+
+        .food-brand {
+            color: #ff9800;
+            font-weight: 500;
+            margin-bottom: 0;
+            display: block;
+            font-size: 0.9em;
+        }
+
+        .food-weight {
+            color: #7b1fa2;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 0;
+            background: #f8f6f0;
+            padding: 3px 6px;
+            border-radius: 5px;
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .food-price {
+            font-size: 1.4em;
+            color: #7b1fa2;
+            font-weight: 700;
+            margin-top: auto;
+            margin-bottom: 0;
+        }
+
+        .composition-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 12px;
+            padding: 15px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            border: 2px solid #ff9800;
+            z-index: 2;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .food-card:hover .composition-overlay {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .composition-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #7b1fa2;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #ff9800;
+        }
+
+        .composition-text {
+            font-size: 0.85em;
+            line-height: 1.5;
+            color: #555;
+            flex-grow: 1;
+        }
+
+        .composition-hint {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: #ff9800;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 3;
+        }
+
+        .food-card:hover .composition-hint {
+            opacity: 1;
+        }
+
+        /* Модальное окно */
+        .modal-overlay {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            max-width: 350px;
+            width: calc(100% - 40px);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(100px);
+            transition: all 0.5s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 2px solid #7b1fa2;
+            position: relative;
+        }
+
+        .modal-icon {
+            font-size: 2.5em;
+            color: #7b1fa2;
+            margin-bottom: 10px;
+        }
+
+        .modal-title {
+            font-size: 1.3em;
+            color: #7b1fa2;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .modal-text {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.4;
+            font-size: 0.95em;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .modal-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9em;
+            flex: 1;
+            min-width: 120px;
+            justify-content: center;
+        }
+
+        .modal-button.telegram {
+            background: #0088cc;
+            color: white;
+        }
+
+        .modal-button.whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .modal-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.3em;
+            color: #999;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .close-modal:hover {
+            background: #f8f6f0;
+            color: #7b1fa2;
+        }
+
+        .modal-trigger {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #7b1fa2, #4a148c);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8em;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(123, 31, 162, 0.4);
+            z-index: 999;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.8);
+        }
+
+        .modal-trigger.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
+
+        .modal-trigger:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(123, 31, 162, 0.6);
+        }
+
+        footer {
+            background: linear-gradient(135deg, #7b1fa2 0%, #4a148c 100%);
+            color: white;
+            padding: 30px 20px 15px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-bottom: 25px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 35px;
+            }
+        }
+
+        .footer-section h3 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: #f48fb1;
+            bottom: 0;
+            left: 0;
+        }
+
+        .contact-info p {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95em;
+        }
+
+        .contact-info i {
+            color: #f48fb1;
+            width: 20px;
+            font-size: 1em;
+        }
+
+        .working-hours {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            font-size: 0.9em;
+            color: #d1c4e9;
+        }
+
+        @media (max-width: 768px) {
+            .modal-overlay {
+                bottom: 80px;
+                right: 20px;
+            }
+            
+            .modal-trigger {
+                bottom: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Модальное окно -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <div class="modal-icon">
+                <i class="fas fa-comment-dots"></i>
+            </div>
+            <h3 class="modal-title">Уточните наличие товара</h3>
+            <p class="modal-text">Свяжитесь с нами для подтверждения наличия и получения подробной консультации по кормам BEST DINNER</p>
+            <div class="modal-buttons">
+                <a href="https://t.me/zoomir_korma" class="modal-button telegram">
+                    <i class="fab fa-telegram"></i> Telegram
+                </a>
+                <a href="https://wa.me/79999999999" class="modal-button whatsapp">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Кнопка вызова модального окна -->
+    <div class="modal-trigger" id="modalTrigger">
+        <i class="fas fa-comment-alt"></i>
+    </div>
+
+    <!-- Шапка -->
+    <header class="top-header">
+        <div class="logo">
+            <i class="fas fa-paw logo-icon"></i>
+            <h1>ЗооМир</h1>
+        </div>
+        <a href="index.html" class="back-button">
+            <i class="fas fa-home"></i> На главную
+        </a>
+    </header>
+
+    <!-- Навигация -->
+    <nav>
+        <ul class="nav-links">
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="dogs.html">Корма для собак</a></li>
+            <li><a href="cats.html">Корма для кошек</a></li>
+            <li><a href="birds.html">Корма для птиц</a></li>
+            <li><a href="rodents.html">Корма для грызунов</a></li>
+            <li><a href="fish.html">Корма для рыб</a></li>
+        </ul>
+    </nav>
+
+    <!-- Заголовок бренда -->
+    <section class="brand-header">
+        <div class="brand-icon">
+            <i class="fas fa-utensils"></i>
+        </div>
+        <h2>Корма BEST DINNER для собак</h2>
+        <p>Премиальное питание для ваших питомцев. Натуральные ингредиенты, сбалансированный состав и забота о здоровье вашей собаки.</p>
+    </section>
+
+    <!-- Основной контент -->
+    <div class="main-content">
+        <!-- Хлебные крошки -->
+        <div class="breadcrumb">
+            <a href="index.html">Главная</a> > 
+            <a href="dogs.html">Корма для собак</a> > 
+            <span>BEST DINNER</span>
+        </div>
+
+        <!-- Сайдбар с брендами -->
+        <aside class="brands-sidebar">
+            <h3>Бренды кормов</h3>
+            <ul class="brands-list">
+                <li><a href="dogs-ajo.html">AJO</a></li>
+                <li><a href="dogs-sirius.html">SIRIUS</a></li>
+                <li><a href="dogs-lucky-bits.html">Lucky bits</a></li>
+                <li><a href="dogs-royal-canin.html">Royal Canin</a></li>
+                <li><a href="dogs-best-dinner.html" class="active">Best dinner</a></li>
+                <li><a href="dogs-buffalo.html">Buffalo</a></li>
+                <li><a href="dogs-probalance.html">Probalance</a></li>
+                <li><a href="dogs-miratorg.html">Мираторг</a></li>
+                <li><a href="dogs-purina.html">Purina</a></li>
+                <li><a href="dogs-pedigree.html">Pedigree</a></li>
+            </ul>
+        </aside>
+
+        <!-- Контейнер с товарами -->
+        <section class="foods-container">
+            <div class="foods-grid">
+                <!-- BEST DINNER "Sensible Adult Mini" -->
+                <div class="food-card">
+                    <div class="composition-hint">Состав</div>
+                    <div class="food-image">
+                        <img src="https://online.sbis.ru/fs-public/ekt_files/e567246e-f400-40d7-8158-3385c53a0978" alt="BEST DINNER Sensible Adult Mini">
+                    </div>
+                    <div class="food-content">
+                        <h3 class="food-title">BEST DINNER "Sensible Adult Mini" для собак мелких пород с чувствительным пищеварением ягненок и томаты</h3>
+                        <span class="food-brand">BEST DINNER</span>
+                        <div class="food-weight">Вес: 1.5 кг</div>
+                        <div class="food-price">1 435 ₽</div>
+                    </div>
+                    <div class="composition-overlay">
+                        <div class="composition-title">Состав корма</div>
+                        <div class="composition-text">Дегидратированное мясо ягненка (25%), рис, овес, животные жиры, сушеные томаты, льняное семя, пивные дрожжи, пребиотики, хондропротекторы, витамины, минералы.</div>
+                    </div>
+                </div>
+
+                <!-- BEST DINNER "Premium Меню №3" -->
+                <div class="food-card">
+                    <div class="composition-hint">Состав</div>
+                    <div class="food-image">
+                        <img src="https://online.sbis.ru/fs-public/ekt_files/0a483e9e-cce0-4947-9ab5-62375fa50804" alt="BEST DINNER Premium Меню №3">
+                    </div>
+                    <div class="food-content">
+                        <h3 class="food-title">BEST DINNER "Premium Меню №3" с говядиной и кроликом</h3>
+                        <span class="food-brand">BEST DINNER</span>
+                        <div class="food-weight">Вес: 340 г</div>
+                        <div class="food-price">217 ₽</div>
+                    </div>
+                    <div class="composition-overlay">
+                        <div class="composition-title">Состав корма</div>
+                        <div class="composition-text">Говядина (40%), кролик (15%), бульон, рис, овощи, льняное масло, витамины, минералы.</div>
+                    </div>
+                </div>
+
+                <!-- BEST DINNER Premium "Меню №1" -->
+                <div class="food-card">
+                    <div class="composition-hint">Состав</div>
+                    <div class="food-image">
+                        <img src="https://online.sbis.ru/fs-public/ekt_files/f2eed3d0-15f7-450f-ac4c-275d1a5946aa" alt="BEST DINNER Premium Меню №1">
+                    </div>
+                    <div class="food-content">
+                        <h3 class="food-title">BEST DINNER Premium "Меню №1" с ягненком</h3>
+                        <span class="food-brand">BEST DINNER</span>
+                        <div class="food-weight">Вес: 340 г</div>
+                        <div class="food-price">217 ₽</div>
+                    </div>
+                    <div class="composition-overlay">
+                        <div class="composition-title">Состав корма</div>
+                        <div class="composition-text">Ягненок (55%), бульон, рис, овощи, льняное масло, витамины, минералы.</div>
+                    </div>
+                </div>
+
+                <!-- BEST DINNER "Premium. Меню №4" -->
+                <div class="food-card">
+                    <div class="composition-hint">Состав</div>
+                    <div class="food-image">
+                        <img src="https://online.sbis.ru/fs-public/ekt_files/9b7ef491-f168-461b-9c83-4b716765aea3" alt="BEST DINNER Premium Меню №4">
+                    </div>
+                    <div class="food-content">
+                        <h3 class="food-title">BEST DINNER "Premium. Меню №4" с телятиной и овощами</h3>
+                        <span class="food-brand">BEST DINNER</span>
+                        <div class="food-weight">Вес: 340 г</div>
+                        <div class="food-price">217 ₽</div>
+                    </div>
+                    <div class="composition-overlay">
+                        <div class="composition-title">Состав корма</div>
+                        <div class="composition-text">Телятина (55%), бульон, рис, овощи (морковь, горох), льняное масло, витамины, минералы.</div>
+                    </div>
+                </div>
+
+                <!-- BEST DINNER "Adult Sensible Mini Veal & Pumpkin" -->
+                <div class="food-card">
+                    <div class="composition-hint">Состав</div>
+                    <div class="food-image">
+                        <img src="https://online.sbis.ru/fs-public/ekt_files/e5e95983-86a7-493f-8833-a67a5a1b19ae" alt="BEST DINNER Adult Sensible Mini">
+                    </div>
+                    <div class="food-content">
+                        <h3 class="food-title">BEST DINNER "Adult Sensible Mini Veal & Pumpkin" для собак мелких пород склонных к аллергии с телятиной и тыквой</h3>
+                        <span class="food-brand">BEST DINNER</span>
+                        <div class="food-weight">Вес: 1.5 кг</div>
+                        <div class="food-price">1 370 ₽</div>
+                    </div>
+                    <div class="composition-overlay">
+                        <div class="composition-title">Состав корма</div>
+                        <div class="composition-text">Дегидратированное мясо телятины (25%), рис, овес, животные жиры, тыква, льняное семя, пребиотики, витамины, минералы.</div>
+                    </div>
+                </div>
+
+                <!-- BEST DINNER "Super Premium" с говядиной и языком -->
+                <div class="food-card">
+                    <div class="composition-hint">Состав</div>
+                    <div class="food-image">
+                        <img src="https://online.sbis.ru/fs-public/ekt_files/fe771089-1635-4a71-8294-21a955fcdc19" alt="BEST DINNER Super Premium">
+                    </div>
+                    <div class="food-content">
+                        <h3 class="food-title">BEST DINNER "Super Premium" с говядиной и языком</h3>
+                        <span class="food-brand">BEST DINNER</span>
+                        <div class="food-weight">Вес: 340 г</div>
+                        <div class="food-price">321 ₽</div>
+                    </div>
+                    <div class="composition-overlay">
+                        <div class="composition-title">Состав корма</div>
+                        <div class="composition-text">Говядина и язык (70%), бульон, рис, овощи, льняное масло, витамины, минералы.</div>
+                    </div>
+                </div>
+
+                <!-- BEST DINNER "Adult Sensible Medium & Maxi" -->
+                <div class="food-card">
+                    <div class="composition-hint">Состав</div>
+                    <div class="food-image">
+                        <img src="https://online.sbis.ru/fs-public/ekt_files/d8a40e82-c99c-448c-8f8b-9fddaaa32793" alt="BEST DINNER Adult Sensible Medium & Maxi">
+                    </div>
+                    <div class="food-content">
+                        <h3 class="food-title">BEST DINNER "Adult Sensible Medium & Maxi" для собак средних и крупных пород с ягненком и томатами</h3>
+                        <span class="food-brand">BEST DINNER</span>
+                        <div class="food-weight">Вес: 3 кг</div>
+                        <div class="food-price">2 781 ₽</div>
+                    </div>
+                    <div class="composition-overlay">
+                        <div class="composition-title">Состав корма</div>
+                        <div class="composition-text">Дегидратированное мясо ягненка (20%), рис, овес, животные жиры, кукуруза, сушеные томаты, льняное семя, пивные дрожжи, пребиотики, хондропротекторы, витамины, минералы.</div>
+                    </div>
+                </div>
+
+                <!-- BEST DINNER для щенков с чувствительным пищеварением -->
+                <div class="food-card">
+                    <div class="composition-hint">Состав</div>
+                    <div class="food-image">
+                        <img src="https://online.sbis.ru/fs-public/ekt_files/724d833a-0b02-44d3-ab75-47426f27c7f9" alt="BEST DINNER для щенков">
+                    </div>
+                    <div class="food-content">
+                        <h3 class="food-title">BEST DINNER для щенков с чувствительным пищеварением с ягненком и ягодами</h3>
+                        <span class="food-brand">BEST DINNER</span>
+                        <div class="food-weight">Вес: 1.5 кг</div>
+                        <div class="food-price">1 550 ₽</div>
+                    </div>
+                    <div class="composition-overlay">
+                        <div class="composition-title">Состав корма</div>
+                        <div class="composition-text">Дегидратированное мясо ягненка (25%), рис, овес, животные жиры, сушеные ягоды, льняное семя, пребиотики, витаминно-минеральный комплекс для щенков.</div>
+                    </div>
+                </div>
+
+                <!-- BEST DINNER "Premium. Меню №5" -->
+                <div class="food-card">
+                    <div class="composition-hint">Состав</div>
+                    <div class="food-image">
+                        <img src="https://online.sbis.ru/fs-public/ekt_files/48810558-b5d9-4454-8720-1589a407b4f3" alt="BEST DINNER Premium Меню №5">
+                    </div>
+                    <div class="food-content">
+                        <h3 class="food-title">BEST DINNER "Premium. Меню №5" ягненок и рис</h3>
+                        <span class="food-brand">BEST DINNER</span>
+                        <div class="food-weight">Вес: 340 г</div>
+                        <div class="food-price">217 ₽</div>
+                    </div>
+                    <div class="composition-overlay">
+                        <div class="composition-title">Состав корма</div>
+                        <div class="composition-text">Ягненок (55%), бульон, рис, овощи, льняное масло, витамины, минералы.</div>
+                    </div>
+                </div>
+
+                <!-- BEST DINNER "Sensible Mini" -->
+                <div class="food-card">
+                    <div class="composition-hint">Состав</div>
+                    <div class="food-image">
+                        <img src="https://online.sbis.ru/fs-public/ekt_files/56c4a470-6cb7-45cb-9892-dbe3e699fe86" alt="BEST DINNER Sensible Mini">
+                    </div>
+                    <div class="food-content">
+                        <h3 class="food-title">BEST DINNER "Sensible Mini" для собак мелких пород с уткой и картофелем</h3>
+                        <span class="food-brand">BEST DINNER</span>
+                        <div class="food-weight">Вес: 1.5 кг</div>
+                        <div class="food-price">1 501 ₽</div>
+                    </div>
+                    <div class="composition-overlay">
+                        <div class="composition-title">Состав корма</div>
+                        <div class="composition-text">Дегидратированное мясо утки (25%), рис, картофель, животные жиры, льняное семя, пребиотики, витамины, минералы.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Футер -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> г. Москва, ул. Зоомагазинная, д. 12</p>
+                    <p><i class="fas fa-phone"></i> +7 (495) 123-45-67</p>
+                    <p><i class="fas fa-envelope"></i> info@zoomir.ru</p>
+                    <div class="working-hours">
+                        <p><strong>Время работы:</strong></p>
+                        <p>Пн-Пт: 9:00-21:00</p>
+                        <p>Сб-Вс: 10:00-20:00</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>О нас</h3>
+                <p>Мы - сеть зоомагазинов "ЗооМир" с 15-летней историей. Предлагаем широкий ассортимент кормов и товаров для домашних животных по доступным ценам.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Полезная информация</h3>
+                <p>Правильное питание - залог здоровья вашего питомца. Консультируйтесь с нашими специалистами для подбора оптимального рациона.</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Зоомагазин "ЗооМир". Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Модальное окно
+        const modalTrigger = document.getElementById('modalTrigger');
+        const contactModal = document.getElementById('contactModal');
+        const closeModal = document.getElementById('closeModal');
+
+        // Показать модальное окно через 10 секунд
+        setTimeout(() => {
+            contactModal.classList.add('active');
+            modalTrigger.classList.add('active');
+        }, 10000);
+
+        // Показать/скрыть модальное окно по клику на триггер
+        modalTrigger.addEventListener('click', () => {
+            contactModal.classList.toggle('active');
+        });
+
+        // Закрыть модальное окно
+        closeModal.addEventListener('click', () => {
+            contactModal.classList.remove('active');
+        });
+
+        // Закрыть модальное окно при клике вне его
+        window.addEventListener('click', (e) => {
+            if (e.target === contactModal) {
+                contactModal.classList.remove('active');
+            }
+        });
+
+        // Показать триггер при скролле
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                modalTrigger.classList.add('active');
+            } else {
+                modalTrigger.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
