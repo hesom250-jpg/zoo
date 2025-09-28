@@ -2029,45 +2029,7 @@
         </div>
     </footer>
 
-    <script>
-        // Модальное окно
-        document.addEventListener('DOMContentLoaded', function() {
-            const modalTrigger = document.getElementById('modalTrigger');
-            const contactModal = document.getElementById('contactModal');
-            const closeModal = document.getElementById('closeModal');
-            
-            // Показать модальное окно при клике на триггер
-            modalTrigger.addEventListener('click', function() {
-                contactModal.classList.add('active');
-                modalTrigger.classList.remove('active');
-            });
-            
-            // Закрыть модальное окно
-            closeModal.addEventListener('click', function() {
-                contactModal.classList.remove('active');
-                modalTrigger.classList.add('active');
-            });
-            
-            // Закрыть модальное окно при клике вне его
-            document.addEventListener('click', function(event) {
-                if (event.target === contactModal) {
-                    contactModal.classList.remove('active');
-                    modalTrigger.classList.add('active');
-                }
-            });
-            
-            // Показать кнопку триггера через 3 секунды после загрузки страницы
-            setTimeout(function() {
-                modalTrigger.classList.add('active');
-            }, 3000);
-            
-            // Установить ссылки для мессенджеров
-            const telegramLink = document.getElementById('telegramLink');
-            const whatsappLink = document.getElementById('whatsappLink');
-            
-            telegramLink.href = "https://t.me/zoomir_support";
-            whatsappLink.href = "https://wa.me/74951234567";
-        });
-    </script>
+ <script src="common.js"></script>
 </body>
 </html>
+
