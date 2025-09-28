@@ -909,73 +909,8 @@
         </div>
     </footer>
 
- <script>
-    // Модальное окно
-    document.addEventListener('DOMContentLoaded', function() {
-        const modal = document.getElementById('contactModal');
-        const modalTrigger = document.getElementById('modalTrigger');
-        const closeModal = document.getElementById('closeModal');
-        
-        // Показ модального окна через 5 секунд
-        setTimeout(() => {
-            if (modal) modal.classList.add('active');
-        }, 5000);
+ <script src="common.js"></script>
 
-        // Закрытие модального окна
-        if (closeModal) {
-            closeModal.addEventListener('click', () => {
-                modal.classList.remove('active');
-                setTimeout(() => {
-                    if (modalTrigger) modalTrigger.classList.add('active');
-                }, 500);
-            });
-        }
 
-        // Открытие модального окна по клику на кнопку
-        if (modalTrigger) {
-            modalTrigger.addEventListener('click', () => {
-                modal.classList.add('active');
-                modalTrigger.classList.remove('active');
-            });
-        }
-
-        // Закрытие при клике вне окна
-        if (modal) {
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.classList.remove('active');
-                    setTimeout(() => {
-                        if (modalTrigger) modalTrigger.classList.add('active');
-                    }, 500);
-                }
-            });
-        }
-
-        // Устанавливаем ссылки
-        const telegramLink = document.getElementById('telegramLink');
-        const whatsappLink = document.getElementById('whatsappLink');
-        
-        if (telegramLink) telegramLink.href = "https://t.me/zoomirufa";
-        if (whatsappLink) whatsappLink.href = "https://wa.me/79991234567";
-    });
-
-    // Плавная прокрутка ТОЛЬКО для якорных ссылок навигации
-    document.querySelectorAll('nav a[href^="#"], .footer-section a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            if(targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if(targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 100,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-</script>
 </body>
 </html>
