@@ -21,7 +21,7 @@
 
         .top-header {
             background: linear-gradient(135deg, #f8bbd0 0%, #f48fb1 100%);
-            padding: 15px 40px;
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -35,24 +35,25 @@
         }
 
         .logo h1 {
-            font-size: 2em;
+            font-size: 1.5em;
             color: #d81b60;
             font-weight: 700;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
         .logo-icon {
-            font-size: 2.2em;
+            font-size: 1.8em;
             color: #e91e63;
         }
 
         .back-button {
             background-color: #7b1fa2;
             color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
+            padding: 8px 16px;
+            border-radius: 20px;
             text-decoration: none;
             font-weight: 600;
+            font-size: 0.9em;
             transition: background-color 0.3s ease;
         }
 
@@ -62,30 +63,27 @@
 
         nav {
             background-color: white;
-            padding: 0 40px;
+            padding: 0 10px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            overflow-x: auto;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            justify-content: space-between;
-            width: 100%;
-            max-width: 1000px;
-            margin: 0 auto;
+            min-width: max-content;
         }
 
         .nav-links li {
-            padding: 18px 15px;
-            flex: 1;
-            text-align: center;
+            padding: 15px 12px;
         }
 
         .nav-links a {
             text-decoration: none;
             color: #7b1fa2;
             font-weight: 600;
-            font-size: 1.1em;
+            font-size: 0.95em;
+            white-space: nowrap;
             transition: color 0.3s ease;
             position: relative;
         }
@@ -111,8 +109,8 @@
 
         .category-header {
             text-align: center;
-            padding: 60px 20px;
-            margin-bottom: 40px;
+            padding: 40px 20px;
+            margin-bottom: 30px;
             color: white;
             position: relative;
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
@@ -123,49 +121,111 @@
         }
 
         .category-header h2 {
-            font-size: 2.8em;
-            margin-bottom: 15px;
+            font-size: 2em;
+            margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .category-header p {
-            font-size: 1.2em;
+            font-size: 1.1em;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
             max-width: 600px;
             margin: 0 auto;
         }
 
         .category-icon {
-            font-size: 3em;
-            margin-bottom: 20px;
+            font-size: 2.5em;
+            margin-bottom: 15px;
             color: #fff3e0;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .main-content {
             display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 30px;
+            grid-template-columns: 1fr;
+            gap: 25px;
             max-width: 1400px;
-            margin: 0 auto 60px;
-            padding: 0 20px;
+            margin: 0 auto 50px;
+            padding: 0 15px;
+        }
+
+        @media (min-width: 768px) {
+            .main-content {
+                grid-template-columns: 250px 1fr;
+            }
+            
+            .top-header {
+                padding: 15px 40px;
+            }
+            
+            .logo h1 {
+                font-size: 2em;
+            }
+            
+            .logo-icon {
+                font-size: 2.2em;
+            }
+            
+            .back-button {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+            
+            nav {
+                padding: 0 40px;
+            }
+            
+            .nav-links {
+                justify-content: space-between;
+                min-width: auto;
+            }
+            
+            .nav-links li {
+                padding: 18px 15px;
+                flex: 1;
+                text-align: center;
+            }
+            
+            .nav-links a {
+                font-size: 1.1em;
+            }
+            
+            .category-header {
+                padding: 60px 20px;
+                margin-bottom: 40px;
+            }
+            
+            .category-header h2 {
+                font-size: 2.8em;
+            }
+            
+            .category-icon {
+                font-size: 3em;
+            }
         }
 
         .brands-sidebar {
             background: white;
             border-radius: 15px;
-            padding: 25px;
+            padding: 20px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             height: fit-content;
-            position: sticky;
-            top: 20px;
+            order: 2;
+        }
+
+        @media (min-width: 768px) {
+            .brands-sidebar {
+                order: 1;
+                position: sticky;
+                top: 20px;
+            }
         }
 
         .brands-sidebar h3 {
-            font-size: 1.4em;
+            font-size: 1.3em;
             color: #7b1fa2;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
             border-bottom: 2px solid #ff9800;
             text-align: center;
         }
@@ -175,12 +235,12 @@
         }
 
         .brands-list li {
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .brands-list a {
             display: block;
-            padding: 12px 15px;
+            padding: 10px 12px;
             background: #f8f6f0;
             border-radius: 8px;
             text-decoration: none;
@@ -188,6 +248,7 @@
             font-weight: 500;
             transition: all 0.3s ease;
             border-left: 4px solid transparent;
+            font-size: 0.9em;
         }
 
         .brands-list a:hover {
@@ -197,36 +258,53 @@
             transform: translateX(5px);
         }
 
-        /* Убрал класс .active для главной страницы */
-        .brands-list a.active {
-            background: #f8f6f0;
-            color: #5d4037;
-            border-left-color: transparent;
+        .foods-container {
+            order: 1;
+        }
+
+        @media (min-width: 768px) {
+            .foods-container {
+                order: 2;
+            }
         }
 
         .foods-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .foods-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .foods-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
 
         .food-card {
             background: white;
-            border-radius: 15px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
             position: relative;
-            height: 540px;
+            height: auto;
+            min-height: 480px;
         }
 
         .food-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
 
         .food-image {
             width: 100%;
-            height: 300px;
+            height: 250px;
             background: #f8f6f0;
             display: flex;
             align-items: center;
@@ -243,15 +321,15 @@
         }
 
         .food-content {
-            padding: 20px;
-            height: 240px;
+            padding: 15px;
+            height: 230px;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 6px;
         }
 
         .food-title {
-            font-size: 0.95em;
+            font-size: 0.9em;
             color: #7b1fa2;
             margin-bottom: 0;
             font-weight: 600;
@@ -259,7 +337,7 @@
             height: auto;
             overflow: visible;
             display: block;
-            min-height: 3em;
+            min-height: 2.8em;
         }
 
         .food-brand {
@@ -267,23 +345,23 @@
             font-weight: 500;
             margin-bottom: 0;
             display: block;
-            font-size: 1em;
+            font-size: 0.9em;
         }
 
         .food-weight {
             color: #7b1fa2;
-            font-size: 1em;
+            font-size: 0.9em;
             font-weight: 600;
             margin-bottom: 0;
             background: #f8f6f0;
-            padding: 4px 8px;
-            border-radius: 6px;
+            padding: 3px 6px;
+            border-radius: 5px;
             display: inline-block;
             width: fit-content;
         }
 
         .food-price {
-            font-size: 1.6em;
+            font-size: 1.4em;
             color: #7b1fa2;
             font-weight: 700;
             margin-top: auto;
@@ -291,7 +369,7 @@
         }
 
         .food-stock {
-            font-size: 0.9em;
+            font-size: 0.85em;
             color: #4caf50;
             margin-top: 2px;
         }
@@ -299,7 +377,7 @@
         .view-all-btn {
             display: block;
             width: 100%;
-            padding: 15px;
+            padding: 12px;
             background: #ff9800;
             color: white;
             text-align: center;
@@ -308,6 +386,7 @@
             font-weight: 600;
             margin-top: 10px;
             transition: background 0.3s ease;
+            font-size: 0.95em;
         }
 
         .view-all-btn:hover {
@@ -321,8 +400,8 @@
             right: 0;
             bottom: 0;
             background: rgba(255, 255, 255, 0.98);
-            border-radius: 15px;
-            padding: 20px;
+            border-radius: 12px;
+            padding: 15px;
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
@@ -339,16 +418,16 @@
         }
 
         .composition-title {
-            font-size: 1.2em;
+            font-size: 1.1em;
             font-weight: bold;
             color: #7b1fa2;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
             border-bottom: 2px solid #ff9800;
         }
 
         .composition-text {
-            font-size: 0.9em;
+            font-size: 0.85em;
             line-height: 1.5;
             color: #555;
             flex-grow: 1;
@@ -356,13 +435,13 @@
 
         .composition-hint {
             position: absolute;
-            top: 10px;
-            right: 10px;
+            top: 8px;
+            right: 8px;
             background: #ff9800;
             color: white;
-            padding: 5px 10px;
-            border-radius: 12px;
-            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 10px;
+            font-size: 10px;
             opacity: 0;
             transition: opacity 0.3s ease;
             z-index: 3;
@@ -372,49 +451,35 @@
             opacity: 1;
         }
 
-        @media (max-width: 1200px) {
-            .foods-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .main-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .foods-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .food-card {
-                height: auto;
-                min-height: 500px;
-            }
-        }
-
         footer {
             background: linear-gradient(135deg, #7b1fa2 0%, #4a148c 100%);
             color: white;
-            padding: 50px 40px 25px 40px;
+            padding: 30px 20px 15px;
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 35px;
-            margin-bottom: 35px;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-bottom: 25px;
             max-width: 1200px;
             margin-left: auto;
             margin-right: auto;
         }
 
+        @media (min-width: 768px) {
+            .footer-content {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 35px;
+            }
+        }
+
         .footer-section h3 {
-            font-size: 1.5em;
-            margin-bottom: 18px;
+            font-size: 1.3em;
+            margin-bottom: 15px;
             position: relative;
             display: inline-block;
-            padding-bottom: 6px;
+            padding-bottom: 5px;
         }
 
         .footer-section h3::after {
@@ -428,30 +493,32 @@
         }
 
         .contact-info p {
-            margin-bottom: 14px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
+            font-size: 0.95em;
         }
 
         .contact-info i {
             color: #f48fb1;
-            width: 22px;
-            font-size: 1.1em;
+            width: 20px;
+            font-size: 1em;
         }
 
         .working-hours {
             background-color: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 12px;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-size: 0.9em;
         }
 
         .copyright {
             text-align: center;
-            padding-top: 25px;
+            padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.15);
-            font-size: 0.95em;
+            font-size: 0.9em;
             color: #d1c4e9;
         }
     </style>
@@ -482,10 +549,83 @@
     </section>
 
     <div class="main-content">
+        <div class="foods-container">
+            <div class="foods-grid">
+                <!-- Первые 3 товара AJO -->
+                <div class="food-card">
+                    <div class="composition-hint">Состав при наведении</div>
+                    <div class="food-image">
+                        <img src="https://www.dinozavrik.ru/upload/iblock/7cc/7cc74a708bf58f0fcb1e3f3b61550251.png" alt="AJO Dog Maxi Adult">
+                    </div>
+                    <div class="food-content">
+                        <h3 class="food-title">AJO Dog Maxi Adult Сухой полнорационный корм с гречкой для взрослых собак крупных пород</h3>
+                        <span class="food-brand">AJO</span>
+                        <div class="food-weight">Вес: 2 кг</div>
+                        <div class="food-price">1 876 ₽</div>
+                        <div class="food-stock">В наличии: 1 шт.</div>
+                    </div>
+                    <div class="composition-overlay">
+                        <div class="composition-title">Состав корма</div>
+                        <div class="composition-text">
+                            Сухой полнорационный корм с гречкой для взрослых собак крупных пород. Содержит высококачественные белки, витаминный комплекс и минеральные добавки для поддержания здоровья суставов и оптимального веса.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="food-card">
+                    <div class="composition-hint">Состав при наведении</div>
+                    <div class="food-image">
+                        <img src="https://ir.ozone.ru/s3/multimedia-m/c1000/6480839458.jpg" alt="AJO Dog Medium Adult">
+                    </div>
+                    <div class="food-content">
+                        <h3 class="food-title">AJO Dog Medium Adult Сухой полнорационный корм с гречкой для взрослых собак средних пород</h3>
+                        <span class="food-brand">AJO</span>
+                        <div class="food-weight">Вес: 2 кг</div>
+                        <div class="food-price">1 501 ₽</div>
+                        <div class="food-stock">В наличии: 1 шт.</div>
+                    </div>
+                    <div class="composition-overlay">
+                        <div class="composition-title">Состав корма</div>
+                        <div class="composition-text">
+                            Сбалансированный корм для собак средних пород с гречкой. Оптимальное сочетание белков, жиров и углеводов для поддержания энергии и здоровья питомца.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="food-card">
+                    <div class="composition-hint">Состав при наведении</div>
+                    <div class="food-image">
+                        <img src="https://darvin-zoo.ru/wp-content/uploads/2024/11/ajo_dog_mini_hypoallergenic_sukhoy_polnoratsionnyy_korm_s_grechkoy_dlya_vzroslykh_sobak_miniatyurnykh-1.png" alt="AJO Dog Mini Hypoallergenic">
+                    </div>
+                    <div class="food-content">
+                        <h3 class="food-title">AJO Dog Mini Hypoallergenic Сухой полнорационный корм с гречкой для взрослых собак миниатюрных пород</h3>
+                        <span class="food-brand">AJO</span>
+                        <div class="food-weight">Вес: 2 кг</div>
+                        <div class="food-price">2 107 ₽</div>
+                        <div class="food-stock">В наличии: 1 шт.</div>
+                    </div>
+                    <div class="composition-overlay">
+                        <div class="composition-title">Состав корма</div>
+                        <div class="composition-text">
+                            Гипоаллергенный корм для миниатюрных пород собак. Содержит легкоусвояемые белки и пребиотики для чувствительного пищеварения.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Кнопка "Смотреть все товары AJO" -->
+                <div class="food-card" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #f8f6f0 0%, #e1f5fe 100%);">
+                    <div class="food-content" style="text-align: center; height: auto;">
+                        <h3 class="food-title" style="color: #7b1fa2; margin-bottom: 20px;">Все товары бренда AJO</h3>
+                        <p style="color: #5d4037; margin-bottom: 25px;">Полный ассортимент кормов и лакомств</p>
+                        <a href="dogs-ajo.html" class="view-all-btn">Смотреть все товары AJO →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <aside class="brands-sidebar">
             <h3>Бренды</h3>
             <ul class="brands-list">
-                <!-- Убрал класс active с AJO -->
                 <li><a href="dogs-ajo.html">Ajo</a></li>
                 <li><a href="dogs-sirius.html">Sirius</a></li>
                 <li><a href="dogs-treat.html">Лакомства</a></li>
@@ -498,78 +638,6 @@
                 <li><a href="dogs-pedigree.html">Pedigree</a></li>
             </ul>
         </aside>
-
-        <div class="foods-grid">
-            <!-- Первые 3 товара AJO -->
-            <div class="food-card">
-                <div class="composition-hint">Состав при наведении</div>
-                <div class="food-image">
-                    <img src="https://www.dinozavrik.ru/upload/iblock/7cc/7cc74a708bf58f0fcb1e3f3b61550251.png" alt="AJO Dog Maxi Adult">
-                </div>
-                <div class="food-content">
-                    <h3 class="food-title">AJO Dog Maxi Adult Сухой полнорационный корм с гречкой для взрослых собак крупных пород</h3>
-                    <span class="food-brand">AJO</span>
-                    <div class="food-weight">Вес: 2 кг</div>
-                    <div class="food-price">1 876 ₽</div>
-                    <div class="food-stock">В наличии: 1 шт.</div>
-                </div>
-                <div class="composition-overlay">
-                    <div class="composition-title">Состав корма</div>
-                    <div class="composition-text">
-                        Сухой полнорационный корм с гречкой для взрослых собак крупных пород. Содержит высококачественные белки, витаминный комплекс и минеральные добавки для поддержания здоровья суставов и оптимального веса.
-                    </div>
-                </div>
-            </div>
-
-            <div class="food-card">
-                <div class="composition-hint">Состав при наведении</div>
-                <div class="food-image">
-                    <img src="https://ir.ozone.ru/s3/multimedia-m/c1000/6480839458.jpg" alt="AJO Dog Medium Adult">
-                </div>
-                <div class="food-content">
-                    <h3 class="food-title">AJO Dog Medium Adult Сухой полнорационный корм с гречкой для взрослых собак средних пород</h3>
-                    <span class="food-brand">AJO</span>
-                    <div class="food-weight">Вес: 2 кг</div>
-                    <div class="food-price">1 501 ₽</div>
-                    <div class="food-stock">В наличии: 1 шт.</div>
-                </div>
-                <div class="composition-overlay">
-                    <div class="composition-title">Состав корма</div>
-                    <div class="composition-text">
-                        Сбалансированный корм для собак средних пород с гречкой. Оптимальное сочетание белков, жиров и углеводов для поддержания энергии и здоровья питомца.
-                    </div>
-                </div>
-            </div>
-
-            <div class="food-card">
-                <div class="composition-hint">Состав при наведении</div>
-                <div class="food-image">
-                    <img src="https://darvin-zoo.ru/wp-content/uploads/2024/11/ajo_dog_mini_hypoallergenic_sukhoy_polnoratsionnyy_korm_s_grechkoy_dlya_vzroslykh_sobak_miniatyurnykh-1.png" alt="AJO Dog Mini Hypoallergenic">
-                </div>
-                <div class="food-content">
-                    <h3 class="food-title">AJO Dog Mini Hypoallergenic Сухой полнорационный корм с гречкой для взрослых собак миниатюрных пород</h3>
-                    <span class="food-brand">AJO</span>
-                    <div class="food-weight">Вес: 2 кг</div>
-                    <div class="food-price">2 107 ₽</div>
-                    <div class="food-stock">В наличии: 1 шт.</div>
-                </div>
-                <div class="composition-overlay">
-                    <div class="composition-title">Состав корма</div>
-                    <div class="composition-text">
-                        Гипоаллергенный корм для миниатюрных пород собак. Содержит легкоусвояемые белки и пребиотики для чувствительного пищеварения.
-                    </div>
-                </div>
-            </div>
-
-            <!-- Кнопка "Смотреть все товары AJO" -->
-            <div class="food-card" style="display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #f8f6f0 0%, #e1f5fe 100%);">
-                <div class="food-content" style="text-align: center; height: auto;">
-                    <h3 class="food-title" style="color: #7b1fa2; margin-bottom: 20px;">Все товары бренда AJO</h3>
-                    <p style="color: #5d4037; margin-bottom: 25px;">Полный ассортимент кормов и лакомств</p>
-                    <a href="dogs-ajo.html" class="view-all-btn">Смотреть все товары AJO →</a>
-                </div>
-            </div>
-        </div>
     </div>
 
     <footer>
@@ -621,4 +689,3 @@
     </script>
 </body>
 </html>
-
