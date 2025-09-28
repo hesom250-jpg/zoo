@@ -114,7 +114,7 @@
             color: white;
             position: relative;
             background: linear-gradient(rgba(74, 20, 140, 0.9), rgba(123, 31, 162, 0.9)), 
-                        url('https://moyedem.ru/upload/img2picture/upload/iblock/20d/vu5rh1di48u31o6o6p26iab2x6kvkm5e.png.webp');
+                        url('https://img.freepik.com/premium-photo/dry-pet-food-background-pile-granulated-animal-feeds_157837-2197.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -756,7 +756,7 @@
             <ul class="brands-list">
                 <li><a href="dogs-ajo.html" class="active">Ajo</a></li>
                 <li><a href="dogs-sirius.html">Sirius</a></li>
-                <li><a href="dogs-lucky-bits.html">Lucky bits</a></li>
+                <li><a href="dogs-treat.html">Лакомства</a></li>
                 <li><a href="dogs-royal-canin.html">Royal Canin</a></li>
                 <li><a href="dogs-best-dinner.html">Best dinner</a></li>
                 <li><a href="dogs-buffalo.html">Buffalo</a></li>
@@ -909,68 +909,73 @@
         </div>
     </footer>
 
-    <script>
-        // Модальное окно
-        document.addEventListener('DOMContentLoaded', function() {
-            const modal = document.getElementById('contactModal');
-            const modalTrigger = document.getElementById('modalTrigger');
-            const closeModal = document.getElementById('closeModal');
-            const telegramLink = document.getElementById('telegramLink');
-            const whatsappLink = document.getElementById('whatsappLink');
+ <script>
+    // Модальное окно
+    document.addEventListener('DOMContentLoaded', function() {
+        const modal = document.getElementById('contactModal');
+        const modalTrigger = document.getElementById('modalTrigger');
+        const closeModal = document.getElementById('closeModal');
+        
+        // Показ модального окна через 5 секунд
+        setTimeout(() => {
+            if (modal) modal.classList.add('active');
+        }, 5000);
 
-            // Показ модального окна через 5 секунд
-            setTimeout(() => {
-                modal.classList.add('active');
-            }, 5000);
-
-            // Закрытие модального окна - показываем кнопку
+        // Закрытие модального окна
+        if (closeModal) {
             closeModal.addEventListener('click', () => {
                 modal.classList.remove('active');
-                // Показываем кнопку через 0.5 секунды после закрытия
                 setTimeout(() => {
-                    modalTrigger.classList.add('active');
+                    if (modalTrigger) modalTrigger.classList.add('active');
                 }, 500);
             });
+        }
 
-            // Открытие модального окна по клику на кнопку
+        // Открытие модального окна по клику на кнопку
+        if (modalTrigger) {
             modalTrigger.addEventListener('click', () => {
                 modal.classList.add('active');
                 modalTrigger.classList.remove('active');
             });
+        }
 
-            // Закрытие при клике вне окна
+        // Закрытие при клике вне окна
+        if (modal) {
             modal.addEventListener('click', (e) => {
                 if (e.target === modal) {
                     modal.classList.remove('active');
                     setTimeout(() => {
-                        modalTrigger.classList.add('active');
+                        if (modalTrigger) modalTrigger.classList.add('active');
                     }, 500);
                 }
             });
+        }
 
+        // Устанавливаем ссылки
+        const telegramLink = document.getElementById('telegramLink');
+        const whatsappLink = document.getElementById('whatsappLink');
         
-            telegramLink.href = 't.me/zoomirufa'; // Замените на вашу ссылку
-            whatsappLink.href = 'https://wa.me/your_whatsapp'; // Замените на вашу ссылку
-        });
+        if (telegramLink) telegramLink.href = "https://t.me/zoomirufa";
+        if (whatsappLink) whatsappLink.href = "https://wa.me/79991234567";
+    });
 
-        // Плавная прокрутка
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                }
-            });
+    // Плавная прокрутка ТОЛЬКО для якорных ссылок навигации
+    document.querySelectorAll('nav a[href^="#"], .footer-section a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if(targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if(targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            }
         });
-    </script>
+    });
+</script>
 </body>
-
 </html>
