@@ -981,34 +981,7 @@
         </div>
     </footer>
 
-    <script>
-        // Модальное окно
-        const modalTrigger = document.getElementById('modalTrigger');
-        const contactModal = document.getElementById('contactModal');
-        const closeModal = document.getElementById('closeModal');
-        
-        // Показать модальное окно
-        modalTrigger.addEventListener('click', () => {
-            contactModal.classList.add('active');
-            modalTrigger.classList.remove('active');
-        });
-        
-        // Скрыть модальное окно
-        closeModal.addEventListener('click', () => {
-            contactModal.classList.remove('active');
-            setTimeout(() => {
-                modalTrigger.classList.add('active');
-            }, 500);
-        });
-        
-        // Показать кнопку модального окна через 5 секунд
-        setTimeout(() => {
-            modalTrigger.classList.add('active');
-        }, 5000);
-        
-        // Обновление ссылок для мессенджеров
-        document.getElementById('telegramLink').href = "https://t.me/zoomir_buffalo";
-        document.getElementById('whatsappLink').href = "https://wa.me/79501234567?text=Здравствуйте!%20Интересует%20корм%20BUFFALO";
-    </script>
+    <script src="common.js"></script>
 </body>
 </html>
+
