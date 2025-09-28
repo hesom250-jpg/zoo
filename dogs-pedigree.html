@@ -822,66 +822,7 @@
     </footer>
 
     <script>
-        // Модальное окно
-        document.addEventListener('DOMContentLoaded', function() {
-            const modal = document.getElementById('contactModal');
-            const modalTrigger = document.getElementById('modalTrigger');
-            const closeModal = document.getElementById('closeModal');
-            const telegramLink = document.getElementById('telegramLink');
-            const whatsappLink = document.getElementById('whatsappLink');
-
-            // Показ модального окна через 5 секунд
-            setTimeout(() => {
-                modal.classList.add('active');
-            }, 5000);
-
-            // Закрытие модального окна - показываем кнопку
-            closeModal.addEventListener('click', () => {
-                modal.classList.remove('active');
-                // Показываем кнопку через 0.5 секунды после закрытия
-                setTimeout(() => {
-                    modalTrigger.classList.add('active');
-                }, 500);
-            });
-
-            // Открытие модального окна по клику на кнопку
-            modalTrigger.addEventListener('click', () => {
-                modal.classList.add('active');
-                modalTrigger.classList.remove('active');
-            });
-
-            // Закрытие при клике вне окна
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.classList.remove('active');
-                    setTimeout(() => {
-                        modalTrigger.classList.add('active');
-                    }, 500);
-                }
-            });
-
-            // Здесь нужно добавить ваши ссылки на Telegram и WhatsApp
-            telegramLink.href = 'https://t.me/your_telegram'; // Замените на вашу ссылку
-            whatsappLink.href = 'https://wa.me/your_whatsapp'; // Замените на вашу ссылку
-        });
-
-        // Плавная прокрутка
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
+     <script src="common.js"></script>
 </body>
 </html>
+
