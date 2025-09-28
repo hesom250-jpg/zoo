@@ -905,59 +905,7 @@
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const modal = document.getElementById('contactModal');
-            const modalTrigger = document.getElementById('modalTrigger');
-            const closeModal = document.getElementById('closeModal');
-            const telegramLink = document.getElementById('telegramLink');
-            const whatsappLink = document.getElementById('whatsappLink');
-
-            setTimeout(() => {
-                modal.classList.add('active');
-            }, 5000);
-
-            closeModal.addEventListener('click', () => {
-                modal.classList.remove('active');
-                setTimeout(() => {
-                    modalTrigger.classList.add('active');
-                }, 500);
-            });
-
-            modalTrigger.addEventListener('click', () => {
-                modal.classList.add('active');
-                modalTrigger.classList.remove('active');
-            });
-
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.classList.remove('active');
-                    setTimeout(() => {
-                        modalTrigger.classList.add('active');
-                    }, 500);
-                }
-            });
-
-            telegramLink.href = 'https://t.me/your_telegram';
-            whatsappLink.href = 'https://wa.me/your_whatsapp';
-        });
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
+    <script src="common.js"></script>
 </body>
 </html>
+
