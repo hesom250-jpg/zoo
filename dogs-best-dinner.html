@@ -991,43 +991,7 @@
         </div>
     </footer>
 
-    <script>
-        // Модальное окно
-        const modalTrigger = document.getElementById('modalTrigger');
-        const contactModal = document.getElementById('contactModal');
-        const closeModal = document.getElementById('closeModal');
-
-        // Показать модальное окно через 10 секунд
-        setTimeout(() => {
-            contactModal.classList.add('active');
-            modalTrigger.classList.add('active');
-        }, 10000);
-
-        // Показать/скрыть модальное окно по клику на триггер
-        modalTrigger.addEventListener('click', () => {
-            contactModal.classList.toggle('active');
-        });
-
-        // Закрыть модальное окно
-        closeModal.addEventListener('click', () => {
-            contactModal.classList.remove('active');
-        });
-
-        // Закрыть модальное окно при клике вне его
-        window.addEventListener('click', (e) => {
-            if (e.target === contactModal) {
-                contactModal.classList.remove('active');
-            }
-        });
-
-        // Показать триггер при скролле
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) {
-                modalTrigger.classList.add('active');
-            } else {
-                modalTrigger.classList.remove('active');
-            }
-        });
-    </script>
+    <script src="common.js"></script>
 </body>
 </html>
+
