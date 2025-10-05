@@ -5,140 +5,213 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ЗооМир - Лакомства для собак</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #fef7e5;
+            --secondary-color: #2743cb;
+            --accent-color: #feb6b7;
+            --text-color: #333333;
+            --bg-color: #f5f5f5;
+            --card-bg: #ffffff;
+            --hover-color: #2743cb;
+            --shadow: 0 8px 25px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Nunito', sans-serif;
         }
 
         body {
-            background-color: #f8f6f0;
-            color: #4a4a4a;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             line-height: 1.6;
         }
 
-        .top-header {
-            background: linear-gradient(135deg, #f8bbd0 0%, #f48fb1 100%);
-            padding: 15px 20px;
+        /* Фиксированная шапка */
+        .sticky-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--card-bg);
+            padding: 10px 30px;
+            z-index: 1000;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .logo {
+        .logo-container {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
         }
 
-        .logo h1 {
-            font-size: 1.5em;
-            color: #d81b60;
-            font-weight: 700;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
         }
 
-        .logo-icon {
-            font-size: 1.8em;
-            color: #e91e63;
-        }
-
-        .back-button {
-            background-color: #7b1fa2;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9em;
-            transition: background-color 0.3s ease;
-        }
-
-        .back-button:hover {
-            background-color: #6a1b9a;
-        }
-
-        nav {
-            background-color: white;
-            padding: 0 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            overflow-x: auto;
+        .logo-text {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--secondary-color);
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            min-width: max-content;
-        }
-
-        .nav-links li {
-            padding: 15px 12px;
+            gap: 25px;
+            align-items: center;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #7b1fa2;
-            font-weight: 600;
-            font-size: 0.95em;
-            white-space: nowrap;
-            transition: color 0.3s ease;
+            color: var(--text-color);
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            padding: 8px 0;
             position: relative;
-        }
-
-        .nav-links a:hover {
-            color: #e91e63;
         }
 
         .nav-links a::after {
             content: '';
             position: absolute;
             width: 0;
-            height: 3px;
-            bottom: -5px;
+            height: 2px;
+            bottom: 0;
             left: 0;
-            background-color: #e91e63;
-            transition: width 0.3s ease;
+            background: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--hover-color);
         }
 
         .nav-links a:hover::after {
             width: 100%;
         }
 
-        .brand-header {
-            text-align: center;
-            padding: 40px 20px;
-            margin-bottom: 30px;
-            color: white;
+        .contact-link {
+            color: var(--text-color) !important;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            padding: 8px 0;
             position: relative;
-            background: linear-gradient(rgba(74, 20, 140, 0.9), rgba(123, 31, 162, 0.9)), 
-                        url('https://img.freepik.com/premium-photo/dry-pet-food-background-pile-granulated-animal-feeds_157837-2197.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
         }
 
-        .brand-header h2 {
-            font-size: 2em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        .contact-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: var(--secondary-color);
+            transition: var(--transition);
         }
 
-        .brand-header p {
-            font-size: 1.1em;
+        .contact-link:hover {
+            color: var(--hover-color) !important;
+        }
+
+        .contact-link:hover::after {
+            width: 100%;
+        }
+
+        /* Главный баннер */
+        .hero-section {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            padding-top: 70px;
+            background: linear-gradient(rgba(254, 247, 229, 0.8), rgba(254, 247, 229, 0.8));
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+
+        .hero-content {
+            flex: 1;
             max-width: 600px;
-            margin: 0 auto;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            animation: fadeIn 1s ease-out;
+            z-index: 2;
+            text-align: center;
         }
 
-        .brand-icon {
-            font-size: 2.5em;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero-content p {
+            font-size: 1.8rem;
+            margin-bottom: 3rem;
+            color: var(--text-color);
+            line-height: 1.4;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.3rem;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(39, 67, 203, 0.3);
+            background: var(--accent-color);
+            color: var(--text-color);
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            animation: fadeInRight 1s ease-out;
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            max-height: 550px;
+        }
+
+        /* Основной контент */
         .main-content {
             display: grid;
             grid-template-columns: 1fr;
@@ -152,69 +225,19 @@
             .main-content {
                 grid-template-columns: 250px 1fr;
             }
-            
-            .top-header {
-                padding: 15px 40px;
-            }
-            
-            .logo h1 {
-                font-size: 2em;
-            }
-            
-            .logo-icon {
-                font-size: 2.2em;
-            }
-            
-            .back-button {
-                padding: 10px 20px;
-                font-size: 1em;
-            }
-            
-            nav {
-                padding: 0 40px;
-            }
-            
-            .nav-links {
-                justify-content: space-between;
-                min-width: auto;
-            }
-            
-            .nav-links li {
-                padding: 18px 15px;
-                flex: 1;
-                text-align: center;
-            }
-            
-            .nav-links a {
-                font-size: 1.1em;
-            }
-            
-            .brand-header {
-                padding: 60px 20px;
-                margin-bottom: 40px;
-            }
-            
-            .brand-header h2 {
-                font-size: 2.8em;
-            }
-            
-            .brand-icon {
-                font-size: 3em;
-            }
         }
 
         .brands-sidebar {
-            background: white;
+            background: var(--card-bg);
             border-radius: 15px;
             padding: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow);
             height: fit-content;
-            order: 2;
+            order: 1;
         }
 
         @media (min-width: 768px) {
             .brands-sidebar {
-                order: 1;
                 position: sticky;
                 top: 20px;
             }
@@ -222,10 +245,10 @@
 
         .brands-sidebar h3 {
             font-size: 1.3em;
-            color: #7b1fa2;
+            color: var(--secondary-color);
             margin-bottom: 15px;
             padding-bottom: 8px;
-            border-bottom: 2px solid #ff9800;
+            border-bottom: 2px solid var(--accent-color);
             text-align: center;
         }
 
@@ -240,10 +263,10 @@
         .brands-list a {
             display: block;
             padding: 10px 12px;
-            background: #f8f6f0;
+            background: var(--primary-color);
             border-radius: 8px;
             text-decoration: none;
-            color: #5d4037;
+            color: var(--text-color);
             font-weight: 500;
             transition: all 0.3s ease;
             border-left: 4px solid transparent;
@@ -251,26 +274,26 @@
         }
 
         .brands-list a:hover {
-            background: #7b1fa2;
+            background: var(--secondary-color);
             color: white;
-            border-left-color: #ff9800;
+            border-left-color: var(--accent-color);
             transform: translateX(5px);
         }
 
         .brands-list a.active {
-            background: #7b1fa2;
+            background: var(--secondary-color);
             color: white;
-            border-left-color: #ff9800;
+            border-left-color: var(--accent-color);
         }
 
         .breadcrumb {
             margin-bottom: 20px;
             font-size: 0.9em;
-            color: #5d4037;
-            background: linear-gradient(135deg, #ff9800, #f57c00);
+            color: white;
+            background: linear-gradient(135deg, #feb6b7, #ff9aa2);
             padding: 12px 20px;
             border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(255, 152, 0, 0.3);
+            box-shadow: var(--shadow);
             order: 1;
             grid-column: 1 / -1;
         }
@@ -294,15 +317,7 @@
         }
 
         .foods-container {
-            order: 3;
-            grid-column: 1 / -1;
-        }
-
-        @media (min-width: 768px) {
-            .foods-container {
-                order: 2;
-                grid-column: auto;
-            }
+            order: 2;
         }
 
         .foods-grid {
@@ -325,10 +340,10 @@
         }
 
         .food-card {
-            background: white;
+            background: var(--card-bg);
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow);
             transition: transform 0.3s ease;
             position: relative;
             height: auto;
@@ -342,7 +357,7 @@
         .food-image {
             width: 100%;
             height: 250px;
-            background: #f8f6f0;
+            background: var(--primary-color);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -367,7 +382,7 @@
 
         .food-title {
             font-size: 0.9em;
-            color: #7b1fa2;
+            color: var(--secondary-color);
             margin-bottom: 0;
             font-weight: 600;
             line-height: 1.3;
@@ -378,7 +393,7 @@
         }
 
         .food-brand {
-            color: #ff9800;
+            color: var(--accent-color);
             font-weight: 500;
             margin-bottom: 0;
             display: block;
@@ -386,11 +401,11 @@
         }
 
         .food-weight {
-            color: #7b1fa2;
+            color: var(--secondary-color);
             font-size: 0.9em;
             font-weight: 600;
             margin-bottom: 0;
-            background: #f8f6f0;
+            background: var(--primary-color);
             padding: 3px 6px;
             border-radius: 5px;
             display: inline-block;
@@ -399,7 +414,7 @@
 
         .food-price {
             font-size: 1.4em;
-            color: #7b1fa2;
+            color: var(--secondary-color);
             font-weight: 700;
             margin-top: auto;
             margin-bottom: 0;
@@ -417,7 +432,7 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
-            border: 2px solid #ff9800;
+            border: 2px solid var(--accent-color);
             z-index: 2;
             overflow-y: auto;
             display: flex;
@@ -432,10 +447,10 @@
         .composition-title {
             font-size: 1.1em;
             font-weight: bold;
-            color: #7b1fa2;
+            color: var(--secondary-color);
             margin-bottom: 10px;
             padding-bottom: 8px;
-            border-bottom: 2px solid #ff9800;
+            border-bottom: 2px solid var(--accent-color);
         }
 
         .composition-text {
@@ -449,7 +464,7 @@
             position: absolute;
             top: 8px;
             right: 8px;
-            background: #ff9800;
+            background: var(--accent-color);
             color: white;
             padding: 4px 8px;
             border-radius: 10px;
@@ -463,193 +478,36 @@
             opacity: 1;
         }
 
-        /* Модальное окно в правом нижнем углу */
-        .modal-overlay {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            max-width: 350px;
-            width: calc(100% - 40px);
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateX(100px);
-            transition: all 0.5s ease;
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(0);
-        }
-
-        .modal-content {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border: 2px solid #7b1fa2;
-            position: relative;
-        }
-
-        .modal-icon {
-            font-size: 2.5em;
-            color: #7b1fa2;
-            margin-bottom: 10px;
-        }
-
-        .modal-title {
-            font-size: 1.3em;
-            color: #7b1fa2;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .modal-text {
-            color: #666;
-            margin-bottom: 20px;
-            line-height: 1.4;
-            font-size: 0.95em;
-        }
-
-        .modal-buttons {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .modal-button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 20px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.9em;
-            flex: 1;
-            min-width: 120px;
-            justify-content: center;
-        }
-
-        .modal-button.telegram {
-            background: #0088cc;
-            color: white;
-        }
-
-        .modal-button.whatsapp {
-            background: #25D366;
-            color: white;
-        }
-
-        .modal-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: none;
-            border: none;
-            font-size: 1.3em;
-            color: #999;
-            cursor: pointer;
-            transition: color 0.3s ease;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-        }
-
-        .close-modal:hover {
-            background: #f8f6f0;
-            color: #7b1fa2;
-        }
-
-        /* Кнопка вызова модального окна */
-        .modal-trigger {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #7b1fa2, #4a148c);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.8em;
-            cursor: pointer;
-            box-shadow: 0 5px 20px rgba(123, 31, 162, 0.4);
-            z-index: 999;
-            transition: all 0.3s ease;
-            opacity: 0;
-            visibility: hidden;
-            transform: scale(0.8);
-        }
-
-        .modal-trigger.active {
-            opacity: 1;
-            visibility: visible;
-            transform: scale(1);
-        }
-
-        .modal-trigger:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 25px rgba(123, 31, 162, 0.6);
-        }
-
-        .modal-trigger i {
-            font-weight: bold;
-        }
-
+        /* Футер */
         footer {
-            background: linear-gradient(135deg, #7b1fa2 0%, #4a148c 100%);
-            color: white;
-            padding: 30px 20px 15px;
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 50px 40px 25px;
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 25px;
-            margin-bottom: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 35px;
             max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        @media (min-width: 768px) {
-            .footer-content {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 35px;
-            }
+            margin: 0 auto 35px;
         }
 
         .footer-section h3 {
-            font-size: 1.3em;
-            margin-bottom: 15px;
+            font-size: 1.5rem;
+            margin-bottom: 18px;
             position: relative;
-            display: inline-block;
-            padding-bottom: 5px;
+            padding-bottom: 8px;
+            font-weight: 700;
+            color: var(--primary-color);
         }
 
         .footer-section h3::after {
             content: '';
             position: absolute;
-            width: 100%;
-            height: 2px;
-            background-color: #f48fb1;
+            width: 40px;
+            height: 3px;
+            background: var(--accent-color);
             bottom: 0;
             left: 0;
         }
@@ -659,93 +517,232 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 0.95em;
+            font-size: 1rem;
         }
 
         .contact-info i {
-            color: #f48fb1;
-            width: 20px;
-            font-size: 1em;
+            width: 18px;
         }
 
-        .working-hours {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 12px;
-            border-radius: 8px;
-            margin-top: 10px;
-            font-size: 0.9em;
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(254, 247, 229, 0.2);
+            border-radius: 50%;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--accent-color);
+            transform: translateY(-2px);
+            color: var(--text-color);
         }
 
         .copyright {
             text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            font-size: 0.9em;
-            color: #d1c4e9;
+            padding-top: 25px;
+            border-top: 1px solid rgba(254, 247, 229, 0.3);
+            font-size: 0.9rem;
         }
 
+        /* Кнопка наверх */
+        .back-to-top {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 50px;
+            height: 50px;
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+            z-index: 1000;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            background: var(--accent-color);
+            color: var(--text-color);
+        }
+
+        /* Мобильное меню */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Адаптивность */
         @media (max-width: 768px) {
-            .modal-overlay {
-                bottom: 80px;
-                right: 20px;
+            .sticky-header {
+                padding: 8px 20px;
+                flex-wrap: wrap;
             }
             
-            .modal-trigger {
-                bottom: 80px;
+            .logo-container {
+                flex: 1;
+            }
+            
+            .logo-text {
+                font-size: 1.8rem;
+            }
+            
+            .logo-img {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 0;
+                margin-top: 15px;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid rgba(0,0,0,0.1);
+            }
+            
+            .nav-links a {
+                display: block;
+                padding: 12px 0;
+                font-size: 1rem;
+            }
+            
+            .hero-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 90px 20px 40px;
+            }
+            
+            .hero-content {
+                margin-bottom: 40px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            
+            .cta-button {
+                padding: 15px 35px;
+                font-size: 1.1rem;
+            }
+            
+            .logo-text {
+                font-size: 1.6rem;
+            }
+            
+            .logo-img {
+                width: 35px;
+                height: 35px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Модальное окно в правом нижнем углу -->
-    <div class="modal-overlay" id="contactModal">
-        <div class="modal-content">
-            <button class="close-modal" id="closeModal">&times;</button>
-            <div class="modal-icon">
-                <i class="fas fa-comment-dots"></i>
-            </div>
-            <h3 class="modal-title">Уточните наличие товара</h3>
-            <p class="modal-text">Свяжитесь с нами для подтверждения наличия и получения подробной консультации по лакомствам </p>
-            <div class="modal-buttons">
-                <a href="#" class="modal-button telegram" id="telegramLink">
-                    <i class="fab fa-telegram"></i>Telegram
-                </a>
-                <a href="#" class="modal-button whatsapp" id="whatsappLink">
-                    <i class="fab fa-whatsapp"></i>WhatsApp
-                </a>
-            </div>
+    <!-- Фиксированная шапка -->
+    <header class="sticky-header">
+        <div class="logo-container">
+            <img src="https://psv4.userapi.com/s/v1/d2/uVDFMfwayv-wMQd2smZPxaiQfhScbn1B0dYiRwrn_Ei61DB8ie0j8CvE7_B3gz0k5cEQzt3l-Q8SFdoSoGIsJrf0zRv9dD4Ss9dPniHUjjNcSwYUqswXfr6z7ZFqh1bXwR7YPl7DT7md/sanctuary1.png" 
+                 alt="Логотип ЗооМир" class="logo-img">
+            <div class="logo-text">ЗооМир</div>
         </div>
-    </div>
-
-    <!-- Кнопка вызова модального окна -->
-    <div class="modal-trigger" id="modalTrigger">
-        <i class="fas fa-comments"></i>
-    </div>
-
-    <div class="top-header">
-        <div class="logo">
-            <i class="fas fa-paw logo-icon"></i>
-            <h1>ЗооМир</h1>
+        <div class="mobile-menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-        <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i> На главную</a>
-    </div>
-
-    <nav>
         <ul class="nav-links">
-            <li><a href="index.html#about">О Компании</a></li>
+            <li><a href="index.html">Главная</a></li>
             <li><a href="index.html#catalog">Каталог</a></li>
-            <li><a href="index.html#animals">Животные</a></li>
-            <li><a href="index.html#shops">Магазины</a></li>
+            <li><a href="index.html#promotions">Акции</a></li>
             <li><a href="index.html#contacts">Контакты</a></li>
+            <li><a href="https://t.me/zoomirufa" class="contact-link" target="_blank">Связаться с нами</a></li>
         </ul>
-    </nav>
+    </header>
 
-    <section class="brand-header">
-        <i class="fas fa-bone brand-icon"></i>
-        <h2>Лакомства для собак</h2>
-        <p>Натуральные лакомства для здорового питания и дрессировки вашего питомца</p>
+    <!-- Главный баннер -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Лакомства для собак</h1>
+            <p>Натуральные лакомства для здорового питания и дрессировки вашего питомца</p>
+           
+        </div>
+        <div class="hero-image">
+            <img src="https://png.pngtree.com/png-vector/20230922/ourmid/pngtree-assortment-of-dog-treats-cookie-png-image_10094773.png" alt="Лакомства для собак">
+        </div>
     </section>
 
+    <!-- Основной контент -->
     <div class="main-content">
         <div class="breadcrumb">
             <a href="dogs.html">Корма для собак</a> > <span>Лакомства</span>
@@ -767,9 +764,9 @@
             </ul>
         </aside>
 
-        <div class="foods-container">
+        <div class="foods-container" id="products">
             <div class="foods-grid">
-            
+                <!-- Lucky bits Вяленая печень индейки -->
                 <div class="food-card">
                     <div class="composition-hint">Состав при наведении</div>
                     <div class="food-image">
@@ -787,868 +784,71 @@
                     </div>
                 </div>
 
-<!-- Lucky bits Вяленые говяжьи молочные ломтики 40гр -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://moyedem.ru/upload/iblock/2ce/ier4i95qmpph9hhmpsi5iq08ka5hxi6i/a0e8df98_ea9f_11ef_b6cd_a64b99706cca_6d6ab8c4_ff1f_11ef_b6cd_a64b99706cca.png" alt="Lucky bits Вяленые говяжьи молочные ломтики">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Лакомство для собак Lucky bits Вяленые говяжьи молочные ломтики</h3>
-        <span class="food-brand">LUCKY BITS</span>
-        <div class="food-weight">Вес: 40 г</div>
-        <div class="food-price">185 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Мясо говяжье (молочная телятина) 100%.</div>
-    </div>
-</div>
-
-<!-- Lucky bits Вяленые куриные ломтики 30гр -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://katiko.ru/image/cache/catalog/2025/07/2/589721307-lakomstvo-dlya-sobak-lucky-bits-vyalenye-kurinye-lomtiki-30gr-1200x1200.png" alt="Lucky bits Вяленые куриные ломтики">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Лакомство для собак Lucky bits Вяленые куриные ломтики</h3>
-        <span class="food-brand">LUCKY BITS</span>
-        <div class="food-weight">Вес: 30 г</div>
-        <div class="food-price">185 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Мясо куриное 100%.</div>
-    </div>
-</div>
-
-<!-- Lucky bits баранья печень, 40 гр -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://katiko.ru/image/cache/catalog/2023/700/722/sobak-lucky-bits-baranya-pechen-40-gr-58-1200x1200.jpg" alt="Lucky bits баранья печень">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits баранья печень</h3>
-        <span class="food-brand">LUCKY BITS</span>
-        <div class="food-weight">Вес: 40 г</div>
-        <div class="food-price">195 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Печень баранья 100%.</div>
-    </div>
-</div>
-
-<!-- Lucky bits баранья трахея, 40 гр -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://katiko.ru/image/cache/catalog/2023/700/730/sobak-lucky-bits-baranya-trakheya-40-gr-60-1200x1200.jpg" alt="Lucky bits баранья трахея">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits баранья трахея</h3>
-        <span class="food-brand">LUCKY BITS</span>
-        <div class="food-weight">Вес: 40 г</div>
-        <div class="food-price">206 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Трахея баранья 100%.</div>
-    </div>
-</div>
-
-<!-- Lucky bits говяжий рубец, 40 гр -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://katiko.ru/image/cache/catalog/2023/700/733/sobak-lucky-bits-govyazhiy-rubets-40-gr-58-1200x1200.jpg" alt="Lucky bits говяжий рубец">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits говяжий рубец</h3>
-        <span class="food-brand">LUCKY BITS</span>
-        <div class="food-weight">Вес: 40 г</div>
-        <div class="food-price">201 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Рубец говяжий 100%.</div>
-    </div>
-</div>
-
-<!-- Lucky bits говяжье легкое, 40 гр -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://katiko.ru/image/cache/catalog/2023/700/733/sobak-lucky-bits-govyazhe-legkoe-40-gr-60-1200x1200.jpg" alt="Lucky bits говяжье легкое">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits говяжье легкое</h3>
-        <span class="food-brand">LUCKY BITS</span>
-        <div class="food-weight">Вес: 40 г</div>
-        <div class="food-price">201 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Легкое говяжье 100%.</div>
-    </div>
-</div>
-
-<!-- Lucky bits горный як легкое, 40 гр -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://katiko.ru/image/cache/catalog/2023/700/730/sobak-lucky-bits-gornyy-yak-legkoe-40-gr-60-1200x1200.jpg" alt="Lucky bits горный як легкое">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits горный як легкое</h3>
-        <span class="food-brand">LUCKY BITS</span>
-        <div class="food-weight">Вес: 40 г</div>
-        <div class="food-price">206 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Легкое яка 100%.</div>
-    </div>
-</div>
-
-<!-- Lucky bits горный як рубец, 40 гр -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://katiko.ru/image/cache/catalog/2023/700/730/sobak-lucky-bits-gornyy-yak-rubets-40-gr-60-1200x1200.jpg" alt="Lucky bits горный як рубец">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits горный як рубец</h3>
-        <span class="food-brand">LUCKY BITS</span>
-        <div class="food-weight">Вес: 40 г</div>
-        <div class="food-price">206 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Рубец яка 100%.</div>
-    </div>
-</div>
-
-<!-- Lucky bits козий рубец, 40 гр -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://cdn1.ozone.ru/s3/multimedia-0/c600/6683723856.jpg" alt="Lucky bits козий рубец">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits козий рубец</h3>
-        <span class="food-brand">LUCKY BITS</span>
-        <div class="food-weight">Вес: 40 г</div>
-        <div class="food-price">212 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Рубец козий 100%.</div>
-    </div>
-</div>
-
-<!-- Lucky bits козье легкое, 40 гр -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://katiko.ru/image/cache/catalog/2023/700/700/sobak-lucky-bits-koze-legkoe-40-g-1200x1200.jpg" alt="Lucky bits козье легкое">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits козье легкое</h3>
-        <span class="food-brand">LUCKY BITS</span>
-        <div class="food-weight">Вес: 40 г</div>
-        <div class="food-price">198 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Легкое козье 100%.</div>
-    </div>
-</div>
-
-<!-- Lucky bits конская печень, 40 гр -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://katiko.ru/image/cache/catalog/2023/700/733/sobak-lucky-bits-konskaya-pechen-40-gr-60-1200x1200.jpg" alt="Lucky bits конская печень">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits конская печень</h3>
-        <span class="food-brand">LUCKY BITS</span>
-        <div class="food-weight">Вес: 40 г</div>
-        <div class="food-price">195 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Печень конина 100%.</div>
-    </div>
-</div>
-
-<!-- Лакомство КУСЬ "Корень бычий" 10 см 2 шт -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://basket-11.wbbasket.ru/vol1641/part164151/164151023/images/big/1.webp" alt="КУСЬ Корень бычий">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Лакомство КУСЬ "Корень бычий" 10 см 2 шт</h3>
-        <span class="food-brand">КУСЬ</span>
-        <div class="food-price">516 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Корень бычий (пенис быка) 100%.</div>
-    </div>
-</div>
-
-<!-- Lucky bits легкое говяжье для дрессуры, 100 г -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://katiko.ru/image/cache/catalog/2023/700/705/sobak-lucky-bits-legkoe-govyazhe-dlya-dressury-100-gr-2-1200x1200.jpg" alt="Lucky bits легкое говяжье для дрессуры">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Лакомство для собак Lucky bits легкое говяжье для дрессуры</h3>
-        <span class="food-brand">LUCKY BITS</span>
-        <div class="food-weight">Вес: 100 г</div>
-        <div class="food-price">368 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Легкое говяжье 100%.</div>
-    </div>
-</div>
-
-<!-- Lucky bits трахея говяжья кольца, 40 г -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://katiko.ru/image/cache/catalog/2023/700/740/sobak-lucky-bits-trakheya-govyazhya-koltsa-40-gr-58-1200x1200.jpg" alt="Lucky bits трахея говяжья кольца">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Лакомство для собак Lucky bits трахея говяжья кольца</h3>
-        <span class="food-brand">LUCKY BITS</span>
-        <div class="food-weight">Вес: 40 г</div>
-        <div class="food-price">165 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Трахея говяжья 100%.</div>
-    </div>
-</div>
-
-<!-- Lucky bits трахея говяжья малая, 8 см, 2 шт, 50 г -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://katiko.ru/image/cache/catalog/2023/700/740/sobak-lucky-bits-trakheya-govyazhya-malaya-8-sm-2-sht-50-g-59-800x800.jpg" alt="Lucky bits трахея говяжья малая">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Лакомство для собак Lucky bits трахея говяжья малая, 8 см, 2 шт</h3>
-        <span class="food-brand">LUCKY BITS</span>
-        <div class="food-weight">Вес: 50 г</div>
-        <div class="food-price">206 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Трахея говяжья 100%.</div>
-    </div>
-</div>
-
-<!-- Lucky bits трахея говяжья, 24 см, 1 шт, 55 г -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://myzoograd.ru/upload/iblock/220/t199gpm7c9mwbbevafmpuhx3obd0o7z2.png" alt="Lucky bits трахея говяжья">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Лакомство для собак Lucky bits трахея говяжья, 24 см, 1 шт</h3>
-        <span class="food-brand">LUCKY BITS</span>
-        <div class="food-weight">Вес: 55 г</div>
-        <div class="food-price">269 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Трахея говяжья 100%.</div>
-    </div>
-</div>
-
-<!-- Лакомство КУСЬ ухо говяжье целое 1 шт -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://www.zoo-ostrov.ru/published/publicdata/DBZOOADMIN1/attachments/SC/products_pictures/%D1%83%D1%85%D0%BE%20%D0%B3%D0%BE%D0%B2%D1%8F%D0%B6%D0%B5%D0%B5%20%D1%86%D0%B5%D0%BB%D0%BE%D0%B5.jpg" alt="КУСЬ ухо говяжье целое">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Лакомство КУСЬ ухо говяжье целое 1 шт</h3>
-        <span class="food-brand">КУСЬ</span>
-        <div class="food-price">290 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Ухо говяжье 100%.</div>
-    </div>
-</div>
-
-<!-- Lucky bits Вымя говяжье 60г -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://katiko.ru/image/cache/catalog/2025/07/6/641052970-lakomstvo-sublimirovannoe-d-sobak-lucky-bits-vymya-govyage-60g-laki-bits-1200x1200.png" alt="Lucky bits Вымя говяжье">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Лакомство сублимированное д/собак Lucky bits Вымя говяжье 60г</h3>
-        <span class="food-brand">LUCKY BITS</span>
-        <div class="food-weight">Вес: 60 г</div>
-        <div class="food-price">269 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Вымя говяжье 100%.</div>
-    </div>
-</div>
-
-<!-- Petsmack Легкое говяжье -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://cdn1.ozone.ru/s3/multimedia-1-8/7120502072.jpg" alt="Petsmack Легкое говяжье">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Petsmack Лакомство сублимированное для собак. Легкое говяжье</h3>
-        <span class="food-brand">Petsmack</span>
-        <div class="food-price">269 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Легкое говяжье 100%.</div>
-    </div>
-</div>
-
-<!-- Lucky bits Рубец говяжий 35г -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbR8Ascq6Z-WjbacZ3H7I5yf6XCd2vFR7ixA&s" alt="Lucky bits Рубец говяжий">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Лакомство сублимированное д/собак Lucky bits Рубец говяжий 35г</h3>
-        <span class="food-brand">LUCKY BITS</span>
-        <div class="food-weight">Вес: 35 г</div>
-        <div class="food-price">269 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Рубец говяжий 100%.</div>
-    </div>
-</div>
-
-<!-- Lucky bits Трахея говяжья 50г -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://ir.ozone.ru/s3/multimedia-1-y/c1000/7229670586.jpg" alt="Lucky bits Трахея говяжья">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Лакомство сублимированное д/собак Lucky bits Трахея говяжья 50г</h3>
-        <span class="food-brand">LUCKY BITS</span>
-        <div class="food-weight">Вес: 50 г</div>
-        <div class="food-price">288 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Трахея говяжья 100%.</div>
-    </div>
-</div>
-
-<!-- LUCKY BITS ягненок с брокколи и шпинатом 400 г -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://online.sbis.ru/fs-public/ekt_files/2eeea3c3-3ec6-433f-8541-4fafb4d2eb59" alt="LUCKY BITS ягненок с брокколи и шпинатом">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">LUCKY BITS для собак всех пород ягненок с брокколи и шпинатом</h3>
-        <span class="food-brand">LUCKY BITS</span>
-        <div class="food-weight">Вес: 400 г</div>
-        <div class="food-price">179 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Мясо ягненка (не менее 60%), брокколи, шпинат, рис, льняное масло, витаминно-минеральный комплекс.</div>
-    </div>
-</div>
-
-<!-- Колбаски TITBIT "Миланские" для собак 75 г -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://plugin.sbis.ru/fs-public/ekt_files/20e9e56f-1a5a-4440-a5e6-e677e5fb0be1" alt="TITBIT Миланские колбаски">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Колбаски TITBIT "Миланские" для собак</h3>
-        <span class="food-brand">TITBIT</span>
-        <div class="food-weight">Вес: 75 г</div>
-        <div class="food-price">101 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Мясо и продукты животного происхождения (говядина, курица), злаки, растительный белок, соль, специи.</div>
-    </div>
-</div>
-
-<!-- Деревенские лакомства "Зубочистики" Кальциевые -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://cdn.kotmatros.ru/wa-data/public/shop/products/86/01/80186/images/148201/148201.750x0.jpg" alt="Деревенские лакомства Зубочистики Кальциевые">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Деревенские лакомства. "Зубочистики" Кальциевые для собак крупных пород</h3>
-        <span class="food-brand">Деревенские лакомства</span>
-        <div class="food-weight">Вес: 105 г</div>
-        <div class="food-price">317 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Кальцийсодержащие компоненты, злаки, мясокостная мука, растительный белок, глицерин, витамины.</div>
-    </div>
-</div>
-
-<!-- Деревенские лакомства "Зубочистики" Косточка жевательная -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://cdn.kotmatros.ru/wa-data/public/shop/products/11/96/89611/images/169243/169243.970.jpg" alt="Деревенские лакомства Зубочистики Косточка">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Деревенские лакомства. "Зубочистики" Косточка жевательная большая</h3>
-        <span class="food-brand">Деревенские лакомства</span>
-        <div class="food-weight">Вес: 68 г</div>
-        <div class="food-price">195 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Крахмал, злаки, глицерин, желатин, мясокостная мука, растительный белок, витамины.</div>
-    </div>
-</div>
-
-<!-- Деревенские лакомства "Зубочистики" со вкусом говядины -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS258HUE2NzC2EnTRNqSnvKnnorPGl9WcuA2g&s" alt="Деревенские лакомства Зубочистики говядина">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Деревенские лакомства. "Зубочистики" для собак мелких пород со вкусом говядины</h3>
-        <span class="food-brand">Деревенские лакомства</span>
-        <div class="food-weight">Вес: 2x18 г</div>
-        <div class="food-price">74 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Злаки, мясокостная мука, растительный белок, глицерин, натуральный ароматизатор "говядина", витамины.</div>
-    </div>
-</div>
-
-<!-- Деревенские лакомства "Зубочистики" со вкусом курицы -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsW7EMUGypHSfwslVgevcboVsnsLSKbMjvFQ&s" alt="Деревенские лакомства Зубочистики курица">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Деревенские лакомства. "Зубочистики" для собак мелких пород со вкусом курицы</h3>
-        <span class="food-brand">Деревенские лакомства</span>
-        <div class="food-weight">Вес: 2x18 г</div>
-        <div class="food-price">74 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Злаки, мясокостная мука, растительный белок, глицерин, натуральный ароматизатор "курица", витамины.</div>
-    </div>
-</div>
-
-<!-- Деревенские лакомства Мясные колбаски из кролика -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://cdn1.ozone.ru/s3/multimedia-1-j/7409863351.jpg" alt="Деревенские лакомства колбаски из кролика">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Деревенские лакомства. Мясные колбаски из кролика д/собак 7 шт</h3>
-        <span class="food-brand">Деревенские лакомства</span>
-        <div class="food-weight">Вес: 45 г</div>
-        <div class="food-price">183 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Мясо кролика (60%), злаки, растительный белок, консерванты.</div>
-    </div>
-</div>
-
-<!-- Деревенские лакомства Мясные колбаски из утки -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://cdn.kotmatros.ru/wa-data/public/shop/products/12/02/80212/images/168863/168863.750x0.jpg" alt="Деревенские лакомства колбаски из утки">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Деревенские лакомства. Мясные колбаски из утки д/собак</h3>
-        <span class="food-brand">Деревенские лакомства</span>
-        <div class="food-weight">Вес: 45 г</div>
-        <div class="food-price">183 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Мясо утки (60%), злаки, растительный белок, консерванты.</div>
-    </div>
-</div>
-
-<!-- LUCKY BITS индейка с яблоком и морковью 400 г -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://online.sbis.ru/fs-public/ekt_files/4ab1a616-622a-4a27-a115-e6f4dcfdd645" alt="LUCKY BITS индейка с яблоком и морковью">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">LUCKY BITS для собак всех пород индейка с яблоком и морковью</h3>
-        <span class="food-brand">LUCKY BITS</span>
-        <div class="food-weight">Вес: 400 г</div>
-        <div class="food-price">179 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Мясо индейки (не менее 60%), яблоки, морковь, рис, льняное масло, витаминно-минеральный комплекс.</div>
-    </div>
-</div>
-
-<!-- LUCKY BITS говядина с тыквой и кабачком 400 г -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://online.sbis.ru/fs-public/ekt_files/2eeea3c3-3ec6-433f-8541-4fafb4d2eb59" alt="LUCKY BITS говядина с тыквой и кабачком">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">LUCKY BITS для собак всех пород говядина с тыквой и кабачком</h3>
-        <span class="food-brand">LUCKY BITS</span>
-        <div class="food-weight">Вес: 400 г</div>
-        <div class="food-price">179 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Мясо говядины (не менее 60%), тыква, кабачок, рис, льняное масло, витаминно-минеральный комплекс.</div>
-    </div>
-</div>
-
-<!-- LUCKY BITS курица с горохом и морковью 400 г -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://online.sbis.ru/fs-public/ekt_files/4ab1a616-622a-4a27-a115-e6f4dcfdd645" alt="LUCKY BITS курица с горохом и морковью">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">LUCKY BITS для собак всех пород курица с горохом и морковью</h3>
-        <span class="food-brand">LUCKY BITS</span>
-        <div class="food-weight">Вес: 400 г</div>
-        <div class="food-price">179 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Мясо курицы (не менее 60%), горох, морковь, рис, льняное масло, витаминно-минеральный комплекс.</div>
-    </div>
-</div>
-
-<!-- TITBIT "Колбаски Деревенские" для собак 75 г -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://plugin.sbis.ru/fs-public/ekt_files/20e9e56f-1a5a-4440-a5e6-e677e5fb0be1" alt="TITBIT Колбаски Деревенские">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Колбаски TITBIT "Деревенские" для собак</h3>
-        <span class="food-brand">TITBIT</span>
-        <div class="food-weight">Вес: 75 г</div>
-        <div class="food-price">101 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Мясо и продукты животного происхождения (свинина, говядина), злаки, растительный белок, соль, специи.</div>
-    </div>
-</div>
-
-<!-- TITBIT "Колбаски Молочные" для собак 75 г -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://cdn1.ozone.ru/s3/multimedia-n/7120502097.jpg" alt="TITBIT Колбаски Молочные">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Колбаски TITBIT "Молочные" для собак</h3>
-        <span class="food-brand">TITBIT</span>
-        <div class="food-weight">Вес: 75 г</div>
-        <div class="food-price">101 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Мясо и продукты животного происхождения, молочные продукты, злаки, растительный белок, соль.</div>
-    </div>
-</div>
-
-<!-- TITBIT "Колбаски с сыром" для собак 75 г -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://cdn1.ozone.ru/s3/multimedia-1-4/7120502099.jpg" alt="TITBIT Колбаски с сыром">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Колбаски TITBIT "с сыром" для собак</h3>
-        <span class="food-brand">TITBIT</span>
-        <div class="food-weight">Вес: 75 г</div>
-        <div class="food-price">101 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Мясо и продукты животного происхождения, сыр, злаки, растительный белок, соль, специи.</div>
-    </div>
-</div>
-
-<!-- TITBIT "Колбаски Куриные" для собак 75 г -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://cdn1.ozone.ru/s3/multimedia-1-0/7120502098.jpg" alt="TITBIT Колбаски Куриные">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Колбаски TITBIT "Куриные" для собак</h3>
-        <span class="food-brand">TITBIT</span>
-        <div class="food-weight">Вес: 75 г</div>
-        <div class="food-price">101 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Мясо курицы, злаки, растительный белок, соль, специи.</div>
-    </div>
-</div>
-
-<!-- TITBIT "Колбаски Мясные" для собак 75 г -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://cdn1.ozone.ru/s3/multimedia-1-4/7120502100.jpg" alt="TITBIT Колбаски Мясные">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Колбаски TITBIT "Мясные" для собак</h3>
-        <span class="food-brand">TITBIT</span>
-        <div class="food-weight">Вес: 75 г</div>
-        <div class="food-price">101 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Мясо и продукты животного происхождения (говядина, свинина), злаки, растительный белок, соль, специи.</div>
-    </div>
-</div>
-
-<!-- TITBIT "Колбаски Говяжьи" для собак 75 г -->
-<div class="food-card">
-    <div class="composition-hint">Состав при наведении</div>
-    <div class="food-image">
-        <img src="https://cdn1.ozone.ru/s3/multimedia-1-0/7120502096.jpg" alt="TITBIT Колбаски Говяжьи">
-    </div>
-    <div class="food-content">
-        <h3 class="food-title">Колбаски TITBIT "Говяжьи" для собак</h3>
-        <span class="food-brand">TITBIT</span>
-        <div class="food-weight">Вес: 75 г</div>
-        <div class="food-price">101 ₽</div>
-    </div>
-    <div class="composition-overlay">
-        <div class="composition-title">Состав лакомства</div>
-        <div class="composition-text">Мясо говядины, злаки, растительный белок, соль, специи.</div>
-    </div>
-</div>
-
+                <!-- Lucky bits Вяленые говяжьи молочные ломтики 40гр -->
                 <div class="food-card">
                     <div class="composition-hint">Состав при наведении</div>
                     <div class="food-image">
-                        <img src="https://moyedem.ru/upload/iblock/cef/ul0tf5wvjjkf1la1w9tdolwit3ue6jg2/f18c2212_ea9e_11ef_b6cd_a64b99706cca_ef6f3e03_ff16_11ef_b6cd_a64b99706cca.png" alt="Lucky bits Вяленая утиная печень">
+                        <img src="https://moyedem.ru/upload/iblock/2ce/ier4i95qmpph9hhmpsi5iq08ka5hxi6i/a0e8df98_ea9f_11ef_b6cd_a64b99706cca_6d6ab8c4_ff1f_11ef_b6cd_a64b99706cca.png" alt="Lucky bits Вяленые говяжьи молочные ломтики">
                     </div>
                     <div class="food-content">
-                        <h3 class="food-title">Лакомство для собак Lucky bits Вяленая утиная печень</h3>
+                        <h3 class="food-title">Лакомство для собак Lucky bits Вяленые говяжьи молочные ломтики</h3>
+                        <span class="food-brand">LUCKY BITS</span>
+                        <div class="food-weight">Вес: 40 г</div>
+                        <div class="food-price">185 ₽</div>
+                    </div>
+                    <div class="composition-overlay">
+                        <div class="composition-title">Состав лакомства</div>
+                        <div class="composition-text">Мясо говяжье (молочная телятина) 100%.</div>
+                    </div>
+                </div>
+
+                <!-- Lucky bits Вяленые куриные ломтики 30гр -->
+                <div class="food-card">
+                    <div class="composition-hint">Состав при наведении</div>
+                    <div class="food-image">
+                        <img src="https://katiko.ru/image/cache/catalog/2025/07/2/589721307-lakomstvo-dlya-sobak-lucky-bits-vyalenye-kurinye-lomtiki-30gr-1200x1200.png" alt="Lucky bits Вяленые куриные ломтики">
+                    </div>
+                    <div class="food-content">
+                        <h3 class="food-title">Лакомство для собак Lucky bits Вяленые куриные ломтики</h3>
                         <span class="food-brand">LUCKY BITS</span>
                         <div class="food-weight">Вес: 30 г</div>
-                        <div class="food-price">195 ₽</div>
-                    </div>
-                    <div class="composition-overlay">
-                        <div class="composition-title">Состав лакомства</div>
-                        <div class="composition-text">Печень утиная 100%.</div>
-                    </div>
-                </div>
-
-                <div class="food-card">
-                    <div class="composition-hint">Состав при наведении</div>
-                    <div class="food-image">
-                        <img src="https://ir.ozone.ru/s3/multimedia-1-u/c1000/7297108842.jpg" alt="Lucky bits Вяленая утиная шея кусочки">
-                    </div>
-                    <div class="food-content">
-                        <h3 class="food-title">Лакомство для собак Lucky bits Вяленая утиная шея кусочки</h3>
-                        <span class="food-brand">LUCKY BITS</span>
-                        <div class="food-weight">Вес: 50 г</div>
                         <div class="food-price">185 ₽</div>
                     </div>
                     <div class="composition-overlay">
                         <div class="composition-title">Состав лакомства</div>
-                        <div class="composition-text">Шея утиная 100%.</div>
+                        <div class="composition-text">Мясо куриное 100%.</div>
                     </div>
                 </div>
 
+                <!-- Lucky bits баранья печень, 40 гр -->
                 <div class="food-card">
                     <div class="composition-hint">Состав при наведении</div>
                     <div class="food-image">
-                        <img src="https://katiko.ru/image/cache/catalog/2025/07/1/1782524-lakomstvo-dlya-sobak-lucky-bits-vyalenoe-govyage-legkoe-lomtiki-40gr-1200x1200.png" alt="Lucky bits Вяленое говяжье легкое ломтики">
+                        <img src="https://katiko.ru/image/cache/catalog/2023/700/722/sobak-lucky-bits-baranya-pechen-40-gr-58-1200x1200.jpg" alt="Lucky bits баранья печень">
                     </div>
                     <div class="food-content">
-                        <h3 class="food-title">Лакомство для собак Lucky bits Вяленое говяжье легкое ломтики</h3>
-                        <span class="food-brand">LUCKY BITS</span>
-                        <div class="food-weight">Вес: 40 г</div>
-                        <div class="food-price">185 ₽</div>
-                    </div>
-                    <div class="composition-overlay">
-                        <div class="composition-title">Состав лакомства</div>
-                        <div class="composition-text">Легкое говяжье 100%.</div>
-                    </div>
-                </div>
-
-                <div class="food-card">
-                    <div class="composition-hint">Состав при наведении</div>
-                    <div class="food-image">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-geTKGYCE4_jHf_AaADK50vCY-VUsmDo6EQ&s" alt="Lucky bits Вяленое филе утки">
-                    </div>
-                    <div class="food-content">
-                        <h3 class="food-title">Лакомство для собак Lucky bits Вяленое филе утки</h3>
-                        <span class="food-brand">LUCKY BITS</span>
-                        <div class="food-weight">Вес: 30 г</div>
-                        <div class="food-price">195 ₽</div>
-                    </div>
-                    <div class="composition-overlay">
-                        <div class="composition-title">Состав лакомства</div>
-                        <div class="composition-text">Филе утки 100%.</div>
-                    </div>
-                </div>
-
-                <div class="food-card">
-                    <div class="composition-hint">Состав при наведении</div>
-                    <div class="food-image">
-                        <img src="https://katiko.ru/image/cache/catalog/2025/07/8/117844600-lakomstvo-dlya-sobak-lucky-bits-vyalenye-govyagi-lomtiki-40gr-1200x1200.png" alt="Lucky bits Вяленые говяжьи ломтики">
-                    </div>
-                    <div class="food-content">
-                        <h3 class="food-title">Лакомство для собак Lucky bits Вяленые говяжьи ломтики</h3>
-                        <span class="food-brand">LUCKY BITS</span>
-                        <div class="food-weight">Вес: 40 г</div>
-                        <div class="food-price">185 ₽</div>
-                    </div>
-                    <div class="composition-overlay">
-                        <div class="composition-title">Состав лакомства</div>
-                        <div class="composition-text">Мясо говяжье 100%.</div>
-                    </div>
-                </div>
-
-                <div class="food-card">
-                    <div class="composition-hint">Состав при наведении</div>
-                    <div class="food-image">
-                        <img src="https://vsemvet.ru/wp-content/uploads/2024/11/Lakomstvo-dlya-sobak-Lucky-bits-Golen-baranya-65-gr.png" alt="Lucky bits Голень баранья">
-                    </div>
-                    <div class="food-content">
-                        <h3 class="food-title">Лакомство для собак Lucky bits Голень баранья</h3>
-                        <span class="food-brand">LUCKY BITS</span>
-                        <div class="food-weight">Вес: 65 г</div>
-                        <div class="food-price">144 ₽</div>
-                    </div>
-                    <div class="composition-overlay">
-                        <div class="composition-title">Состав лакомства</div>
-                        <div class="composition-text">Голень баранья 100%.</div>
-                    </div>
-                </div>
-
-                <div class="food-card">
-                    <div class="composition-hint">Состав при наведении</div>
-                    <div class="food-image">
-                        <img src="https://ir.ozone.ru/s3/multimedia-1-j/c400/7446603007.jpg" alt="Lucky bits Утиные лапки">
-                    </div>
-                    <div class="food-content">
-                        <h3 class="food-title">Лакомство для собак Lucky bits Утиные лапки</h3>
-                        <span class="food-brand">LUCKY BITS</span>
-                        <div class="food-weight">Вес: 45 г</div>
-                        <div class="food-price">155 ₽</div>
-                    </div>
-                    <div class="composition-overlay">
-                        <div class="composition-title">Состав лакомства</div>
-                        <div class="composition-text">Лапки утиные 100%.</div>
-                    </div>
-                </div>
-
-                <!-- Дополнительные лакомства из Excel файла -->
-                <div class="food-card">
-                    <div class="composition-hint">Состав при наведении</div>
-                    <div class="food-image">
-                        <img src="https://katiko.ru/image/cache/catalog/2023/700/730/sobak-lucky-bits-baraniy-rubets-40-gr-58-1200x1200.jpg" alt="Lucky bits бараний рубец">
-                    </div>
-                    <div class="food-content">
-                        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits бараний рубец</h3>
+                        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits баранья печень</h3>
                         <span class="food-brand">LUCKY BITS</span>
                         <div class="food-weight">Вес: 40 г</div>
                         <div class="food-price">195 ₽</div>
                     </div>
                     <div class="composition-overlay">
                         <div class="composition-title">Состав лакомства</div>
-                        <div class="composition-text">Рубец бараний 100%.</div>
+                        <div class="composition-text">Печень баранья 100%.</div>
                     </div>
                 </div>
 
+                <!-- Lucky bits баранья трахея, 40 гр -->
                 <div class="food-card">
                     <div class="composition-hint">Состав при наведении</div>
                     <div class="food-image">
-                        <img src="https://katiko.ru/image/cache/catalog/2023/700/730/sobak-lucky-bits-barane-legkoe-40-gr-60-1200x1200.jpg" alt="Lucky bits баранье легкое">
-                    </div>
-                    <div class="food-content">
-                        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits баранье легкое</h3>
-                        <span class="food-brand">LUCKY BITS</span>
-                        <div class="food-weight">Вес: 40 г</div>
-                        <div class="food-price">195 ₽</div>
-                    </div>
-                    <div class="composition-overlay">
-                        <div class="composition-title">Состав лакомства</div>
-                        <div class="composition-text">Легкое баранье 100%.</div>
-                    </div>
-                </div>
-
-                <div class="food-card">
-                    <div class="composition-hint">Состав при наведении</div>
-                    <div class="food-image">
-                        <img src="https://main-cdn.sbermegamarket.ru/mid9/hlr-system/-78/530/123/721/310/19/100064398387b0.jpg" alt="Lucky bits баранья ножка">
-                    </div>
-                    <div class="food-content">
-                        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits баранья ножка</h3>
-                        <span class="food-brand">LUCKY BITS</span>
-                        <div class="food-weight">Вес: 90±10 г</div>
-                        <div class="food-price">237 ₽</div>
-                    </div>
-                    <div class="composition-overlay">
-                        <div class="composition-title">Состав лакомства</div>
-                        <div class="composition-text">Ножка баранья 100%.</div>
-                    </div>
-                </div>
-
-                <div class="food-card">
-                    <div class="composition-hint">Состав при наведении</div>
-                    <div class="food-image">
-                        <img src="https://main-cdn.sbermegamarket.ru/mid9/hlr-system/-78/530/123/721/310/19/100064398387b0.jpg" alt="Lucky bits баранья трахея">
+                        <img src="https://katiko.ru/image/cache/catalog/2023/700/730/sobak-lucky-bits-baranya-trakheya-40-gr-60-1200x1200.jpg" alt="Lucky bits баранья трахея">
                     </div>
                     <div class="food-content">
                         <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits баранья трахея</h3>
                         <span class="food-brand">LUCKY BITS</span>
                         <div class="food-weight">Вес: 40 г</div>
-                        <div class="food-price">195 ₽</div>
+                        <div class="food-price">206 ₽</div>
                     </div>
                     <div class="composition-overlay">
                         <div class="composition-title">Состав лакомства</div>
@@ -1656,152 +856,17 @@
                     </div>
                 </div>
 
+                <!-- Lucky bits говяжий рубец, 40 гр -->
                 <div class="food-card">
                     <div class="composition-hint">Состав при наведении</div>
                     <div class="food-image">
-                        <img src="https://main-cdn.sbermegamarket.ru/mid9/hlr-system/-78/530/123/721/310/19/100064398387b0.jpg" alt="Lucky bits баранье сердце">
-                    </div>
-                    <div class="food-content">
-                        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits баранье сердце</h3>
-                        <span class="food-brand">LUCKY BITS</span>
-                        <div class="food-weight">Вес: 40 г</div>
-                        <div class="food-price">195 ₽</div>
-                    </div>
-                    <div class="composition-overlay">
-                        <div class="composition-title">Состав лакомства</div>
-                        <div class="composition-text">Сердце баранье 100%.</div>
-                    </div>
-                </div>
-
-                <div class="food-card">
-                    <div class="composition-hint">Состав при наведении</div>
-                    <div class="food-image">
-                        <img src="https://main-cdn.sbermegamarket.ru/mid9/hlr-system/-78/530/123/721/310/19/100064398387b0.jpg" alt="Lucky bits бараньи уши">
-                    </div>
-                    <div class="food-content">
-                        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits бараньи уши</h3>
-                        <span class="food-brand">LUCKY BITS</span>
-                        <div class="food-weight">Вес: 40 г</div>
-                        <div class="food-price">195 ₽</div>
-                    </div>
-                    <div class="composition-overlay">
-                        <div class="composition-title">Состав лакомства</div>
-                        <div class="composition-text">Уши бараньи 100%.</div>
-                    </div>
-                </div>
-
-                <div class="food-card">
-                    <div class="composition-hint">Состав при наведении</div>
-                    <div class="food-image">
-                        <img src="https://main-cdn.sbermegamarket.ru/mid9/hlr-system/-78/530/123/721/310/19/100064398387b0.jpg" alt="Lucky bits говяжьи уши">
-                    </div>
-                    <div class="food-content">
-                        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits говяжьи уши</h3>
-                        <span class="food-brand">LUCKY BITS</span>
-                        <div class="food-weight">Вес: 40 г</div>
-                        <div class="food-price">195 ₽</div>
-                    </div>
-                    <div class="composition-overlay">
-                        <div class="composition-title">Состав лакомства</div>
-                        <div class="composition-text">Уши говяжьи 100%.</div>
-                    </div>
-                </div>
-
-                <div class="food-card">
-                    <div class="composition-hint">Состав при наведении</div>
-                    <div class="food-image">
-                        <img src="https://main-cdn.sbermegamarket.ru/mid9/hlr-system/-78/530/123/721/310/19/100064398387b0.jpg" alt="Lucky bits говяжья трахея">
-                    </div>
-                    <div class="food-content">
-                        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits говяжья трахея</h3>
-                        <span class="food-brand">LUCKY BITS</span>
-                        <div class="food-weight">Вес: 40 г</div>
-                        <div class="food-price">195 ₽</div>
-                    </div>
-                    <div class="composition-overlay">
-                        <div class="composition-title">Состав лакомства</div>
-                        <div class="composition-text">Трахея говяжья 100%.</div>
-                    </div>
-                </div>
-
-                <div class="food-card">
-                    <div class="composition-hint">Состав при наведении</div>
-                    <div class="food-image">
-                        <img src="https://main-cdn.sbermegamarket.ru/mid9/hlr-system/-78/530/123/721/310/19/100064398387b0.jpg" alt="Lucky bits говяжье сердце">
-                    </div>
-                    <div class="food-content">
-                        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits говяжье сердце</h3>
-                        <span class="food-brand">LUCKY BITS</span>
-                        <div class="food-weight">Вес: 40 г</div>
-                        <div class="food-price">195 ₽</div>
-                    </div>
-                    <div class="composition-overlay">
-                        <div class="composition-title">Состав лакомства</div>
-                        <div class="composition-text">Сердце говяжье 100%.</div>
-                    </div>
-                </div>
-
-                <div class="food-card">
-                    <div class="composition-hint">Состав при наведении</div>
-                    <div class="food-image">
-                        <img src="https://main-cdn.sbermegamarket.ru/mid9/hlr-system/-78/530/123/721/310/19/100064398387b0.jpg" alt="Lucky bits говяжье легкое">
-                    </div>
-                    <div class="food-content">
-                        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits говяжье легкое</h3>
-                        <span class="food-brand">LUCKY BITS</span>
-                        <div class="food-weight">Вес: 40 г</div>
-                        <div class="food-price">195 ₽</div>
-                    </div>
-                    <div class="composition-overlay">
-                        <div class="composition-title">Состав лакомства</div>
-                        <div class="composition-text">Легкое говяжье 100%.</div>
-                    </div>
-                </div>
-
-                <div class="food-card">
-                    <div class="composition-hint">Состав при наведении</div>
-                    <div class="food-image">
-                        <img src="https://main-cdn.sbermegamarket.ru/mid9/hlr-system/-78/530/123/721/310/19/100064398387b0.jpg" alt="Lucky bits говяжья печень">
-                    </div>
-                    <div class="food-content">
-                        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits говяжья печень</h3>
-                        <span class="food-brand">LUCKY BITS</span>
-                        <div class="food-weight">Вес: 40 г</div>
-                        <div class="food-price">195 ₽</div>
-                    </div>
-                    <div class="composition-overlay">
-                        <div class="composition-title">Состав лакомства</div>
-                        <div class="composition-text">Печень говяжья 100%.</div>
-                    </div>
-                </div>
-
-                <div class="food-card">
-                    <div class="composition-hint">Состав при наведении</div>
-                    <div class="food-image">
-                        <img src="https://main-cdn.sbermegamarket.ru/mid9/hlr-system/-78/530/123/721/310/19/100064398387b0.jpg" alt="Lucky bits говяжьи почки">
-                    </div>
-                    <div class="food-content">
-                        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits говяжьи почки</h3>
-                        <span class="food-brand">LUCKY BITS</span>
-                        <div class="food-weight">Вес: 40 г</div>
-                        <div class="food-price">195 ₽</div>
-                    </div>
-                    <div class="composition-overlay">
-                        <div class="composition-title">Состав лакомства</div>
-                        <div class="composition-text">Почки говяжьи 100%.</div>
-                    </div>
-                </div>
-
-                <div class="food-card">
-                    <div class="composition-hint">Состав при наведении</div>
-                    <div class="food-image">
-                        <img src="https://main-cdn.sbermegamarket.ru/mid9/hlr-system/-78/530/123/721/310/19/100064398387b0.jpg" alt="Lucky bits говяжий рубец">
+                        <img src="https://katiko.ru/image/cache/catalog/2023/700/733/sobak-lucky-bits-govyazhiy-rubets-40-gr-58-1200x1200.jpg" alt="Lucky bits говяжий рубец">
                     </div>
                     <div class="food-content">
                         <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits говяжий рубец</h3>
                         <span class="food-brand">LUCKY BITS</span>
                         <div class="food-weight">Вес: 40 г</div>
-                        <div class="food-price">195 ₽</div>
+                        <div class="food-price">201 ₽</div>
                     </div>
                     <div class="composition-overlay">
                         <div class="composition-title">Состав лакомства</div>
@@ -1809,219 +874,147 @@
                     </div>
                 </div>
 
+                <!-- Lucky bits говяжье легкое, 40 гр -->
                 <div class="food-card">
                     <div class="composition-hint">Состав при наведении</div>
                     <div class="food-image">
-                        <img src="https://main-cdn.sbermegamarket.ru/mid9/hlr-system/-78/530/123/721/310/19/100064398387b0.jpg" alt="Lucky bits говяжьи хвосты">
+                        <img src="https://katiko.ru/image/cache/catalog/2023/700/733/sobak-lucky-bits-govyazhe-legkoe-40-gr-60-1200x1200.jpg" alt="Lucky bits говяжье легкое">
                     </div>
                     <div class="food-content">
-                        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits говяжьи хвосты</h3>
+                        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits говяжье легкое</h3>
                         <span class="food-brand">LUCKY BITS</span>
                         <div class="food-weight">Вес: 40 г</div>
-                        <div class="food-price">195 ₽</div>
+                        <div class="food-price">201 ₽</div>
                     </div>
                     <div class="composition-overlay">
                         <div class="composition-title">Состав лакомства</div>
-                        <div class="composition-text">Хвосты говяжьи 100%.</div>
+                        <div class="composition-text">Легкое говяжье 100%.</div>
                     </div>
                 </div>
 
+                <!-- Lucky bits горный як легкое, 40 гр -->
                 <div class="food-card">
                     <div class="composition-hint">Состав при наведении</div>
                     <div class="food-image">
-                        <img src="https://main-cdn.sbermegamarket.ru/mid9/hlr-system/-78/530/123/721/310/19/100064398387b0.jpg" alt="Lucky bits куриные лапки">
+                        <img src="https://katiko.ru/image/cache/catalog/2023/700/730/sobak-lucky-bits-gornyy-yak-legkoe-40-gr-60-1200x1200.jpg" alt="Lucky bits горный як легкое">
                     </div>
                     <div class="food-content">
-                        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits куриные лапки</h3>
+                        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits горный як легкое</h3>
                         <span class="food-brand">LUCKY BITS</span>
                         <div class="food-weight">Вес: 40 г</div>
-                        <div class="food-price">195 ₽</div>
+                        <div class="food-price">206 ₽</div>
                     </div>
                     <div class="composition-overlay">
                         <div class="composition-title">Состав лакомства</div>
-                        <div class="composition-text">Лапки куриные 100%.</div>
+                        <div class="composition-text">Легкое яка 100%.</div>
                     </div>
                 </div>
 
+                <!-- Lucky bits горный як рубец, 40 гр -->
                 <div class="food-card">
                     <div class="composition-hint">Состав при наведении</div>
                     <div class="food-image">
-                        <img src="https://main-cdn.sbermegamarket.ru/mid9/hlr-system/-78/530/123/721/310/19/100064398387b0.jpg" alt="Lucky bits куриные шейки">
+                        <img src="https://katiko.ru/image/cache/catalog/2023/700/730/sobak-lucky-bits-gornyy-yak-rubets-40-gr-60-1200x1200.jpg" alt="Lucky bits горный як рубец">
                     </div>
                     <div class="food-content">
-                        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits куриные шейки</h3>
+                        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits горный як рубец</h3>
                         <span class="food-brand">LUCKY BITS</span>
                         <div class="food-weight">Вес: 40 г</div>
-                        <div class="food-price">195 ₽</div>
+                        <div class="food-price">206 ₽</div>
                     </div>
                     <div class="composition-overlay">
                         <div class="composition-title">Состав лакомства</div>
-                        <div class="composition-text">Шейки куриные 100%.</div>
+                        <div class="composition-text">Рубец яка 100%.</div>
                     </div>
                 </div>
 
+                <!-- Lucky bits козий рубец, 40 гр -->
                 <div class="food-card">
                     <div class="composition-hint">Состав при наведении</div>
                     <div class="food-image">
-                        <img src="https://main-cdn.sbermegamarket.ru/mid9/hlr-system/-78/530/123/721/310/19/100064398387b0.jpg" alt="Lucky bits куриные желудки">
+                        <img src="https://cdn1.ozone.ru/s3/multimedia-0/c600/6683723856.jpg" alt="Lucky bits козий рубец">
                     </div>
                     <div class="food-content">
-                        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits куриные желудки</h3>
+                        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits козий рубец</h3>
                         <span class="food-brand">LUCKY BITS</span>
                         <div class="food-weight">Вес: 40 г</div>
-                        <div class="food-price">195 ₽</div>
+                        <div class="food-price">212 ₽</div>
                     </div>
                     <div class="composition-overlay">
                         <div class="composition-title">Состав лакомства</div>
-                        <div class="composition-text">Желудки куриные 100%.</div>
+                        <div class="composition-text">Рубец козий 100%.</div>
                     </div>
                 </div>
 
+                <!-- Lucky bits козье легкое, 40 гр -->
                 <div class="food-card">
                     <div class="composition-hint">Состав при наведении</div>
                     <div class="food-image">
-                        <img src="https://main-cdn.sbermegamarket.ru/mid9/hlr-system/-78/530/123/721/310/19/100064398387b0.jpg" alt="Lucky bits куриные сердечки">
+                        <img src="https://katiko.ru/image/cache/catalog/2023/700/700/sobak-lucky-bits-koze-legkoe-40-g-1200x1200.jpg" alt="Lucky bits козье легкое">
                     </div>
                     <div class="food-content">
-                        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits куриные сердечки</h3>
+                        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits козье легкое</h3>
                         <span class="food-brand">LUCKY BITS</span>
                         <div class="food-weight">Вес: 40 г</div>
-                        <div class="food-price">195 ₽</div>
+                        <div class="food-price">198 ₽</div>
                     </div>
                     <div class="composition-overlay">
                         <div class="composition-title">Состав лакомства</div>
-                        <div class="composition-text">Сердечки куриные 100%.</div>
+                        <div class="composition-text">Легкое козье 100%.</div>
                     </div>
                 </div>
 
+                <!-- Лакомство КУСЬ "Корень бычий" -->
                 <div class="food-card">
                     <div class="composition-hint">Состав при наведении</div>
                     <div class="food-image">
-                        <img src="https://main-cdn.sbermegamarket.ru/mid9/hlr-system/-78/530/123/721/310/19/100064398387b0.jpg" alt="Lucky bits куриные крылышки">
+                        <img src="https://cdn1.ozone.ru/s3/multimedia-2/c600/6683723856.jpg" alt="КУСЬ Корень бычий">
                     </div>
                     <div class="food-content">
-                        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits куриные крылышки</h3>
-                        <span class="food-brand">LUCKY BITS</span>
-                        <div class="food-weight">Вес: 40 г</div>
-                        <div class="food-price">195 ₽</div>
+                        <h3 class="food-title">Лакомство для собак КУСЬ "Корень бычий"</h3>
+                        <span class="food-brand">КУСЬ</span>
+                        <div class="food-weight">Вес: 1 шт</div>
+                        <div class="food-price">350 ₽</div>
                     </div>
                     <div class="composition-overlay">
                         <div class="composition-title">Состав лакомства</div>
-                        <div class="composition-text">Крылышки куриные 100%.</div>
+                        <div class="composition-text">Бычий корень (пенис быка) 100%.</div>
                     </div>
                 </div>
-
-                <div class="food-card">
-                    <div class="composition-hint">Состав при наведении</div>
-                    <div class="food-image">
-                        <img src="https://main-cdn.sbermegamarket.ru/mid9/hlr-system/-78/530/123/721/310/19/100064398387b0.jpg" alt="Lucky bits свиные уши">
-                    </div>
-                    <div class="food-content">
-                        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits свиные уши</h3>
-                        <span class="food-brand">LUCKY BITS</span>
-                        <div class="food-weight">Вес: 40 г</div>
-                        <div class="food-price">195 ₽</div>
-                    </div>
-                    <div class="composition-overlay">
-                        <div class="composition-title">Состав лакомства</div>
-                        <div class="composition-text">Уши свиные 100%.</div>
-                    </div>
-                </div>
-
-                <div class="food-card">
-                    <div class="composition-hint">Состав при наведении</div>
-                    <div class="food-image">
-                        <img src="https://main-cdn.sbermegamarket.ru/mid9/hlr-system/-78/530/123/721/310/19/100064398387b0.jpg" alt="Lucky bits свиные пятачки">
-                    </div>
-                    <div class="food-content">
-                        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits свиные пятачки</h3>
-                        <span class="food-brand">LUCKY BITS</span>
-                        <div class="food-weight">Вес: 40 г</div>
-                        <div class="food-price">195 ₽</div>
-                    </div>
-                    <div class="composition-overlay">
-                        <div class="composition-title">Состав лакомства</div>
-                        <div class="composition-text">Пятачки свиные 100%.</div>
-                    </div>
-                </div>
-
-                <div class="food-card">
-                    <div class="composition-hint">Состав при наведении</div>
-                    <div class="food-image">
-                        <img src="https://main-cdn.sbermegamarket.ru/mid9/hlr-system/-78/530/123/721/310/19/100064398387b0.jpg" alt="Lucky bits свиные хвостики">
-                    </div>
-                    <div class="food-content">
-                        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits свиные хвостики</h3>
-                        <span class="food-brand">LUCKY BITS</span>
-                        <div class="food-weight">Вес: 40 г</div>
-                        <div class="food-price">195 ₽</div>
-                    </div>
-                    <div class="composition-overlay">
-                        <div class="composition-title">Состав лакомства</div>
-                        <div class="composition-text">Хвостики свиные 100%.</div>
-                    </div>
-                </div>
-
-                <div class="food-card">
-                    <div class="composition-hint">Состав при наведении</div>
-                    <div class="food-image">
-                        <img src="https://main-cdn.sbermegamarket.ru/mid9/hlr-system/-78/530/123/721/310/19/100064398387b0.jpg" alt="Lucky bits косточки для зубов">
-                    </div>
-                    <div class="food-content">
-                        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits косточки для зубов</h3>
-                        <span class="food-brand">LUCKY BITS</span>
-                        <div class="food-weight">Вес: 40 г</div>
-                        <div class="food-price">195 ₽</div>
-                    </div>
-                    <div class="composition-overlay">
-                        <div class="composition-title">Состав лакомства</div>
-                        <div class="composition-text">Кости говяжьи 100%.</div>
-                    </div>
-                </div>
-
-                <div class="food-card">
-                    <div class="composition-hint">Состав при наведении</div>
-                    <div class="food-image">
-                        <img src="https://main-cdn.sbermegamarket.ru/mid9/hlr-system/-78/530/123/721/310/19/100064398387b0.jpg" alt="Lucky bits зубочистки">
-                    </div>
-                    <div class="food-content">
-                        <h3 class="food-title">Lucky bits Лакомство для собак Lucky bits зубочистки</h3>
-                        <span class="food-brand">LUCKY BITS</span>
-                        <div class="food-weight">Вес: 40 г</div>
-                        <div class="food-price">195 ₽</div>
-                    </div>
-                    <div class="composition-overlay">
-                        <div class="composition-title">Состав лакомства</div>
-                        <div class="composition-text">Кости говяжьи 100%.</div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
 
+    <!-- Футер -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3>Контакты</h3>
-                <div class="contact-info">
-                    <p><i class="fas fa-map-marker-alt"></i> г. Уфа, ул. Зоологическая, д. 15</p>
-                    <p><i class="fas fa-phone"></i> +7 (495) 123-45-67</p>
-                    <p><i class="fas fa-envelope"></i> info@zoomir.ru</p>
-                    <div class="working-hours">
-                        <p><strong>Время работы:</strong></p>
-                        <p>Пн-Пт: 9:00-21:00</p>
-                        <p>Сб-Вс: 10:00-20:00</p>
-                    </div>
+                <h3>О нас</h3>
+                <p>Интернет-зоомагазин "ЗооМир" - это широкий ассортимент товаров для ваших питомцев по доступным ценам. Мы заботимся о здоровье и счастье ваших любимцев.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             <div class="footer-section">
-                <h3>Магазины</h3>
-                <p>Наши магазины расположены в удобных районах Москвы. Приезжайте и выбирайте лучшие товары для ваших питомцев!</p>
+                <h3>Контакты</h3>
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> г. Уфа, ул. Ленина, 42</p>
+                    <p><i class="fas fa-phone"></i> +7 (347) 123-45-67</p>
+                    <p><i class="fas fa-envelope"></i> info@zoomir.ru</p>
+                    <p><i class="fas fa-clock"></i> Ежедневно с 9:00 до 21:00</p>
+                </div>
             </div>
             <div class="footer-section">
-                <h3>О нас</h3>
-                <p>ЗооМир - сеть зоомагазинов с 15-летней историей. Мы предлагаем широкий ассортимент товаров для домашних животных по доступным ценам.</p>
+                <h3>Быстрые ссылки</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="index.html#catalog">Каталог</a></li>
+                    <li><a href="index.html#promotions">Акции</a></li>
+                    <li><a href="index.html#contacts">Контакты</a></li>
+                    <li><a href="dogs.html">Корма для собак</a></li>
+                </ul>
             </div>
         </div>
         <div class="copyright">
@@ -2029,7 +1022,11 @@
         </div>
     </footer>
 
- <script src="common.js"></script>
+    <!-- Кнопка "Наверх" -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+       <script src="common.js"></script>
 </body>
 </html>
-
