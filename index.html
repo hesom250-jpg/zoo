@@ -8,13 +8,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #7b1fa2;
-            --secondary: #e91e63;
-            --accent: #4caf50;
-            --light: #f8f6f0;
-            --dark: #4a4a4a;
+            --primary-color: #fef7e5;
+            --secondary-color: #2743cb;
+            --accent-color: #feb6b7;
+            --text-color: #333333;
+            --bg-color: #f5f5f5;
+            --card-bg: #ffffff;
+            --hover-color: #2743cb;
             --shadow: 0 8px 25px rgba(0,0,0,0.1);
-            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --transition: all 0.3s ease;
         }
 
         * {
@@ -25,390 +27,430 @@
         }
 
         body {
-            background-color: var(--light);
-            color: var(--dark);
+            background-color: var(--bg-color);
+            color: var(--text-color);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Анимации */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        /* Верхняя шапка с параллаксом */
-        .hero-section {
-            background: linear-gradient(135deg, rgba(123, 31, 162, 0.9), rgba(233, 30, 99, 0.8)),
-                        url('https://images.unsplash.com/photo-1596272875729-ed2ff7d6d9c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content {
-            animation: fadeIn 1s ease-out;
-            z-index: 2;
-        }
-
-        .hero-content h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .hero-content p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, var(--secondary), var(--primary));
-            color: white;
-            padding: 15px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: var(--transition);
-            box-shadow: 0 10px 25px rgba(233, 30, 99, 0.3);
-            animation: pulse 2s infinite;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 35px rgba(233, 30, 99, 0.4);
-        }
-
-        /* Плавающие элементы */
-        .floating-elements {
-            position: absolute;
+        /* Фиксированная шапка */
+        .sticky-header {
+            position: fixed;
+            top: 0;
             width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-        }
-
-        .floating-element {
-            position: absolute;
-            font-size: 2rem;
-            opacity: 0.3;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .floating-element:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
-        .floating-element:nth-child(2) { top: 60%; right: 15%; animation-delay: 2s; }
-        .floating-element:nth-child(3) { bottom: 30%; left: 20%; animation-delay: 4s; }
-        .floating-element:nth-child(4) { top: 40%; right: 25%; animation-delay: 1s; }
-
-        /* Навигация */
-        .sticky-nav {
-            position: sticky;
-            top: 0;
+            background: var(--card-bg);
+            padding: 10px 30px;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: var(--transition);
-        }
-
-        .nav-container {
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
-            padding: 15px 40px;
-            max-width: 1400px;
-            margin: 0 auto;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .logo {
+        .logo-container {
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--primary);
-            text-decoration: none;
+            gap: 15px;
         }
 
-        .logo-icon {
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        .logo-text {
             font-size: 2.2rem;
-            color: var(--secondary);
-            transition: var(--transition);
-        }
-
-        .logo:hover .logo-icon {
-            transform: rotate(15deg) scale(1.2);
+            font-weight: 900;
+            color: var(--secondary-color);
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 25px;
+            align-items: center;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--dark);
-            font-weight: 600;
+            color: var(--text-color);
+            font-weight: 700;
             font-size: 1.1rem;
             transition: var(--transition);
+            padding: 8px 0;
             position: relative;
-            padding: 10px 0;
         }
 
         .nav-links a::after {
             content: '';
             position: absolute;
             width: 0;
-            height: 3px;
+            height: 2px;
             bottom: 0;
             left: 0;
-            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            background: var(--secondary-color);
             transition: var(--transition);
         }
 
         .nav-links a:hover {
-            color: var(--primary);
+            color: var(--hover-color);
         }
 
         .nav-links a:hover::after {
             width: 100%;
         }
 
-        /* Особенности - УМЕНЬШЕННЫЙ РАЗМЕР */
-        .features-section {
-            padding: 60px 40px;
-            background: white;
+        .contact-link {
+            color: var(--text-color) !important;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            padding: 8px 0;
+            position: relative;
         }
 
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
+        .contact-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: var(--secondary-color);
+            transition: var(--transition);
         }
 
-        .feature-card {
-            background: var(--light);
-            padding: 30px 20px;
-            border-radius: 15px;
+        .contact-link:hover {
+            color: var(--hover-color) !important;
+        }
+
+        .contact-link:hover::after {
+            width: 100%;
+        }
+
+        /* Главный баннер */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            padding-top: 70px;
+            background: linear-gradient(rgba(254, 247, 229, 0.8), rgba(254, 247, 229, 0.8));
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+            animation: fadeIn 1s ease-out;
+            z-index: 2;
             text-align: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero-content p {
+            font-size: 1.8rem;
+            margin-bottom: 3rem;
+            color: var(--text-color);
+            line-height: 1.4;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.3rem;
             transition: var(--transition);
             box-shadow: var(--shadow);
-            min-height: 200px;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(39, 67, 203, 0.3);
+            background: var(--accent-color);
+            color: var(--text-color);
+        }
+
+        .hero-image {
+            flex: 1;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            justify-content: flex-end;
+            align-items: center;
+            animation: fadeInRight 1s ease-out;
         }
 
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: var(--primary);
-            transition: var(--transition);
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            max-height: 550px;
         }
 
-        .feature-card:hover .feature-icon {
-            transform: scale(1.1) rotate(5deg);
-            color: var(--secondary);
+        /* Секции контента */
+        .content-section {
+            padding: 80px 40px;
         }
 
-        .feature-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
-
-        .feature-card p {
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        /* Категории животных - 2 РЯДА ПО 4 СТОЛБЦА */
         .categories-section {
-            padding: 60px 40px;
-            background: linear-gradient(135deg, #f1f8e9 0%, #e8f5e8 100%);
+            background-color: #feb6b7;
+        }
+
+        .promotions-section {
+            background-color: #fff9c4;
+        }
+
+        .brands-section {
+            background-color: var(--bg-color);
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.2rem;
-            margin-bottom: 40px;
-            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--secondary-color);
+            font-weight: 800;
             position: relative;
         }
 
         .section-title::after {
             content: '';
             position: absolute;
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(45deg, var(--secondary), var(--primary));
-            bottom: -12px;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
             border-radius: 2px;
         }
 
+        /* Сетка категорий */
         .categories-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+            gap: 25px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .category-card {
-            background: white;
+            background: var(--card-bg);
             border-radius: 15px;
-            padding: 25px 15px;
+            padding: 30px 20px;
             text-align: center;
             text-decoration: none;
-            color: var(--dark);
+            color: var(--text-color);
             transition: var(--transition);
             box-shadow: var(--shadow);
             position: relative;
             overflow: hidden;
-            min-height: 120px;
+            min-height: 150px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-        }
-
-        .category-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(45deg, var(--secondary), var(--primary));
-            transform: scaleX(0);
-            transition: var(--transition);
-            transform-origin: left;
+            border: 2px solid var(--primary-color);
         }
 
         .category-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .category-card:hover::before {
-            transform: scaleX(1);
+            transform: translateY(-8px);
+            color: var(--hover-color);
+            border-color: var(--accent-color);
         }
 
         .category-icon {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            font-size: 3rem;
+            margin-bottom: 15px;
             transition: var(--transition);
+            color: var(--secondary-color);
         }
 
         .category-card:hover .category-icon {
-            transform: scale(1.1);
+            transform: scale(1.2);
+            color: var(--accent-color);
         }
 
         .category-card h3 {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             margin-bottom: 5px;
-            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* Сетка акций */
+        .promotions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .promotion-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            position: relative;
+            text-decoration: none;
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .promotion-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        .promotion-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent-color);
+            color: var(--text-color);
+            font-weight: 800;
+            font-size: 1.2rem;
+            padding: 8px 12px;
+            border-radius: 50px;
+            z-index: 2;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .promotion-image {
+            height: 200px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-color);
+        }
+
+        .promotion-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .promotion-card:hover .promotion-image img {
+            transform: scale(1.05);
+        }
+
+        .promotion-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .promotion-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        .promotion-description {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: var(--text-color);
+            flex-grow: 1;
+        }
+
+        .promotion-discount {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+        }
+
+        .promotion-date {
+            font-size: 0.9rem;
+            color: #666;
             font-weight: 600;
         }
 
-        .category-card p {
-            display: none;
-        }
-
-        /* Популярные бренды - 2 РЯДА ПО 3 СТОЛБЦА */
-        .brands-section {
-            padding: 60px 40px;
-            background: white;
-        }
-
+        /* Сетка брендов */
         .brands-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            gap: 25px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .brand-card {
-            background: var(--light);
+            background: var(--card-bg);
             border-radius: 15px;
-            padding: 25px 20px;
+            padding: 30px 20px;
             text-align: center;
             transition: var(--transition);
             box-shadow: var(--shadow);
             text-decoration: none;
-            color: var(--dark);
-            min-height: 120px;
+            color: var(--text-color);
+            min-height: 150px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             cursor: pointer;
+            border: 2px solid var(--primary-color);
         }
 
         .brand-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
-            background: linear-gradient(135deg, var(--light), #e8f5e8);
+            color: var(--hover-color);
+            border-color: var(--accent-color);
         }
 
         .brand-logo {
-            font-size: 2rem;
-            color: var(--primary);
+            font-size: 2.5rem;
             margin-bottom: 15px;
         }
 
         .brand-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-            color: var(--primary);
-            font-weight: 600;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            font-weight: 700;
         }
 
         .brand-card p {
-            font-size: 0.8rem;
+            font-size: 1rem;
             line-height: 1.4;
-            color: var(--dark);
         }
 
         /* Футер */
         footer {
-            background: linear-gradient(135deg, var(--primary) 0%, #4a148c 100%);
-            color: white;
+            background: var(--secondary-color);
+            color: var(--primary-color);
             padding: 50px 40px 25px;
         }
 
@@ -421,18 +463,20 @@
         }
 
         .footer-section h3 {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             margin-bottom: 18px;
             position: relative;
             padding-bottom: 8px;
+            font-weight: 700;
+            color: var(--primary-color);
         }
 
         .footer-section h3::after {
             content: '';
             position: absolute;
             width: 40px;
-            height: 2px;
-            background: var(--secondary);
+            height: 3px;
+            background: var(--accent-color);
             bottom: 0;
             left: 0;
         }
@@ -442,11 +486,10 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
 
         .contact-info i {
-            color: var(--secondary);
             width: 18px;
         }
 
@@ -460,123 +503,26 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 36px;
-            height: 36px;
-            background: rgba(255,255,255,0.1);
+            width: 40px;
+            height: 40px;
+            background: rgba(254, 247, 229, 0.2);
             border-radius: 50%;
-            color: white;
+            color: var(--primary-color);
             text-decoration: none;
             transition: var(--transition);
         }
 
         .social-links a:hover {
-            background: var(--secondary);
+            background: var(--accent-color);
             transform: translateY(-2px);
+            color: var(--text-color);
         }
 
         .copyright {
             text-align: center;
             padding-top: 25px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.85rem;
-        }
-
-        /* Адаптивность */
-        @media (max-width: 1024px) {
-            .categories-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 15px;
-            }
-            
-            .brands-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 15px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero-content p {
-                font-size: 1.2rem;
-            }
-            
-            .nav-container {
-                padding: 15px 20px;
-                flex-direction: column;
-                gap: 15px;
-            }
-            
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
-            }
-            
-            .categories-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .brands-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .features-section,
-            .categories-section,
-            .brands-section {
-                padding: 40px 20px;
-            }
-            
-            .floating-elements {
-                display: none;
-            }
-            
-            .feature-card,
-            .category-card,
-            .brand-card {
-                padding: 20px 15px;
-                min-height: 100px;
-            }
-            
-            .category-icon,
-            .feature-icon,
-            .brand-logo {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .categories-grid,
-            .brands-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-            
-            .category-card,
-            .brand-card {
-                min-height: 80px;
-                padding: 15px 10px;
-            }
-            
-            .category-icon,
-            .brand-logo {
-                font-size: 1.5rem;
-                margin-bottom: 8px;
-            }
-            
-            .category-card h3,
-            .brand-card h3 {
-                font-size: 1rem;
-            }
+            border-top: 1px solid rgba(254, 247, 229, 0.3);
+            font-size: 0.9rem;
         }
 
         /* Кнопка наверх */
@@ -584,16 +530,16 @@
             position: fixed;
             bottom: 25px;
             right: 25px;
-            width: 45px;
-            height: 45px;
-            background: var(--primary);
-            color: white;
+            width: 50px;
+            height: 50px;
+            background: var(--secondary-color);
+            color: var(--primary-color);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             box-shadow: var(--shadow);
             transition: var(--transition);
             opacity: 0;
@@ -607,67 +553,205 @@
         }
 
         .back-to-top:hover {
-            background: var(--secondary);
             transform: translateY(-3px);
+            background: var(--accent-color);
+            color: var(--text-color);
+        }
+
+        /* Мобильное меню */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Адаптивность */
+        @media (max-width: 1024px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            
+            .categories-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+            }
+            
+            .promotions-grid,
+            .brands-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sticky-header {
+                padding: 8px 20px;
+                flex-wrap: wrap;
+            }
+            
+            .logo-container {
+                flex: 1;
+            }
+            
+            .logo-text {
+                font-size: 1.8rem;
+            }
+            
+            .logo-img {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                gap: 0;
+                margin-top: 15px;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid rgba(0,0,0,0.1);
+            }
+            
+            .nav-links a {
+                display: block;
+                padding: 12px 0;
+                font-size: 1rem;
+            }
+            
+            .hero-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 90px 20px 40px;
+            }
+            
+            .hero-content {
+                margin-bottom: 40px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.4rem;
+            }
+            
+            .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .promotions-grid,
+            .brands-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .content-section {
+                padding: 60px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            
+            .cta-button {
+                padding: 15px 35px;
+                font-size: 1.1rem;
+            }
+            
+            .categories-grid,
+            .promotions-grid,
+            .brands-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo-text {
+                font-size: 1.6rem;
+            }
+            
+            .logo-img {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .promotion-image {
+                height: 180px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Герой секция с параллаксом -->
-    <section class="hero-section">
-        <div class="floating-elements">
-            <div class="floating-element">🐕</div>
-            <div class="floating-element">🐈</div>
-            <div class="floating-element">🐠</div>
-            <div class="floating-element">🐦</div>
+    <!-- Фиксированная шапка -->
+    <header class="sticky-header">
+        <div class="logo-container">
+            <img src="https://psv4.userapi.com/s/v1/d2/uVDFMfwayv-wMQd2smZPxaiQfhScbn1B0dYiRwrn_Ei61DB8ie0j8CvE7_B3gz0k5cEQzt3l-Q8SFdoSoGIsJrf0zRv9dD4Ss9dPniHUjjNcSwYUqswXfr6z7ZFqh1bXwR7YPl7DT7md/sanctuary1.png" 
+                 alt="Логотип ЗооМир" class="logo-img">
+            <div class="logo-text">ЗооМир</div>
         </div>
+        <div class="mobile-menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#catalog">Каталог</a></li>
+            <li><a href="#promotions">Акции</a></li>
+            <li><a href="#contacts">Контакты</a></li>
+            <li><a href="https://t.me/zoomirufa" class="contact-link" target="_blank">Связаться с нами</a></li>
+        </ul>
+    </header>
+
+    <!-- Главный баннер -->
+    <section class="hero-section">
         <div class="hero-content">
             <h1>ЗооМир - Забота о ваших питомцах</h1>
-            <p>Всё самое лучшее для ваших любимых животных с доставкой на дом</p>
-            <a href="#catalog" class="cta-button">В каталог <i class="fas fa-arrow-right"></i></a>
+            <p>Всё самое лучшее для ваших любимых животных </p>
+            <a href="#catalog" class="cta-button">В каталог</a>
+        </div>
+        <div class="hero-image">
+            <img src="https://png.pngtree.com/png-clipart/20241112/original/pngtree-a-dog-and-cat-love-on-white-background-png-image_16953245.png" alt="Собака и кошка">
         </div>
     </section>
 
-    <!-- Навигация -->
-    <nav class="sticky-nav">
-        <div class="nav-container">
-            <a href="index.html" class="logo">
-                <i class="fas fa-paw logo-icon"></i>
-                ЗооМир
-            </a>
-            <ul class="nav-links">
-                <li><a href="#about">О нас</a></li>
-                <li><a href="#catalog">Каталог</a></li>
-                <li><a href="#animals">Животные</a></li>
-                <li><a href="#services">Услуги</a></li>
-                <li><a href="#contacts">Контакты</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Особенности -->
-    <section class="features-section">
-        <div class="features-grid">
-            <div class="feature-card">
-                <i class="fas fa-comments feature-icon"></i>
-                <h3>Живая консультация</h3>
-                <p>Поможем выбрать именно то, что нужно вашему питомцу</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-shield-alt feature-icon"></i>
-                <h3>Гарантия качества</h3>
-                <p>Все товары сертифицированы и имеют гарантию от производителя</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-map-marker-alt feature-icon"></i>
-                <h3>Удобное расположение</h3>
-                <p>Мы находимся рядом с домом. К нам легко добраться и приятно заходить</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Категории животных - 2 РЯДА ПО 4 СТОЛБЦА -->
-    <section class="categories-section" id="catalog">
+    <!-- Категории животных -->
+    <section class="content-section categories-section" id="catalog">
         <h2 class="section-title">Наши категории</h2>
         <div class="categories-grid">
             <a href="dogs.html" class="category-card">
@@ -705,8 +789,51 @@
         </div>
     </section>
 
-    <!-- Популярные бренды - 2 РЯДА ПО 3 СТОЛБЦА -->
-    <section class="brands-section">
+    <!-- Акции и новинки -->
+    <section class="content-section promotions-section" id="promotions">
+        <h2 class="section-title">Акции и новинки</h2>
+        <div class="promotions-grid">
+            <a href="best-dinner.html" class="promotion-card">
+                <div class="promotion-badge">-20%</div>
+                <div class="promotion-image">
+                    <img src="https://main-cdn.sbermegamarket.ru/big1/hlr-system/918/190/996/102/505/2/600006454229b0.jpg" alt="Best Dinner влажный корм">
+                </div>
+                <div class="promotion-content">
+                    <h3>Best Dinner</h3>
+                    <p class="promotion-description">Влажный корм/паштет</p>
+                    <p class="promotion-discount">Скидка 20%</p>
+                    <p class="promotion-date">до 15.10.25</p>
+                </div>
+            </a>
+            <a href="sirius.html" class="promotion-card">
+                <div class="promotion-badge">-20%</div>
+                <div class="promotion-image">
+                    <img src="https://ir.ozone.ru/s3/multimedia-y/c1000/6730569826.jpg" alt="Sirius корм для животных">
+                </div>
+                <div class="promotion-content">
+                    <h3>Sirius</h3>
+                    <p class="promotion-description">Корм для животных</p>
+                    <p class="promotion-discount">Скидка 20%</p>
+                    <p class="promotion-date">до 15.10.25</p>
+                </div>
+            </a>
+            <a href="proplan.html" class="promotion-card">
+                <div class="promotion-badge">-15%</div>
+                <div class="promotion-image">
+                    <img src="https://zoomag.ru/images/thumbnails/1143/800/detailed/9516/b3ff90cc018f85824b6307f2d0e366bf.jpg" alt="Pro Plan влажный корм">
+                </div>
+                <div class="promotion-content">
+                    <h3>Pro Plan</h3>
+                    <p class="promotion-description">Влажный корм</p>
+                    <p class="promotion-discount">Скидка 15%</p>
+                    <p class="promotion-date">до 15.10.25</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Популярные бренды -->
+    <section class="content-section brands-section">
         <h2 class="section-title">Популярные бренды</h2>
         <div class="brands-grid">
             <a href="royal-canin.html" class="brand-card">
@@ -750,41 +877,30 @@
                 <div class="contact-info">
                     <p><i class="fas fa-map-marker-alt"></i> Мира, 27/2, Уфимский район</p>
                     <p><i class="fas fa-phone"></i> +7–987–240–14–91</p>
-                    <p><i class="fas fa-envelope"></i> info@zoomir.ru</p>
                 </div>
             </div>
             <div class="footer-section">
                 <h3>Часы работы</h3>
                 <div class="working-hours">
                     <p><strong>Ежедневно</strong> с 10:00 до 21:00</p>
-                    <p id="status">Закрыто. Откроется через 24 минуты</p>
                 </div>
             </div>
             <div class="footer-section">
                 <h3>Мы в соцсетях</h3>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-vk"></i></a>
-                    <a href="#"><i class="fab fa-telegram"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="https://t.me/zoomirufa" target="_blank"><i class="fab fa-telegram"></i></a>
+                    <a href="https://wa.me/79872401491" target="_blank"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; 2023 ЗооМир - Зоомагазин. Все права защищены.</p>
+            <p>&copy; 2025 ЗооМир - Зоомагазин. Все права защищены.</p>
         </div>
     </footer>
 
     <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
 
     <script>
-        // Параллакс эффект
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const parallax = document.querySelector('.hero-section');
-            parallax.style.backgroundPositionY = -(scrolled * 0.5) + 'px';
-        });
-
         // Кнопка "Наверх"
         window.addEventListener('scroll', function() {
             const backToTop = document.querySelector('.back-to-top');
@@ -798,6 +914,23 @@
         document.querySelector('.back-to-top').addEventListener('click', function(e) {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Мобильное меню
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Закрытие меню при клике на ссылку
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
         });
 
         // Анимация при скролле
@@ -814,38 +947,10 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.feature-card, .category-card, .brand-card').forEach(card => {
+        document.querySelectorAll('.category-card, .brand-card, .promotion-card').forEach(card => {
             card.style.opacity = '0';
             observer.observe(card);
         });
-
-        // Обновление статуса работы
-        function updateStatus() {
-            const now = new Date();
-            const hours = now.getHours();
-            const minutes = now.getMinutes();
-            
-            const isOpen = hours >= 10 && hours < 21;
-            const statusElement = document.getElementById('status');
-            
-            if (isOpen) {
-                const closingIn = (20 - hours) * 60 + (60 - minutes);
-                statusElement.textContent = `Открыто. Закроется через ${closingIn} минут`;
-                statusElement.style.color = '#c8e6c9';
-            } else {
-                let openingIn;
-                if (hours < 10) {
-                    openingIn = (9 - hours) * 60 + (60 - minutes);
-                } else {
-                    openingIn = (24 - hours + 10) * 60 - minutes;
-                }
-                statusElement.textContent = `Закрыто. Откроется через ${openingIn} минут`;
-                statusElement.style.color = '#ffcdd2';
-            }
-        }
-        
-        updateStatus();
-        setInterval(updateStatus, 60000);
     </script>
 </body>
 </html>
